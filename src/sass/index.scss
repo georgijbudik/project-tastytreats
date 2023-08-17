@@ -1,2 +1,6 @@
-@import './common';
-@import './example';
+@import './utils/variables';
+@import './utils/mixins';
+@import '../fonts/fonts';
+@import './base/common';
+@import './components/header';
+@import './components/hero';
