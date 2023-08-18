@@ -2,6 +2,9 @@ import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const listRecipes = document.querySelector('.popular-recipes-list');
+const loaderRecipes = document.querySelector('.loader');
+
+loaderRecipes.classList.remove('loader-is-hidden');
 
 async function fetchPopularRecipes() {
   const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
@@ -18,10 +21,14 @@ fetchPopularRecipes()
     //   return;
     // }
     createGalleryRecipes(response.data);
+    loaderRecipes.classList.add('loader-is-hidden');
   })
   .catch(err => {
     Notify.failure(`❌No popular recipes. Sorry ${err.message} ❌`);
     console.log(err);
+    setTimeout(() => {
+      loaderRecipes.classList.add('loader-is-hidden');
+    }, 5000);
   });
 
 function createGalleryRecipes(recipes) {
