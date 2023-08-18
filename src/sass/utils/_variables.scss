@@ -1,15 +1,17 @@
 // ----------Light Theme colors-----------
+$primaryWhite: #ffffff;
 $primaryTextColor: #050505;
+$borderColor: rgba(5, 5, 5, 0.2);
 $categoriesTextColor: #05050530;
 $placeholderTextColor: #05050550;
 $descrTextColor: #05050580;
 
 // --------Dark Theme colors------------
-$primaryTextColor: #ffffff;
-$borderColor: #ffffff20;
+$darkThemePrimaryTextColor: #ffffff;
+$darkThemeBorderColor: #ffffff20;
 $inputAndSelectColor: #ffffff30;
-$placeholderTextColor: #ffffff50;
-$descrTextColor: #ffffff80;
+$darkThemePlaceholderTextColor: #ffffff50;
+$darkThemeDescrTextColor: #ffffff80;
 
 // -------Common colors---------
 $starsColor: #eea10c;
