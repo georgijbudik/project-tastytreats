@@ -1,0 +1,102 @@
+.footer{
+    outline: solid 2px salmon;
+    padding-top: 24px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 28px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding-top: 40px;
+    } 
+    }
+    
+.nav-list {
+    display: flex;
+     gap: 10px;
+     justify-content: center;
+        
+    }
+.nav-li-deep {
+    color: #050505;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+        @media screen and (min-width: 768px) {
+            font-weight: 500;
+        }
+        @media screen and (min-width: 1280px) {
+            font-weight: 400;
+            
+        } 
+    } 
+
+.logo-btn {
+    color: #9BB537;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.125; /* 112.5% */
+    letter-spacing: -0.64px;
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        line-height: 1.11; /* 111.111% */
+        letter-spacing: -0.72px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 18px;
+        line-height: 1.11; /* 111.111% */
+        letter-spacing: -0.72px;  
+    } 
+    }
+    
+.logo-btn2 {
+    color: #050505;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.125;
+    letter-spacing: -0.64px;
+
+@media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.11;
+    letter-spacing: -0.72px;
+}
+@media screen and (min-width: 1280px) {
+    font-size: 18px;
+    line-height: 1.11;
+    letter-spacing: -0.72px;
+} 
+    }
+ 
+.slogan {
+    text-align: center;
+    padding-top: 10px;
+    // display: flex;
+    // justify-content: center;
+    
+    color: #050505;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125;
+    letter-spacing: -0.64px;
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        line-height: 1.11;
+        letter-spacing: -0.72px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 18px;
+        line-height: 1.11;
+        letter-spacing: -0.72px;
+    } 
+}
+
+.contacts-list {
+    display: flex;
+    outline: solid 1px salmon;
+}
