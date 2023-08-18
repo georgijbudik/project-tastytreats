@@ -3,4 +3,5 @@ import './js/swiper';
 import './js/pop-up';
 import './js/form';
 import './js/categories';
+import "./js/renderCards"
 import './js/modal';
