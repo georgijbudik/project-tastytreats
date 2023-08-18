@@ -38,12 +38,6 @@
   background-color: transparent;
   border: 0;
   line-height: 0;
-  transition: transform 0.5s ease-in-out;
-}
-
-.close-modal-button:hover,
-.close-modal-button:focus {
-  transform: rotate(180deg);
 }
 
 .close-modal-button-icon {
@@ -56,8 +50,7 @@
 .close-modal-button:hover .close-modal-button-icon,
 .close-modal-button:focus .close-modal-button-icon {
   stroke: black;
-  height: 34px;
-  width: 34px;
+  transform: rotate(180deg);
 }
 
 .modal-recipe-name {
@@ -95,6 +88,7 @@
 
 .modal-recipe-info-tag-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 4;
 }
 
@@ -186,9 +180,6 @@
   font-family: Inter;
   font-size: 14px;
   line-height: 128.57%;
-
-  height: 162px;
-  overflow: auto;
 
   margin-bottom: 32px;
 }
