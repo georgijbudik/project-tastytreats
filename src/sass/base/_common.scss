@@ -41,25 +41,69 @@ img {
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 body {
   font-family: 'Inter', sans-serif;
   font-style: normal;
 }
-
+.favorites-img {
+  background-image: url(/src/images/favorite-mob.jpg);
+  background-size: contain;
+  height: 526px;
+  width: 335px;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-bottom: 40px;
+}
+.food-type-list {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  .btn {
+    padding: 14px 18px;
+    border: 1px solid rgba(5, 5, 5, 0.2);
+    border-radius: 15px;
+    background-color: white;
+    color: rgba(5, 5, 5, 0.5);
+    font-size: 18px;
+  }
+}
+.btn:hover,
+.btn:focus {
+  background-color: #9bb537;
+  color: white;
+  border-color: transparent;
+}
 @media screen and (min-width: 768px) {
   .container {
-    width: 738px;
-    padding-right: 15px;
-    padding-left: 15px;
+    width: 704px;
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+  .favorites-img {
+    background-image: url(/src/images/favorite-tab.jpg);
+    height: 356px;
+    width: 704px;
+    margin-bottom: 64px;
+    .food-type-list {
+      margin-bottom: 32px;
+    }
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
-    width: 1250px;
-    padding-right: 15px;
-    padding-left: 15px;
+    width: 1080px;
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+  .favorites-img {
+    background-image: url(/src/images/favorite-pc.jpg);
+    width: 1080px;
   }
 }
