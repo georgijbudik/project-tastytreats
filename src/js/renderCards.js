@@ -3,18 +3,16 @@ import {filtrCards} from "./api/gallery-api"
 import {pageCards} from"./api/gallery-api"
 
 
-const testRendreCards = document.querySelector(".test")
-const paginationElement = document.querySelector(".pagination");
 
 // filtrCards().then(data=>{
 //     console.log(data)
 // });
 
 
-// pageCards(1,2).then(data=>{
-//     console.log(data)
-//     createMarkup(data.results);
-// }).catch();
+pageCards(1,2).then(data=>{
+    console.log(data)
+    // createMarkup(data.results);
+}).catch();
 
 // categorsCards("Beef",1,2).then(data=>{
 //     console.log(data)
@@ -50,3 +48,4 @@ const paginationElement = document.querySelector(".pagination");
 //         paginationElement.appendChild(button);
 //     }
 // }
+
