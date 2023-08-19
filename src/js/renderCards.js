@@ -1,23 +1,39 @@
 import {categorsCards} from "./api/gallery-api"
 import {filtrCards} from "./api/gallery-api"
 import {pageCards} from"./api/gallery-api"
+import{createMarkup} from "../js/categories"
+import Notiflix from 'notiflix';
 
 
+
+// const listOfCards = document.querySelector('.list-of-cards');
 
 // filtrCards().then(data=>{
 //     console.log(data)
 // });
 
 
-pageCards(1,2).then(data=>{
-    console.log(data)
-    // createMarkup(data.results);
-}).catch();
+let page = 1;
+let limit = 6;
+
+// pageCards(page,limit).then(data=>{
+//     const screenWidth = window.innerWidth;
+    
+//     if(screenWidth <= 375){
+        
+//      return  createMarkup(data.results);
+//     }else if (screenWidth >= 768 && screenWidth < 1200){
+//         limit = 8;
+//         return  createMarkup(data.results);
+//     }else{
+//         limit = 9;
+//         return  createMarkup(data.results);
+//     }
+    
+// }).catch();
 
 // categorsCards("Beef",1,2).then(data=>{
 //     console.log(data)
-//     createMarkup(data.results)
-//     createPaginationButtons(data.totalPages)
 // })
 
 //   function createMarkup(arr) {
