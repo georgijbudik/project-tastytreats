@@ -1,68 +1,96 @@
-import { fetchCategories } from './api/categories-api';
-import Notiflix from 'notiflix';
+// import { fetchCategories } from './api/categories-api';
+// import { categorsCards } from './api/gallery-api';
+// import { pageCards } from './api/gallery-api';
+// import Notiflix from 'notiflix';
+// import { tuiPagination } from './pagination';
 
-const listOfCategories = document.querySelector('.js-categories');
-const btnAllCategories = document.querySelector('.js-btn-all-categories');
+// const listOfCategories = document.querySelector('.js-categories');
+// const btnAllCategories = document.querySelector('.js-btn-all-categories');
+// const listOfCards = document.querySelector('.test');
 
-btnAllCategories.addEventListener('click', handleResetCategory);
-listOfCategories.addEventListener('click', handleSelectCategory);
+// let page = 1;
+// const limit = 9;
+// let selectedCategoryId = null;
+// let category = '';
 
-let selectedCategoryId = null;
+// btnAllCategories.addEventListener('click', handleResetCategory);
+// listOfCategories.addEventListener('click', handleSelectCategory);
 
-function handleSelectCategory(evt) {
-  if (evt.target.tagName === 'BUTTON') {
-    selectedCategoryId = evt.target.dataset.id;
-    const category = evt.target.name;
-    console.log(category);
+// function handleSelectCategory(evt) {
+//   listOfCards.innerHTML = '';
 
-    // Викликається функція запиту за певною категорією
-    // fetchCategoryCards(category)
-    //   .then(data => {
-    //     listofCards.insertAdjacentHTML(
-    //       'beforeend',
-    //       createCards(selectedCategoryId)
-    //     );
-    //     // шаблон картки винести в окремий файл
-    //   })
-    //   .catch(error => console.log(error.message));
-  }
-}
+//   if (evt.target.tagName === 'BUTTON') {
+//     selectedCategoryId = evt.target.dataset.id;
+//     category = evt.target.name;
 
-function handleResetCategory(evt) {
-  if (!selectedCategoryId) {
-    return;
-  }
+//     categorsCards(category, page, limit)
+//       .then(data => {
+//         const totalItems = data.results.length * data.totalPages;
 
-  selectedCategoryId = null;
-  // Викликається функція запиту відмальовки карточок по всіх категоріях
-  // listofCards.innerHTML = '';
-}
+//         createMarkup(data.results);
+//         tuiPagination(data.page, totalItems, limit);
+//       })
+//       .catch(error => console.log(error.message));
+//   }
+// }
 
-const createMarkupOfCategories = arr => {
-  return arr
-    .map(
-      ({ _id, name }) => `
-  <li><button data-id="${_id}" name="${name}">${name}</button></li>`
-    )
-    .join('');
-};
+// function handleResetCategory(evt) {
+//   listOfCards.innerHTML = '';
+//   selectedCategoryId = null;
 
-const fetchAllCategories = () => {
-  fetchCategories()
-    .then(response => {
-      const { data } = response;
+//   pageCards(page, limit)
+//     .then(data => {
+//       const totalItems = data.results.length * data.totalPages;
 
-      listOfCategories.insertAdjacentHTML(
-        'beforeend',
-        createMarkupOfCategories(data)
-      );
-    })
-    .catch(error => {
-      Notiflix.Notify.failure(
-        `Categories is not defined. ${error.message}. Try again`
-      );
-      console.log(error.message);
-    });
-};
+//       createMarkup(data.results);
+//       tuiPagination(data.page, totalItems, limit);
+//     })
+//     .catch();
+// }
 
-fetchAllCategories();
+// const createMarkupOfCategories = arr => {
+//   return arr
+//     .map(
+//       ({ _id, name }) => `
+//   <li><button data-id="${_id}" name="${name}">${name}</button></li>`
+//     )
+//     .join('');
+// };
+
+// const fetchAllCategories = () => {
+//   fetchCategories()
+//     .then(response => {
+//       const { data } = response;
+
+//       listOfCategories.insertAdjacentHTML(
+//         'beforeend',
+//         createMarkupOfCategories(data)
+//       );
+//     })
+//     .catch(error => {
+//       Notiflix.Notify.failure(
+//         `Categories is not defined. ${error.message}. Try again`
+//       );
+//       console.log(error.message);
+//     });
+// };
+
+// fetchAllCategories();
+
+// export function createMarkup(arr) {
+//   const markup = arr
+//     .map(({ preview, title, description, rating }) => {
+//       return `<div>
+//         <img width ="200px" src="${preview}"/>
+//             <h2>${title}</h2>
+//             <div >
+//             <p>${description}</p>
+//             <p>${rating}</p>
+//             </div>
+//             <a href="">See recipe</a>
+//         </div>`;
+//     })
+//     .join('');
+
+//   listOfCards.insertAdjacentHTML('beforeend', markup);
+// }
