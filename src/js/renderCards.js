@@ -1,7 +1,5 @@
-import {categorsCards} from "./api/gallery-api"
-import {filtrCards} from "./api/gallery-api"
-import {pageCards} from"./api/gallery-api"
-import {createMarkup} from "../js/categories"
+import { pageCards } from './api/gallery-api';
+import { createMarkup } from '../js/categories';
 
 const listOfCards = document.querySelector('.list-of-cards');
 
@@ -10,14 +8,16 @@ const windowWidth = window.innerWidth;
 let page = 1;
 let limit = 9;
 
- pageCards(page,limit).then(data=>{ 
-  return  createMarkup(data.results);
-}).catch();
+pageCards(page, limit)
+  .then(data => {
+    return createMarkup(data.results);
+  })
+  .catch();
 
 function createMarkup(arr) {
-    const markup = arr
-      .map(({ preview, title, description, rating }) => {
-        return `<li>
+  const markup = arr
+    .map(({ preview, title, description, rating }) => {
+      return `<li>
               <div class="icon-heart">
                 <svg height="16px" id="icon-heart" viewBox="0 0 36 32">
                   <path
@@ -82,9 +82,8 @@ function createMarkup(arr) {
                 </div>
               </div>
             </li>`;
-      })
-      .join('');
-  
-    listOfCards.insertAdjacentHTML('beforeend', markup);
-  }
+    })
+    .join('');
 
+  listOfCards.insertAdjacentHTML('beforeend', markup);
+}

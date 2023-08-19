@@ -77,7 +77,7 @@ const fetchAllCategories = () => {
     });
 };
 
-// fetchAllCategories();
+fetchAllCategories();
 
 export function createMarkup(arr) {
   const markup = arr

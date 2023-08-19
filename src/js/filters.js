@@ -3,7 +3,6 @@ import { filterAreas } from './api/areas-api';
 import { filterIngredients } from './api/ingredients-api';
 import debounce from 'lodash.debounce';
 import { filterCards } from './api/filters-api';
-import axios from 'axios';
 
 const refs = {
   filterInputEl: document.querySelector('.js-filter-input'),
@@ -11,7 +10,7 @@ const refs = {
   selectAreaEl: document.querySelector('.js-select-area'),
   selectFoodEl: document.querySelector('.js-select-food'),
   resetFilterBtnEl: document.querySelector('.filter-reset-btn'),
-  galleryListEl: document.querySelector('.gallery-list'),
+  galleryListEl: document.querySelector('.list-of-cards'),
 };
 
 let prevSearchQuery = '';
@@ -63,8 +62,6 @@ const handleInput = e => {
       );
       return;
     }
-    const title = data.map(name => name);
-    console.log(title);
     renderCards(data);
   });
 };
