@@ -1,90 +1,32 @@
-
-import { fetchCategories } from './api/categories-api';
-import { categorsCards } from './api/gallery-api';
-import { pageCards } from './api/gallery-api';
-import Notiflix from 'notiflix';
-
-const listOfCategories = document.querySelector('.js-categories');
-const btnAllCategories = document.querySelector('.js-btn-all-categories');
-const listOfCards = document.querySelector('.list-of-cards');
-
-let page = 1;
-const limit = 9;
-let selectedCategoryId = null;
-let category = '';
-
-// btnAllCategories.addEventListener('click', handleResetCategory);
-// listOfCategories.addEventListener('click', handleSelectCategory);
-
-
-function handleSelectCategory(evt) {
-  listOfCards.innerHTML = '';
-  page = 1;
-
-  if (evt.target.tagName === 'BUTTON') {
-    selectedCategoryId = evt.target.dataset.id;
-    category = evt.target.name;
-
-    categorsCards(category, page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-
-        createMarkup(data.results);
-        tuiPagination(data.page, totalItems, limit);
-        pagination.reset();
-      })
-      .catch(error => console.log(error.message));
-  }
-}
-
-function handleResetCategory(evt) {
-  listOfCards.innerHTML = '';
-  selectedCategoryId = null;
-  page = 1;
-
-  pageCards(page, limit)
-    .then(data => {
-      const totalItems = data.results.length * data.totalPages;
-
-      createMarkup(data.results);
-      tuiPagination(data.page, totalItems, limit);
-    })
-    .catch();
-}
-
-const createMarkupOfCategories = arr => {
-  return arr
-    .map(
-      ({ _id, name }) => `
-  <li data-id="${_id}" data-name="${name}">${name}</></li>`
-    )
-    .join('');
-};
-
-// const fetchAllCategories = () => {
-//   fetchCategories()
-//     .then(response => {
-//       const { data } = response;
-
-//       listOfCategories.insertAdjacentHTML(
-//         'beforeend',
-//         createMarkupOfCategories(data)
-//       );
-//     })
-//     .catch(error => {
-//       Notiflix.Notify.failure(
-//         `Categories is not defined. ${error.message}. Try again`
-//       );
-//       console.log(error.message);
-//     });
-// };
-
-fetchAllCategories();
-
-export function createMarkup(arr) {
-  const markup = arr
-    .map(({ preview, title, description, rating }) => {
-      return `<li>
+<!-- <li>
+          <p>Area</p>
+          <select name="area" id="area">
+            <option value="italian">Italian</option>
+            <option value="italian">Italian</option>
+            <option value="italian">Italian</option>
+            <option value="italian">Italian</option>
+            <option value="italian">Italian</option>
+          </select>
+        </li>
+        <li>
+          <p>Ingredients</p>
+          <select name="ingredients" id="ingredients">
+            <option value="tomato">Tomato</option>
+            <option value="tomato">Tomato</option>
+            <option value="tomato">Tomato</option>
+            <option value="tomato">Tomato</option>
+            <option value="tomato">Tomato</option>
+            <option value="tomato">Tomato</option>
+          </select>
+        </li>
+      <button type="button" class="reset-filter-button">
+        Reset the filter
+      </button>
+    </div> -->
+<!-- <div class="cards-and-pagination-container">
+      <div class="gallery-container">
+        <ul>
+          <li>
             <div class="icon-heart">
               <svg height="16px" id="icon-heart" viewBox="0 0 36 32">
                 <path
@@ -93,17 +35,19 @@ export function createMarkup(arr) {
               </svg>
             </div>
             <img
-              src="${preview}"
+              src="/src/images/Spinach_quinoa_patties_01.png"
               alt=""
               width="250px"
               height="287px"
             />
             <div class="description-rating-container">
-              <p>${title}</p>
-              <span>${description}a</span
+              <p>Boxy breakfast</p>
+              <span
+                >Boxty breakfast is a hearty Irish morning meal that features
+                boxty, a</span
               >
               <div class="rating">
-                <p class="number">${rating}</p>
+                <p class="number">4.5</p>
                 <div>
                   <ul>
                     <li height="16px">
@@ -148,10 +92,22 @@ export function createMarkup(arr) {
                 </div>
               </div>
             </div>
-          </li>`;
-    })
-    .join('');
-
-  listOfCards.insertAdjacentHTML('beforeend', markup);
-}
-
+          </li>
+       
+        </ul>
+      </div>
+      <div class="pagination">
+        <button class="to-start-button"><<</button>
+        <button class="back-by-one-button"><</button>
+        <ul>
+          <li class="page">1</li>
+          <li class="page">2</li>
+          <li class="page">3</li>
+          <li class="more-pages">...</li>
+        </ul>
+        <button class="go-by-one-button">></button>
+        <button class="to-end-button">>></button>
+      </div>
+    </div>
+  </div>
+</div> -->
