@@ -13,8 +13,8 @@ const limit = 9;
 let selectedCategoryId = null;
 let category = '';
 
-// btnAllCategories.addEventListener('click', handleResetCategory);
-// listOfCategories.addEventListener('click', handleSelectCategory);
+btnAllCategories.addEventListener('click', handleResetCategory);
+listOfCategories.addEventListener('click', handleSelectCategory);
 
 
 function handleSelectCategory(evt) {
@@ -61,23 +61,23 @@ const createMarkupOfCategories = arr => {
     .join('');
 };
 
-// const fetchAllCategories = () => {
-//   fetchCategories()
-//     .then(response => {
-//       const { data } = response;
+const fetchAllCategories = () => {
+  fetchCategories()
+    .then(response => {
+      const { data } = response;
 
-//       listOfCategories.insertAdjacentHTML(
-//         'beforeend',
-//         createMarkupOfCategories(data)
-//       );
-//     })
-//     .catch(error => {
-//       Notiflix.Notify.failure(
-//         `Categories is not defined. ${error.message}. Try again`
-//       );
-//       console.log(error.message);
-//     });
-// };
+      listOfCategories.insertAdjacentHTML(
+        'beforeend',
+        createMarkupOfCategories(data)
+      );
+    })
+    .catch(error => {
+      Notiflix.Notify.failure(
+        `Categories is not defined. ${error.message}. Try again`
+      );
+      console.log(error.message);
+    });
+};
 
 fetchAllCategories();
 
