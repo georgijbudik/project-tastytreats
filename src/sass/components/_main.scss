@@ -296,51 +296,69 @@ $light-text-color:#F8F8F8;
 }
 
 .pagination{
-
     margin-top: calc(65px - 16px);
     display: flex;
     align-items: center;
     justify-content: center;
-    li{
-        display: inline-block;
-       padding: 11px 16px;
-       width:44px;
-       height: 44px;
-       border: 1px solid rgba($text-color, 0.3);
-       border-radius: 50%;
+    gap: 10px;
+    
+    .tui-page-btn {
+        display: flex;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba($text-color, 0.3);
+        border-radius: 50%;
+        background-color: #fff;
     }
-    .page:hover,.page:focus{
+
+    .tui-is-selected {
+        background-color: #9BB537;
+    }
+
+    .tui-page-btn:hover,.tui-page-btn:focus{
         background-color: $green-color;
         color: $light-text-color;
         border: 1px solid rgba($green-color,1);
         cursor: pointer;
     }
-    .more-pages{
-        padding-bottom: 9px;
-        padding-left: 15px;
-        margin-bottom: 0;
-    }
-    .to-start-button,.back-by-one-button,.go-by-one-button,.to-end-button{
-        width:44px;
-        height: 44px;
-        background-color: $green-color;
-        color:$text-color;
-        border: none;
-        border-radius: 50%;
-    }
 
-    >button:hover, >button:focus{
-        background-color: $text-color;
-        color: rgb(90, 90, 90);
-    }
+        .tui-prev,
+        .tui-next,
+        .tui-first,
+        .tui-last {
+            width: 44px;
+            height: 44px;
+            background-color: $green-color;
+            color: red;
+            // color: $text-color;
+            border: none;
+            border-radius: 50%;
+        }
 
-    .back-by-one-button{
-        margin-left: 8px;
-        margin-right: 24px;
+                .tui-prev:hover,
+                .tui-prev:focus,
+                .tui-next:hover,
+                .tui-next:focus,
+                .tui-first:hover,
+                .tui-first:focus,
+                .tui-last:hover,
+                .tui-last:focus {
+                    background-color: $text-color;
+                    
+                    // color: rgb(90, 90, 90);
+                    border-color: $text-color;
+                }
+
+    .tui-prev{
+        margin-left: -2px;
+        margin-right: 14px;
     }
-    .go-by-one-button{
-        margin-right: 8px;
-        margin-left: 24px;
+    .tui-next{
+        margin-right: -2px;
+        margin-left: 14px;
     }
 
 
