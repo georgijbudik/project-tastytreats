@@ -7,6 +7,11 @@ body.dark-theme {
 .dark-theme .header-nav-links {
     color: #FFF;
 }
+.dark-theme .header-nav-links:hover,
+.dark-theme .header-nav-links:focus{
+    color: #9BB537;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .dark-theme .logo-second {
     color: #FFFFFF;
@@ -21,3 +26,25 @@ body.dark-theme {
     fill: #161616;
 }
 
+.dark-theme .header-order-btn:hover .shopping-icon-use,
+.dark-theme .header-order-btn:focus .shopping-icon-use {
+    stroke: #9BB537;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-theme .mobile-menu {
+    background-color: #050505;
+}
+
+.dark-theme .header-list-item:hover,
+.dark-theme .header-list-item:focus {
+    color: #9BB537;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-theme .mobile-menu-btn {
+    background-color: #161616;
+}
+.dark-theme .mobile-icon {
+    stroke: #FFF;
+}
