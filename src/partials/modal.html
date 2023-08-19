@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label class="form-text">
                     <p class="form-text-span">Comment</p>
-                    <div class="form-control">
+                    <div class="form-control-comment">
                     <textarea
                         name="feedback"
                         id=""
@@ -48,9 +48,7 @@
                     </div>
                 </label>
             </div>
-            <div class="form-btn-container">
                 <button type="submit" class="transition form-btn">Send</button>
-            </div>
         </form>
     </div>
 </div>
@@ -71,7 +69,19 @@
         <form class="modal-form form">
             <div class="form-group">
                 <label class="form-text">
-                    <span class="form-text-rating-span">0.0</span>
+                    <div class="rating-modal rating__set">
+                        <span class="rating__value">3.0</span>
+                        <div class="rating__body">
+                            <div class="rating__active"></div>
+                            <div class="rating__items">
+                                <input type="radio" class="rating__item" value="1" name="rating">
+                                <input type="radio" class="rating__item" value="2" name="rating">
+                                <input type="radio" class="rating__item" value="3" name="rating">
+                                <input type="radio" class="rating__item" value="4" name="rating">
+                                <input type="radio" class="rating__item" value="5" name="rating">
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-rating-control">
                         <input type="email" class="form-input" name="email"  required placeholder="Enter email"/>
                     </div>
