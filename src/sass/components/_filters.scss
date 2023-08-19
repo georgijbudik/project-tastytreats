@@ -43,6 +43,13 @@
     display: flex;
     flex-direction: column;
   }
+  option {
+    color: $placeholderTextColor;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.28;
+  }
 }
 .filter-reset-btn {
   font-size: 12px;
