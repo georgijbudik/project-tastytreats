@@ -1,4 +1,3 @@
-
 import { fetchCategories } from './api/categories-api';
 import { categorsCards } from './api/gallery-api';
 import { pageCards } from './api/gallery-api';
@@ -15,7 +14,6 @@ let category = '';
 
 // btnAllCategories.addEventListener('click', handleResetCategory);
 // listOfCategories.addEventListener('click', handleSelectCategory);
-
 
 function handleSelectCategory(evt) {
   listOfCards.innerHTML = '';
@@ -79,7 +77,7 @@ const createMarkupOfCategories = arr => {
 //     });
 // };
 
-fetchAllCategories();
+// fetchAllCategories();
 
 export function createMarkup(arr) {
   const markup = arr
@@ -154,4 +152,3 @@ export function createMarkup(arr) {
 
   listOfCards.insertAdjacentHTML('beforeend', markup);
 }
-
