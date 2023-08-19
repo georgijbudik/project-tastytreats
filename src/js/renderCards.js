@@ -5,7 +5,6 @@ import {createMarkup} from "../js/categories"
 
 const listOfCards = document.querySelector('.list-of-cards');
 
-
 const windowWidth = window.innerWidth;
 
 let page = 1;
@@ -14,7 +13,6 @@ let limit = 9;
  pageCards(page,limit).then(data=>{ 
   return  createMarkup(data.results);
 }).catch();
-
 
 function createMarkup(arr) {
     const markup = arr
