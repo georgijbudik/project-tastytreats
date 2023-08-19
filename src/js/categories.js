@@ -11,7 +11,7 @@ let selectedCategoryId = null;
 
 function handleSelectCategory(evt) {
   if (evt.target.tagName === 'BUTTON') {
-    selectedCategoryId = evt.target.dataset.id;
+    // selectedCategoryId = evt.target.dataset.id;
     const category = evt.target.name;
     console.log(category);
 
