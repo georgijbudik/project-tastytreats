@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const BASE_URL =
-  'https://tasty-treats-backend.p.goit.global/api/recipes';
+  'https://tasty-treats-backend.p.goit.global/api/recipes?';
 
 //------------Андрей ---------- //
 export const categorsCards = async (value, newPage, limit) => {

@@ -1,14 +1,13 @@
-import { BASE_URL } from './gallery-api';
 import axios from 'axios';
 
-export const filtrCards = (page, area, time, id, limit, ingredient) => {
+const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/time';
+export const filterCards = (areas, time, id, limit, ingredient) => {
   const searchParams = {
-    page: page,
-    area: area,
-    time: time,
-    id: id,
-    limit: limit,
-    ingredient,
+    // areas: areas,
+    // time: time,
+    // id: id,
+    // limit: 50,
+    // ingredient,
   };
   return axios.get(BASE_URL, { searchParams }).then(response => response.data);
 };
