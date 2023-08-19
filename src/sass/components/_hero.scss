@@ -1,3 +1,10 @@
+.swiper-wrapper {
+    overflow: hidden; /* Hide scrollbars */
+  }
+  .hero {
+    padding-top: 89px;
+    padding-bottom: 80px;
+  }
 .hero-heading {
     color: #050505;
     font-size: 26px;
@@ -5,6 +12,7 @@
     line-height: 120%;
     text-transform: uppercase;
     margin-bottom: 14px;
+    width: 335px;
     span {
         color: $accentColor;
         font-style: italic;
@@ -15,6 +23,7 @@
     font-size: 14px;
     line-height: 18px;
     margin-bottom: 28px;
+    width: 335px;
 }
 .hero-btn {
     font-size: 14px;
@@ -119,6 +128,9 @@
     }
 }
 @media screen and (min-width: 768px) {
+    .hero {
+        padding-top: 95px;
+      }
     .hero-heading {
         width: 446px;
         font-size: 36px;
@@ -164,20 +176,18 @@
         background-position: right -381px bottom -164px;
     }
     .swiper-container {
-        padding-bottom: 106px;
-    }
-    .swiper-container {
         margin-right: -100px !important;
     }
 }
 @media screen and (min-width: 1280px) {
+    .hero {
+        padding-top: 88px;
+      }
     .dish-card {
         .dish-img {
             width: 335px;
             height: 293px;
             bottom: 116px;
-
-            
         }
         p {
             bottom: 32px;
@@ -191,8 +201,18 @@
             width: 276px;
         }
     } 
+    .hero-text-area {
+        padding-top: 63px;
+        margin-right: 20px;
+    }
+   
     .swiper-container {
-        padding-bottom: 100px;
-    } 
+        margin-right: -100px !important;
+    }
+    .hero {
+        .container {
+            display: flex;
+        }
+    }
 
 }
