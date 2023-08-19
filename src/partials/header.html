@@ -7,13 +7,13 @@
             </nav>
             <a href="./index.html" class="logo-first">tasty<span class="logo-second">treats.</span></a>
             <div class="header-icons">
-                <button class="header-order-btn" type="button">
+                <button data-orderNow-icon-open class="header-order-btn" type="button">
                     <svg class="shopping-icon" width="24" height="24">
                         <use class="shopping-icon-use" href="./images/sprite/SPRITE.svg#icon-cart"></use>
                     </svg>
                 </button>
                 <label class="header-switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="desktopCheckbox">
                     <span class="header-slider"></span>
                 </label>
             </div>
@@ -25,9 +25,9 @@
      </div>
     </div>
     <div class="mobile-menu">
-        <button class="mobile-menu-btn-close">
-            <svg class="mobile-menu-close" width="32" height="32"></svg>
-            <use class="mob-menu-close-icon" href="./images/sprite/SPRITE.svg#icon-cross"></use>
+        <button class="mobile-menu-btn-close" type="button">
+            <svg class="mobile-menu-close" width="32" height="32">
+            <use class="mobile-menu-close-icon" href="./images/sprite/SPRITE.svg#icon-cross"></use>
       </svg>
     </button>
     <ul class="mobile-menu-list">
