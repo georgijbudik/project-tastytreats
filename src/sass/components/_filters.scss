@@ -1,4 +1,5 @@
 .filters-top-text {
+  display: block;
   color: $placeholderTextColor;
   font-size: 12px;
   font-style: normal;
@@ -11,6 +12,11 @@
 }
 
 .filters-input {
+  color: $primaryTextColor;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
   width: 100%;
   display: inline-block;
   height: 46px;
@@ -21,6 +27,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: 1.28;
+    color: $placeholderTextColor;
+  }
+  :focus {
+    border-color: transparent;
   }
 }
 .filters-icon-search {
@@ -29,6 +39,7 @@
   top: 50%;
   transform: translateY(-50%);
   left: 18px;
+  fill: $placeholderTextColor;
 }
 .filter-wrap {
   margin-bottom: 14px;
@@ -91,7 +102,7 @@
   justify-content: flex-end;
   margin-bottom: 20px;
 }
-.filters-cross-icon {
+.filters-reset-icon {
   stroke: $accentColor;
   margin-right: 4px;
 }
