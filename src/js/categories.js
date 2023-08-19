@@ -3,7 +3,6 @@ import { categorsCards } from './api/gallery-api';
 import { pageCards } from './api/gallery-api';
 import Notiflix from 'notiflix';
 import { tuiPagination } from './pagination';
-import { Pagination } from 'tui-pagination';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
