@@ -1,0 +1,85 @@
+<button data-orderNow-open>open</button>
+<div data-orderNow class="backdrop is-hidden">
+    <div class="modal container-order-modal">
+        <button data-orderNow-close type="button" class="transition modal-close"> 
+            <svg class="modal-close-icon">
+                <use href="./images/sprite/SPRITE.svg#icon-cross"></use>
+            </svg>    
+        </button>
+        <h3 class="modal-order-title">
+        Order now
+        </h3>
+        <form class="modal-form form">
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Name</p>
+                    <div class="form-control">
+                        <input type="name" class="form-input" name="name" required/>
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Phone</p>
+                    <div class="form-control">
+                        <input type="phone" class="form-input" name="phone" required />
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Email</p>
+                    <div class="form-control">
+                        <input type="email" class="form-input" name="email"  required/>
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Comment</p>
+                    <div class="form-control">
+                    <textarea
+                        name="feedback"
+                        id=""
+                        cols="30"
+                        rows="5"
+                        class="form-feedback"
+                    ></textarea>
+                    </div>
+                </label>
+            </div>
+            <div class="form-btn-container">
+                <button type="submit" class="transition form-btn">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<button data-rating-open>open</button>
+<div data-rating-form class="backdrop is-hidden">
+    <div class="modal container-rating-modal">
+        <button data-rating-close type="button" class="transition modal-close"> 
+            <svg class="modal-close-icon">
+                <use href="./images/sprite/SPRITE.svg#icon-cross"></use>
+            </svg>    
+        </button>
+        <h3 class="modal-rating-title">
+            Rating
+        </h3>
+        <form class="modal-form form">
+            <div class="form-group">
+                <label class="form-text">
+                    <span class="form-text-rating-span">0.0</span>
+                    <div class="form-rating-control">
+                        <input type="email" class="form-input" name="email"  required placeholder="Enter email"/>
+                    </div>
+                </label>
+            </div>
+            <div class="form-btn-rating-container">
+                <button type="submit" class="transition form-btn">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
