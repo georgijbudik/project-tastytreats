@@ -46,6 +46,8 @@
 
 .filters-select-list {
   margin-bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .filters-select-item {
   display: flex;
@@ -55,6 +57,7 @@
     margin-right: 14px;
   }
 }
+
 .filters-select {
   color: $placeholderTextColor;
   font-size: 14px;
@@ -113,6 +116,51 @@
 //   display: flex;
 //   flex-direction: column;
 // }
+
+.search-container {
+  max-width: 335px;
+  margin-left: 0;
+}
+.js-select-food {
+  width: 188px;
+}
+
+@media screen and (min-width: 768px) {
+  .cards-and-search-container {
+    margin-top: -20px;
+  }
+  .filters-input {
+    width: 278px;
+  }
+  .js-select-time {
+    width: 125px;
+  }
+  .js-select-area {
+    width: 141px;
+  }
+  .js-select-food {
+    width: 188px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .cards-and-search-container {
+    margin-top: -20px;
+    max-width: 790px;
+  }
+
+  .js-filter-input {
+    margin-right: 16px;
+  }
+
+  .filters-select-list {
+    flex-wrap: nowrap;
+  }
+
+  .search-container {
+    display: flex;
+  }
+}
 
 .js-select-food {
   width: 188px;

@@ -48,3 +48,74 @@ body.dark-theme {
 .dark-theme .mobile-icon {
     stroke: #FFF;
 }
+
+// order now and rating
+
+.dark-theme .modal-close-icon {
+    stroke: #fff;
+    background-color: #050505;
+    &:hover{
+        stroke: #9BB537;
+        transition: stroke .5s cubic-bezier(.47, .29, .84, 1.03);
+    }
+}
+
+.dark-theme .container-order-modal{
+    border-radius: 15px;
+    background: #050505;
+    color: #050505;
+}
+
+.dark-theme .modal-close {
+    background-color: #050505;
+}
+
+.dark-theme .modal-close {
+    background-color: #050505;
+}
+
+.dark-theme .modal-order-title{
+color: #FFF;
+}
+
+.dark-theme .form-text-span{
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.dark-theme .form-input{
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background-color: #050505;
+    color: #fff;
+    &:hover{
+        transition: border-color .5s cubic-bezier(.47, .29, .84, 1.03);
+        border-color: #6CB0FF;
+    }
+    &:focus{
+        border-color: #6CB0FF;
+    }
+}
+
+.dark-theme .form-feedback{
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background-color: #050505;
+    color: #fff;
+    &:hover{
+        transition: border-color .5s cubic-bezier(.47, .29, .84, 1.03);
+        border-color: #6CB0FF;
+    }
+    &:focus{
+        border-color: #6CB0FF;
+    }
+}
+
+.dark-theme .container-rating-modal{
+    background-color: #050505;
+}
+
+.dark-theme .modal-rating-title{
+    color: #FFF;
+}
+
+.dark-theme .rating__value {
+    color: #FFF;
+}
