@@ -4,10 +4,13 @@
 
 .icon-heart {
   position: absolute;
+  cursor: pointer;
+  
   top: 16px;
   right: 16px;
-  fill: $green-color;
 }
+
+
 // .main-container {
 //   display: flex;
 //   align-items: center;
@@ -18,12 +21,8 @@
 //   margin-left: 64px;
 // }
 
-
-
-
-
 .pagination {
-  margin-top: calc(65px - 16px);
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;

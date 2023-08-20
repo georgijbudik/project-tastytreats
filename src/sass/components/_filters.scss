@@ -12,6 +12,7 @@
 }
 
 .filters-input {
+  width: 280px;
   color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
@@ -50,6 +51,7 @@
   flex-wrap: wrap;
 }
 .filters-select-item {
+  margin-right: 14px;
   display: flex;
   flex-direction: column;
 
@@ -98,7 +100,7 @@
   display: flex;
   margin-bottom: 14px;
   select {
-    width: calc(300 / 2);
+    width: calc(266 / 2);
   }
 }
 .button-wrap {
@@ -118,7 +120,7 @@
 // }
 
 .search-container {
-  max-width: 335px;
+  // max-width: 335px;
   margin-left: 0;
 }
 .js-select-food {
