@@ -29,7 +29,7 @@ function handleSelectCategory(evt) {
         const totalItems = data.results.length * data.totalPages;
 
         createMarkupOfCard(data.results);
-        tuiPagination(page, totalItems, limit);
+        tuiPagination(category, totalItems, limit);
       })
       .catch(error => console.log(error.message));
   }
@@ -44,7 +44,7 @@ function handleResetCategory() {
       const totalItems = data.results.length * data.totalPages;
 
       createMarkupOfCard(data.results);
-      tuiPagination(data.page, totalItems, limit);
+      tuiPagination(category, totalItems, limit);
     })
     .catch();
 }
