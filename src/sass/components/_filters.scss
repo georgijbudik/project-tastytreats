@@ -1,5 +1,5 @@
 .filters-top-text {
-  display: block;
+  display: inline-block;
   color: $placeholderTextColor;
   font-size: 12px;
   font-style: normal;
@@ -17,7 +17,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.25;
-  width: 100%;
   display: inline-block;
   height: 46px;
   padding: 14px 16px 14px 48px;
@@ -51,7 +50,8 @@
 .filters-select-item {
   display: flex;
   flex-direction: column;
-  :nth-child(2n) {
+
+  :first-child {
     margin-right: 14px;
   }
 }
@@ -61,7 +61,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.28;
-  width: 160px;
+
   height: 48px;
   padding: 14px 0 14px 0;
   border-radius: 15px;
@@ -94,6 +94,9 @@
 .filters-select-wrap {
   display: flex;
   margin-bottom: 14px;
+  select {
+    width: calc(300 / 2);
+  }
 }
 .button-wrap {
   display: flex;
@@ -110,3 +113,7 @@
 //   display: flex;
 //   flex-direction: column;
 // }
+
+.js-select-food {
+  width: 188px;
+}
