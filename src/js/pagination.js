@@ -43,7 +43,7 @@ export const tuiPagination = (page, totalPages, limit) => {
 
     pageCards(newPage, limit)
       .then(data => {
-        createMarkup(data.results);
+        createMarkupOfCard(data.results);
       })
       .catch(error => {
         console.error(error.message);
