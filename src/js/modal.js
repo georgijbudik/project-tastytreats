@@ -233,27 +233,8 @@ function initRatingsModal(){
         for(const key in item) {
             if(key === "email") {
                 refsData.email.value = item.email
-            // }   else if(key === "rating") {
-            //     initRatingsModal(rating);
-            //     function initRatingsModal(rating) {
-            //         initRatingModalVars(rating);
-            
-            //         setRatingModalActiveWidth();
-            
-            //         if (rating.classList.contains('rating__set')) {
-            //             setRatingModal(rating);
-            //         }
-            //     }
-            
-            //     function initRatingModalVars(rating) {
-            //         ratingActive = rating.querySelector('.rating__active')
-            //         ratingValue = rating.querySelector('.rating__value')
-            //     }
-            
-            //     function setRatingModalActiveWidth (index = ratingValue.innerHTML) {
-            //         const ratingAktiveWidth = index/0.05;
-            //         ratingActive.style.width = `${ratingAktiveWidth}%`;
-            //     }
+            }   else if(key === "rating") {
+                refsData.rating.value = item.rating.innerHTML
             }
         }
     }

@@ -1,70 +1,55 @@
-<button data-orderNow-icon-open>open</button>
-<button data-orderNow-open>open</button>
 <div data-orderNow class="backdrop is-hidden">
-  <div class="modal container-order-modal">
-    <button data-orderNow-close type="button" class="transition modal-close">
-      <svg class="modal-close-icon">
-        <use href="./images/sprite/sprite.svg#icon-cross"></use>
-      </svg>
-    </button>
-    <h3 class="modal-order-title">Order now</h3>
-    <form class="modal-form form order-now-form">
-      <div class="form-group">
-        <label class="form-text">
-          <p class="form-text-span">Name</p>
-          <div class="form-control">
-            <input
-              type="name"
-              class="form-input order-now-name"
-              name="name"
-              required
-            />
-          </div>
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-text">
-          <p class="form-text-span">Phone</p>
-          <div class="form-control">
-            <input
-              type="phone"
-              class="form-input order-now-phone"
-              name="phone"
-              required
-            />
-          </div>
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-text">
-          <p class="form-text-span">Email</p>
-          <div class="form-control">
-            <input
-              type="email"
-              class="form-input order-now-email"
-              name="email"
-              required
-            />
-          </div>
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-text">
-          <p class="form-text-span">Comment</p>
-          <div class="form-control-comment">
-            <textarea
-              name="feedback"
-              id=""
-              cols="30"
-              rows="5"
-              class="form-feedback order-now-comment"
-            ></textarea>
-          </div>
-        </label>
-      </div>
-      <button type="submit" class="transition form-btn">Send</button>
-    </form>
-  </div>
+    <div class="modal container-order-modal">
+        <button data-orderNow-close type="button" class="transition modal-close"> 
+            <svg class="modal-close-icon">
+                <use href="./images/sprite/SPRITE.svg#icon-cross"></use>
+            </svg>    
+        </button>
+        <h3 class="modal-order-title">
+        Order now
+        </h3>
+        <form class="modal-form form order-now-form">
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Name</p>
+                    <div class="form-control">
+                        <input type="name" class="form-input order-now-name" name="name" required/>
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Phone</p>
+                    <div class="form-control">
+                        <input type="phone" class="form-input order-now-phone" name="phone" required />
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Email</p>
+                    <div class="form-control">
+                        <input type="email" class="form-input order-now-email" name="email"  required/>
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-text">
+                    <p class="form-text-span">Comment</p>
+                    <div class="form-control-comment">
+                    <textarea
+                        name="feedback"
+                        id=""
+                        cols="30"
+                        rows="5"
+                        class="form-feedback order-now-comment"
+                    ></textarea>
+                    </div>
+                </label>
+            </div>
+                <button type="submit" class="transition form-btn">Send</button>
+        </form>
+    </div>
 </div>
 
 <div data-rating-form class="backdrop is-hidden">
