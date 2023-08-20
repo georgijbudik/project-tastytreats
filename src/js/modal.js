@@ -19,6 +19,7 @@
     document.addEventListener('keydown', e => {
         if(e.code === 'Escape') {
             refs.modal.classList.add("is-hidden");
+            document.body.style.overflow = 'auto';
         }
     });
 
@@ -26,6 +27,7 @@
     function outerClickHandler(event) {
         if (event.target === refs.modal) {
             refs.modal.classList.add("is-hidden");
+            document.body.style.overflow = 'auto';
         }
     }
 
