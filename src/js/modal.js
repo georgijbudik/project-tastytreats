@@ -13,28 +13,28 @@
     function openModal() {
         window.addEventListener('mousedown', outerClickHandler);
         window.addEventListener('keydown', escapePressHandler);
-        refs.modal.classList.remove('is-hidden');
+        refs.modal.classList.add('is-visible');
         document.body.style.overflow = 'hidden';
       }
       
       function closeModal() {
         window.removeEventListener('mousedown', outerClickHandler);
         window.removeEventListener('keydown', escapePressHandler);
-        refs.modal.classList.add("is-hidden");
+        refs.modal.classList.remove("is-visible");
         document.body.style.overflow = 'auto';
       }
 
 
     function escapePressHandler(event) {
         if (event.code === 'Escape') {
-            refs.modal.classList.add("is-hidden");
+            refs.modal.classList.remove("is-visible");
             document.body.style.overflow = 'auto';
         }
     }
 
     function outerClickHandler(event) {
         if (event.target === refs.modal) {
-            refs.modal.classList.add("is-hidden");
+            refs.modal.classList.remove("is-visible");
             document.body.style.overflow = 'auto';
         }
     }
@@ -115,26 +115,35 @@ function populateTextarea() {
       openModalBtn: document.querySelector("[data-rating-open]"),
       closeModalBtn: document.querySelector("[data-rating-close]"),
       modal: document.querySelector("[data-rating-form]"),
+    //   submit: document.querySelector("[data-rating-form-submit]"),
     };
+
+    refs.closeModalBtn.addEventListener("click", closeModal);
+    // refs.submit.addEventListener("click", closeModal);
+    refs.openModalBtn.addEventListener("click", openModal);
   
-    refs.openModalBtn.addEventListener("click", toggleModal);
-    refs.closeModalBtn.addEventListener("click", toggleModal);
-  
-    function toggleModal() {
-        this.blur();
-      refs.modal.classList.toggle("is-hidden");
+    function openModal() {
+        window.addEventListener('mousedown', outerClickHandler);
+        window.addEventListener('keydown', escapePressHandler);
+        refs.modal.classList.add('is-visible');
+      }
+      
+      function closeModal() {
+        window.removeEventListener('mousedown', outerClickHandler);
+        window.removeEventListener('keydown', escapePressHandler);
+        refs.modal.classList.remove("is-visible");
+      }
+
+
+    function escapePressHandler(event) {
+        if (event.code === 'Escape') {
+            refs.modal.classList.remove("is-visible");
+        }
     }
 
-    document.addEventListener('keydown', e => {
-        if(e.code === 'Escape') {
-            refs.modal.classList.add("is-hidden");
-        }
-    });
-
-    document.addEventListener('mousedown', outerClickHandler);
     function outerClickHandler(event) {
         if (event.target === refs.modal) {
-            refs.modal.classList.add("is-hidden");
+            refs.modal.classList.remove("is-visible");
         }
     }
 
@@ -198,6 +207,7 @@ function initRatingsModal(){
         email: document.querySelector('.rating-email-modal'),
         rating: document.querySelector('.rating__value'),
     };
+    const modal = document.querySelector("[data-rating-form]");
     
     const STORAGE_KEY = 'rating-email-modal-form-state';
     const formData = {};
@@ -227,12 +237,11 @@ function initRatingsModal(){
     
     function onFormSubmit(e) {
         e.preventDefault();
-        if(refsData.email.value === "" || refsData.rating.value === "" ) {
+        if(refsData.email.value === "" || refsData.rating.innerHTML === "0" ) {
             alert("Всі поля мають бути заповненими");
         } else {     
-    
+            modal.classList.remove("is-visible");
             console.log(formData);
-            // console.log(`message: ${refs.textarea.value}`);
             e.target.reset();
             localStorage.clear();
             item = {};
@@ -245,9 +254,14 @@ function initRatingsModal(){
             if(key === "email") {
                 refsData.email.value = item.email
             }   else if(key === "rating") {
-                refsData.rating.value = item.rating.innerHTML
+                refsData.rating.innerHTML = item.rating
+                setRatingModalActiveWidth();
+                function setRatingModalActiveWidth (index = ratingValue.innerHTML) {
+                    const ratingAktiveWidth = index/0.05;
+                    ratingActive.style.width = `${ratingAktiveWidth}%`;
+                }
+            
             }
         }
     }
 }
-

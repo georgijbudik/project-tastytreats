@@ -1,4 +1,7 @@
 .backdrop {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     background-color: rgba(46, 47, 66, 0.4);
     position: relative;
     width: 100%;
@@ -10,8 +13,10 @@
     z-index: 10001;
 }
 
-.is-hidden{
-    display: none;
+.is-visible{
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
 }
 
 .form-text-span{
