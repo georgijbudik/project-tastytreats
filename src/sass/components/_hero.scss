@@ -109,7 +109,12 @@
     margin-right: -100px !important;
 }
 
-
+.hero-container {
+    overflow: hidden;
+    @media screen and (min-width: 1280px){
+        overflow: visible;
+    }
+}
 @media screen and (min-width: 375px) {
     .dish-card {
 
