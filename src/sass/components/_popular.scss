@@ -115,13 +115,18 @@
 /* Media rules */
 
 @media screen and (min-width: 375px) {
+  .section-container {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .popular-recipes-section {
     padding: 0;
   }
 
   .section-container {
-    width: 176px;
-    padding: 0;
+    width: 216px;
   }
 
   .popular-recipes-heading {
@@ -150,9 +155,9 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .section-container {
-    width: 235px;
+    width: 275px;
   }
 
   .popular-recipes-item {
