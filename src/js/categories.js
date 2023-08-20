@@ -2,6 +2,7 @@ import { fetchCategories } from './api/categories-api';
 import { categorsCards } from './api/gallery-api';
 import { pageCards } from './api/gallery-api';
 import Notiflix from 'notiflix';
+import { tuiPagination } from './pagination';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
@@ -19,26 +20,24 @@ function handleSelectCategory(evt) {
   listOfCards.innerHTML = '';
   page = 1;
 
-  if (evt.target.tagName === 'BUTTON') {
+  if (evt.target.tagName === 'LI') {
     selectedCategoryId = evt.target.dataset.id;
-    category = evt.target.name;
+    category = evt.target.dataset.name;
 
     categorsCards(category, page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
 
         createMarkup(data.results);
-        tuiPagination(data.page, totalItems, limit);
-        pagination.reset();
+        tuiPagination(page, totalItems, limit);
       })
       .catch(error => console.log(error.message));
   }
 }
 
-function handleResetCategory(evt) {
+function handleResetCategory() {
   listOfCards.innerHTML = '';
   selectedCategoryId = null;
-  page = 1;
 
   pageCards(page, limit)
     .then(data => {

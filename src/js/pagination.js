@@ -2,15 +2,14 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
 import { createMarkup } from './categories';
-const paginationElement = document.getElementById('pagination');
 
+const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
 
 export const tuiPagination = (page, totalPages, limit) => {
-  const pagination = new Pagination(document.getElementById('pagination'), {
+  const pagination = new Pagination(paginationElement, {
     totalItems: totalPages,
     itemsPerPage: limit,
-    page: page,
     visiblePages: 3,
     centerAlign: true,
     firstItemClassName: 'tui-first-child',
@@ -28,13 +27,18 @@ export const tuiPagination = (page, totalPages, limit) => {
     },
   });
 
-  paginationElement.querySelector('.tui-prev').innerText = '<';
-  paginationElement.querySelector('.tui-next').innerText = '>';
   paginationElement.querySelector('.tui-first').innerText = '<<';
+  paginationElement.querySelector('.tui-prev').innerText = '<';
   paginationElement.querySelector('.tui-last').innerText = '>>';
+  paginationElement.querySelector('.tui-next').innerText = '>';
 
   pagination.on('afterMove', event => {
     const newPage = event.page;
+
+    paginationElement.querySelector('.tui-first').innerText = '<<';
+    paginationElement.querySelector('.tui-prev').innerText = '<';
+    paginationElement.querySelector('.tui-last').innerText = '>>';
+    paginationElement.querySelector('.tui-next').innerText = '>';
     listOfCards.innerHTML = '';
 
     pageCards(newPage, limit)
@@ -45,6 +49,4 @@ export const tuiPagination = (page, totalPages, limit) => {
         console.error(error.message);
       });
   });
-
-  //   pagination.reset();
 };
