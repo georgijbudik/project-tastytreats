@@ -162,3 +162,71 @@ body.dark-theme {
 .dark-theme .modal-recipe-add-button {
   color: $darkThemePrimaryTextColor;
 }
+
+
+//hero dark
+
+.dark-theme .hero-heading{
+  color: #fff;
+}
+
+.dark-theme .hero-text {
+  color: #fff;
+}
+
+.dark-theme .hero-btn {
+color: #fff;
+}
+
+
+// all categories dark
+
+.dark-theme .side-bar button{
+  color: rgba(255, 255, 255, 0.50);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.dark-theme .side-bar .categories li {
+  color: rgba(255, 255, 255, 0.30);
+  &:hover{
+    color: #9BB537;
+  }
+}   
+
+
+// popular dark
+
+.dark-theme .popular-recipes-heading {
+  color: #FFF;
+}
+
+.dark-theme .popular-recipes-title {
+  color: #FFF;
+}
+.dark-theme .popular-recipes-text {
+  color: rgba(255, 255, 255, 0.80);
+}
+
+
+//filter dark 
+
+.dark-theme .filters-top-text {
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.dark-theme .filters-input {
+  background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  color: #FFF;
+  &:active, &:focus{
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+  }
+  &::placeholder{
+    color:  rgba(255, 255, 255, 0.50);
+  }
+}
+
+.dark-theme .filters-icon-search {
+  fill: rgba(255, 255, 255, 0.50);
+}
