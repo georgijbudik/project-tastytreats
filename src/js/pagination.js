@@ -2,11 +2,12 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
 import { createMarkupOfCard } from './categories';
+import { categorsCards } from './api/gallery-api';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
 
-export const tuiPagination = (page, totalPages, limit) => {
+export const tuiPagination = (category, totalPages, limit) => {
   const pagination = new Pagination(paginationElement, {
     totalItems: totalPages,
     itemsPerPage: limit,
@@ -41,12 +42,21 @@ export const tuiPagination = (page, totalPages, limit) => {
     paginationElement.querySelector('.tui-next').innerText = '>';
     listOfCards.innerHTML = '';
 
-    pageCards(newPage, limit)
-      .then(data => {
-        createMarkupOfCard(data.results);
-      })
-      .catch(error => {
-        console.error(error.message);
-      });
+    if (category) {
+      categorsCards(category, newPage, limit)
+        .then(data => {
+          createMarkupOfCard(data.results);
+        })
+        .catch(error => console.log(error.message));
+    } else {
+      pageCards(newPage, limit)
+        .then(data => {
+          console.log(data);
+          createMarkupOfCard(data.results);
+        })
+        .catch(error => {
+          console.error(error.message);
+        });
+    }
   });
 };

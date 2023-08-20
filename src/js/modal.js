@@ -12,12 +12,14 @@
   
     function toggleModal() {
         this.blur();
-      refs.modal.classList.toggle("is-hidden");
+      refs.modal.classList.remove("is-hidden");
+      document.body.style.overflow = 'hidden';
     }
 
     document.addEventListener('keydown', e => {
         if(e.code === 'Escape') {
             refs.modal.classList.add("is-hidden");
+            document.body.style.overflow = 'auto';
         }
     });
 
@@ -25,6 +27,7 @@
     function outerClickHandler(event) {
         if (event.target === refs.modal) {
             refs.modal.classList.add("is-hidden");
+            document.body.style.overflow = 'auto';
         }
     }
 
