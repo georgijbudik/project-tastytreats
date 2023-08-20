@@ -30,7 +30,7 @@ const handleInput = e => {
     return;
   }
   prevSearchQuery === value;
-  page = 1;
+  let page = 1;
   filterCards(value, page).then(response => {
     const data = response.results;
     if (data.length === 0) {
