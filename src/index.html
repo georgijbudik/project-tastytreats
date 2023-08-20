@@ -12,6 +12,24 @@
     <!-- <a href="./favorites.html">Favorites</a> -->
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/header.html"></include>
-    <include src="./partials/hero.html"></include>
+    <main>
+      <include src="./partials/hero.html"></include>
+      <!-- <include src="./partials/main.html"></include> -->
+      <section class="main-container container ">
+        <section class="side-bar">
+        <include src="./partials/categories.html"></include>
+        <include src="./partials/popular.html"></include>
+      </section>
+      <section class="cards-and-search-container">
+        <include src="./partials/filters.html"></include>
+        <include src="./partials/gallery.html"></include>
+      </section>
+      </section>
+      
+      <include src="./partials/pagination.html"></include>
+      <include src="./partials/pop-up.html"></include>
+      <include src="./partials/modal.html"></include>
+    </main>
+    <footer><include src="./partials/footer.html"></include></footer>
   </body>
 </html>
