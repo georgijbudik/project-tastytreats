@@ -3,11 +3,13 @@
   z-index: 10000;
   left: 0;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  transition: opacity 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03),
-    visibility 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity $cubic-bezier, visibility $cubic-bezier;
+  overflow-y: auto;
 }
 
 .is-hidden {
@@ -17,32 +19,23 @@
 }
 
 .modal-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
-
+  position: relative;
+  margin: 40px auto;
   border-radius: 15px;
-  background: #fff;
+  background: $primaryWhite;
   padding: 40px 20px;
-  max-width: 335px;
-  max-height: 600px;
+  width: 80%;
+  max-width: 295px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: auto;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .modal-wrapper {
+    width: 531px;
     max-width: 531px;
-    max-height: 705px;
-
     padding: 32px;
   }
-}
-
-.modal-wrapper::-webkit-scrollbar {
-  display: none;
 }
 
 .close-modal-button {
@@ -79,13 +72,11 @@
 
 @media (min-width: 1280px) {
   .close-modal-button-icon {
-    transition: stroke 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03),
-      transform 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
+    transition: stroke $cubic-bezier, transform $cubic-bezier;
   }
 
   .close-modal-button:hover .close-modal-button-icon,
   .close-modal-button:focus .close-modal-button-icon {
-    stroke: black;
     transform: rotate(180deg);
   }
 }
@@ -98,7 +89,7 @@
 }
 
 .modal-recipe-name {
-  color: #050505;
+  color: $primaryTextColor;
   font-size: 18px;
   font-weight: 600;
   line-height: 122.22%;
@@ -106,8 +97,7 @@
 }
 
 .modal-recipe-img {
-  width: 467px;
-  height: 250px;
+  height: 295px;
 
   border-radius: 8px;
   background: linear-gradient(
@@ -115,11 +105,19 @@
       rgba(5, 5, 5, 0.4) 0%,
       rgba(5, 5, 5, 0.4) 100%
     ),
-    url('../images/pizza.png'),
-    lightgray -34.64px -20px / 109.993% 120% no-repeat;
+    url('../images/pizza.png'), lightgray -34.64px -20px / 109.993% 120%;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
+  .modal-recipe-img {
+    width: 467px;
+    height: 250px;
+  }
+
   .modal-recipe-name-and-img {
     flex-direction: column;
     gap: 16px;
@@ -152,7 +150,7 @@
 }
 
 .modal-recipe-info-tag-item {
-  color: #050505;
+  color: $primaryTextColor;
   font-size: 12px;
 
   font-weight: 500;
@@ -165,12 +163,13 @@
   gap: 8px;
 
   border-radius: 35px;
-  border: 1px solid rgba(5, 5, 5, 0.2);
+  border: 1px solid $borderColor;
 }
 
 .modal-recipe-info-rating {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .modal-recipe-info-rating-points {
@@ -226,7 +225,7 @@
 }
 
 .modal-recipe-ingredient-item-name {
-  color: #050505;
+  color: $primaryTextColor;
   font-size: 14px;
   line-height: 128.57%;
 }
@@ -254,6 +253,7 @@
 .modal-recipe-button-list {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .modal-recipe-button {
@@ -270,22 +270,20 @@
   color: #f8f8f8;
   background-color: $accentColor;
   outline: 1px solid $accentColor;
-  transition: background-color 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03),
-    color 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
+  transition: background-color $cubic-bezier, color $cubic-bezier;
 }
 
 .modal-recipe-add-button:hover,
 .modal-recipe-add-button:focus {
   background-color: transparent;
-  color: #050505;
+  color: $primaryTextColor;
 }
 
 .modal-recipe-rating-button {
-  color: #050505;
+  color: $primaryTextColor;
   background-color: transparent;
   outline: 1px solid $accentColor;
-  transition: background-color 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03),
-    color 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
+  transition: background-color $cubic-bezier, color $cubic-bezier;
 }
 
 .modal-recipe-rating-button:hover,
