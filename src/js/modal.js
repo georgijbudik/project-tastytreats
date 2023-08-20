@@ -245,6 +245,8 @@ function initRatingsModal(){
             e.target.reset();
             localStorage.clear();
             item = {};
+            refsData.rating.innerHTML = 0;
+            setRatingModalActiveWidth();
     }
     
     }
@@ -256,11 +258,6 @@ function initRatingsModal(){
             }   else if(key === "rating") {
                 refsData.rating.innerHTML = item.rating
                 setRatingModalActiveWidth();
-                function setRatingModalActiveWidth (index = ratingValue.innerHTML) {
-                    const ratingAktiveWidth = index/0.05;
-                    ratingActive.style.width = `${ratingAktiveWidth}%`;
-                }
-            
             }
         }
     }
