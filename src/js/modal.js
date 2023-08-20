@@ -6,24 +6,32 @@
       modal: document.querySelector("[data-orderNow]"),
     };
   
-    refs.openModalBtn.addEventListener("click", toggleModal);
-    refs.closeModalBtn.addEventListener("click", toggleModal);
-    refs.openModalIcon.addEventListener("click", toggleModal);
+    refs.openModalBtn.addEventListener("click", openModal);
+    refs.closeModalBtn.addEventListener("click", closeModal);
+    refs.openModalIcon.addEventListener("click", openModal);
   
-    function toggleModal() {
-        this.blur();
-      refs.modal.classList.remove("is-hidden");
-      document.body.style.overflow = 'hidden';
-    }
+    function openModal() {
+        window.addEventListener('mousedown', outerClickHandler);
+        window.addEventListener('keydown', escapePressHandler);
+        refs.modal.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeModal() {
+        window.removeEventListener('mousedown', outerClickHandler);
+        window.removeEventListener('keydown', escapePressHandler);
+        refs.modal.classList.add("is-hidden");
+        document.body.style.overflow = 'auto';
+      }
 
-    document.addEventListener('keydown', e => {
-        if(e.code === 'Escape') {
+
+    function escapePressHandler(event) {
+        if (event.code === 'Escape') {
             refs.modal.classList.add("is-hidden");
             document.body.style.overflow = 'auto';
         }
-    });
+    }
 
-    document.addEventListener('mousedown', outerClickHandler);
     function outerClickHandler(event) {
         if (event.target === refs.modal) {
             refs.modal.classList.add("is-hidden");
