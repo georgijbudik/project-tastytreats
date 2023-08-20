@@ -8,13 +8,19 @@
   margin-right: auto;
   display: flex;
   margin-bottom: 40px;
+  margin-top: 50px;
 }
 .food-type-list {
   display: flex;
   gap: 12px;
   margin-bottom: 24px;
   overflow: overlay;
-
+  .empty-meal {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .btn {
     padding: 14px 18px;
     border: 1px solid rgba(5, 5, 5, 0.2);
@@ -23,7 +29,25 @@
     color: rgba(5, 5, 5, 0.5);
     font-size: 18px;
     white-space: nowrap;
+    transition: background-color 300ms linear;
   }
+
+  // .favorites-icon {
+  //   display: inline-flex;
+  //   width: 97px;
+  //   height: 83px;
+  //   margin-bottom: 32px;
+  // }
+}
+.favorites-txt {
+  width: 335px;
+  height: 72px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 35px;
 }
 .btn:hover,
 .btn:focus,
@@ -33,7 +57,14 @@
   border-color: transparent;
 }
 @media screen and (min-width: 768px) {
+  .favorites-txt {
+    width: 471px;
+    height: 72px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
   .favorites-img {
+    margin-top: 44px;
     background-image: url(/src/images/favorite-tab.jpg);
     height: 356px;
     width: 704px;
@@ -46,6 +77,7 @@
 
 @media screen and (min-width: 1280px) {
   .favorites-img {
+    margin-top: 34px;
     background-image: url(/src/images/favorite-pc.jpg);
     width: 1080px;
   }
