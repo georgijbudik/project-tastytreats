@@ -5,6 +5,7 @@ import {tuiPagination} from "../js/pagination"
 const listOfCards = document.querySelector('.list-of-cards');
 
 const windowWidth = window.innerWidth;
+console.log(windowWidth)
 
 let page = 1;
 const limit = 9;
@@ -13,8 +14,12 @@ pageCards(page, limit)
   .then(data => {
     page = 1;
     const totalItems = data.results.length * data.totalPages;
-     createMarkup(data.results);
-     tuiPagination("",totalItems, limit);
+    createMarkup(data.results);
+    if(windowWidth >768){
+      tuiPagination("",totalItems, limit,3); 
+    }else if(windowWidth < 768){
+      tuiPagination("",totalItems, limit,2); 
+    }
   })
   .catch();
 
