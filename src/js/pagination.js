@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
-import { createMarkup } from './categories';
+import { createMarkupOfCard } from './categories';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
