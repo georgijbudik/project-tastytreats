@@ -1,5 +1,5 @@
 import { pageCards } from './api/gallery-api';
-import { createMarkup } from '../js/categories';
+// import { createMarkup } from '../js/categories';
 
 const listOfCards = document.querySelector('.list-of-cards');
 

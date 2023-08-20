@@ -28,7 +28,7 @@ function handleSelectCategory(evt) {
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
 
-        createMarkup(data.results);
+        createMarkupOfCard(data.results);
         tuiPagination(page, totalItems, limit);
       })
       .catch(error => console.log(error.message));
@@ -43,7 +43,7 @@ function handleResetCategory() {
     .then(data => {
       const totalItems = data.results.length * data.totalPages;
 
-      createMarkup(data.results);
+      createMarkupOfCard(data.results);
       tuiPagination(data.page, totalItems, limit);
     })
     .catch();
@@ -75,7 +75,7 @@ const fetchAllCategories = () => {
 
 fetchAllCategories();
 
-export function createMarkup(arr) {
+export function createMarkupOfCard(arr) {
   const markup = arr
     .map(({ preview, title, description, rating }) => {
       return `<li>
@@ -94,7 +94,7 @@ export function createMarkup(arr) {
             />
             <div class="description-rating-container">
               <p>${title}</p>
-              <span>${description}a</span
+              <span>${description}</span
               >
               <div class="rating">
                 <p class="number">${rating}</p>
