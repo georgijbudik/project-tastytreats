@@ -15,32 +15,35 @@
   gap: 12px;
   margin-bottom: 24px;
   overflow: overlay;
-  .empty-meal {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .btn {
-    padding: 14px 18px;
-    border: 1px solid rgba(5, 5, 5, 0.2);
-    border-radius: 15px;
-    background-color: white;
-    color: rgba(5, 5, 5, 0.5);
-    font-size: 18px;
-    white-space: nowrap;
-    transition: background-color 300ms linear;
-  }
-
-  .favorites-icon {
-    display: flex;
-    width: 97px;
-    height: 83px;
-    margin-bottom: 32px;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
+.empty-meal {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+  flex-direction: column;
+}
+.btn {
+  padding: 14px 18px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  border-radius: 15px;
+  background-color: white;
+  color: rgba(5, 5, 5, 0.5);
+  font-size: 18px;
+  white-space: nowrap;
+  transition: background-color 300ms linear;
+}
+
+.favorites-icon {
+  display: flex;
+  width: 97px;
+  height: 83px;
+  margin-bottom: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .favorites-txt {
   width: 335px;
   height: 72px;
@@ -49,7 +52,6 @@
   line-height: 1.28;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 35px;
 }
 .btn:hover,
 .btn:focus,
@@ -60,7 +62,7 @@
 }
 @media screen and (min-width: 768px) {
   .favorites-txt {
-    width: 471px;
+    width: 481px;
     height: 72px;
     font-size: 16px;
     line-height: 1.5;
