@@ -32,12 +32,14 @@
     transition: background-color 300ms linear;
   }
 
-  // .favorites-icon {
-  //   display: inline-flex;
-  //   width: 97px;
-  //   height: 83px;
-  //   margin-bottom: 32px;
-  // }
+  .favorites-icon {
+    display: flex;
+    width: 97px;
+    height: 83px;
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .favorites-txt {
   width: 335px;

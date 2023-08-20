@@ -1,15 +1,38 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites</title>
+    <link rel="stylesheet" href="./sass/base/_common.scss" />
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
     <include src="./partials/header.html"></include>
     <div class="container">
       <div class="favorites-img"></div>
+
+      <div class="empty-meal">
+        <svg
+          class="favorites-icon"
+          style="
+            display: flex;
+            width: 97px;
+            height: 83px;
+            margin-bottom: 32px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          <use href="./images/sprite/sprite.svg#icon-hat"></use>
+        </svg>
+        <p class="favorites-txt">
+          It appears that you haven't added any recipes to your favorites yet.
+          To get started, you can add recipes that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+
       <!-- <ul class="food-type-list">
         <li class="item">
           <button type="button" class="btn">All Categories</button>
@@ -61,5 +84,7 @@
         </li>
       </ul> -->
     </div>
+
+    <include src="./partials/footer.html"></include>
   </body>
-</html> -->
+</html>
