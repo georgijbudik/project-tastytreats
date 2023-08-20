@@ -1,8 +1,9 @@
 import Notiflix from 'notiflix';
 import { filterAreas } from './api/areas-api';
 import { filterIngredients } from './api/ingredients-api';
+import { filterIngredientCards } from './api/ingredients-api';
 import debounce from 'lodash.debounce';
-import { filterCards } from './api/filters-api';
+import { filterCards, filterFood } from './api/filters-api';
 import { selectTime } from './api/filters-api';
 import { selectArea } from './api/filters-api';
 
@@ -48,15 +49,10 @@ const handleSelectArea = () => {
   selectArea(name)
     .then(response => {
       const data = response.results;
-      console.log(data);
       renderCards(data);
     })
     .catch();
-
-  // selectArea().then(response => {});
 };
-refs.selectAreaEl.addEventListener('change', handleSelectArea);
-
 const createRecipeCard = recipe => {
   return `<li>
                 <div class="icon-heart">
@@ -129,9 +125,22 @@ const renderCards = recipes => {
   const markup = recipes.map(createRecipeCard).join('');
   refs.galleryListEl.innerHTML = markup;
 };
+
+const handleSelectIngredients = () => {
+  const ingredient = refs.selectFoodEl.value;
+  filterFood(ingredient)
+    .then(response => {
+      const data = response.results;
+      console.log(response);
+      renderCards(data);
+    })
+    .catch();
+};
 const debouncedOnChange = debounce(handleInput, 300);
 
 refs.filterInputEl.addEventListener('input', debouncedOnChange);
+refs.selectAreaEl.addEventListener('change', handleSelectArea);
+refs.selectFoodEl.addEventListener('change', handleSelectIngredients);
 
 filterAreas().then(response => {
   renderAreas(response);
@@ -187,3 +196,11 @@ const renderIngredients = ingredients => {
 // };
 
 // refs.selectTimeEl.addEventListener('change', renderArea);
+
+const handleResetFilters = () => {
+  refs.filterInputEl.value = '';
+  refs.selectTimeEl.value = 'time';
+  refs.selectFoodEl.value = 'product';
+  refs.selectAreaEl.value = 'region';
+};
+refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);
