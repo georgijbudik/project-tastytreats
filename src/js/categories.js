@@ -69,9 +69,6 @@ const fetchAllCategories = () => {
       );
     })
     .catch(error => {
-      Notiflix.Notify.failure(
-        `Categories is not defined. ${error.message}. Try again`
-      );
       console.log(error.message);
     });
 };
