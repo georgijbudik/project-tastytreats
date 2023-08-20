@@ -15,8 +15,12 @@ swiperWrapperEl.insertAdjacentHTML('beforeend', markup);
     
     const swiper = new Swiper('.swiper', {
         loop: true,
-      
+       observer: true,
+            observParents: true,
+            observeSlideChildren: true,
+
         pagination: {
+           
             el: '.swiper-pagination', 
             type: 'bullets',
             clickable: true 
