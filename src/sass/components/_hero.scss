@@ -4,6 +4,7 @@
   .hero {
     padding-top: 89px;
     padding-bottom: 80px;
+    overflow-x: hidden;
   }
 .hero-heading {
     color: #050505;
@@ -54,7 +55,7 @@
     height: 280px;
     background-color: #050505;
     border-radius: 15px;
-    margin: 0 16px;
+    margin: 0 8px;
     .dish-img {
         position: absolute;
         width: 145px;
@@ -156,6 +157,8 @@
     .dish-card {
         width: 351px;
         height: 442px;
+        margin-right: 16px;
+        margin-left: 16px;
         .dish-img {
             width: 312px;
             height: 281px;

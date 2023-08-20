@@ -9,7 +9,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    transition: opacity .25s cubic-bezier(.4, 0, .2, 1), visibility .25s cubic-bezier(.4, 0, .2, 1);
+    transition: opacity .25s $cubic-bezier, visibility $cubic-bezier;
     z-index: 10001;
 }
 
@@ -47,7 +47,7 @@
     border: 1px solid rgba(5, 5, 5, 0.20);
     outline: transparent;
     &:hover{
-        transition: border-color .25s cubic-bezier(.4, 0, .2, 1);
+        transition: border-color $cubic-bezier;
         border-color: #6CB0FF;
     }
     &:focus{
@@ -84,7 +84,7 @@
     outline: transparent;
     &:hover{
         border-color: #6CB0FF;
-        transition: border-color .25s cubic-bezier(.4, 0, .2, 1);
+        transition: border-color $cubic-bezier;
     }
     &:focus{
         border-color: #6CB0FF;
@@ -103,7 +103,7 @@
     stroke: #050505;
     &:hover{
         stroke: #9BB537;
-        transition: stroke .25s cubic-bezier(.4, 0, .2, 1);
+        transition: stroke $cubic-bezier;
         
     }
 }
@@ -122,7 +122,7 @@
     color: #FFF;
     &:hover {
         color: #050505;
-        transition: background-color .25s cubic-bezier(.4, 0, .2, 1), color .25s cubic-bezier(.4, 0, .2, 1);
+        transition: background-color $cubic-bezier, color $cubic-bezier;
     }
     padding-bottom: 15px;
     padding-top: 15px;
