@@ -17,9 +17,12 @@
   }
 }
 
-.svg:hover {
-  fill: red;
-  stroke: red;
+.icon-heart {
+  svg:hover,
+  svg:focus {
+    fill: red;
+    stroke: red;
+  }
 }
 
 .description-rating-container {
@@ -66,7 +69,6 @@
       margin-top: 0;
 
       li {
-        padding: 2px;
         margin: 0;
         svg {
           fill: #eea10c;
