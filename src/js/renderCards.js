@@ -1,5 +1,4 @@
 import { pageCards } from './api/gallery-api';
-// import { createMarkup } from '../js/categories';
 import {tuiPagination} from "../js/pagination"
 
 const listOfCards = document.querySelector('.list-of-cards');
