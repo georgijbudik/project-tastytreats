@@ -9,7 +9,7 @@ export const filterCards = (
   time,
   area
 ) => {
-  const url = `${BASE_URL}?title=${searchQuery}&page=${page}&ingredient=${ingredient}`;
+  const url = `${BASE_URL}?title=${searchQuery}&page=${page}`;
   return axios.get(url).then(response => response.data);
 };
 

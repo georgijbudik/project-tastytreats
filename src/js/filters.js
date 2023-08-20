@@ -36,13 +36,18 @@ const handleInput = e => {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
+      clearGallery();
       return;
     }
     page += 1;
 
-    refs.galleryListEl.innerHTML = '';
+    clearGallery();
     renderCards(data);
   });
+};
+
+const clearGallery = () => {
+  refs.galleryListEl.innerHTML = '';
 };
 const handleSelectArea = () => {
   const name = refs.selectAreaEl.value;
@@ -67,12 +72,12 @@ const createRecipeCard = recipe => {
                   height="335px"
                 />
                 <div class="description-rating-container">
-                  <p>${recipe.title}</p>
-                  <span>${recipe.description}a</span
+                  <h3>${recipe.title}</h3>
+                  <p>${recipe.description}a</p
                   >
                   <div class="rating">
-                    <p class="number">${recipe.rating}</p>
-                    <div>
+                  <div>
+                    <span class="number">${recipe.rating}</span>
                       <ul>
                         <li height="16px">
                           <svg height="14px" viewBox="0 0 32 32" fill="#EEA10C">
@@ -110,10 +115,10 @@ const createRecipeCard = recipe => {
                           </svg>
                         </li>
                       </ul>
+                      </div>
                       <button class="see-recipe-button" type="button">
                         See recipe
                       </button>
-                    </div>
                   </div>
                 </div>
               </li>`;

@@ -1,135 +1,138 @@
 .gallery-container {
-    ul {
-        justify-content:center ;
-      display: flex;
-      flex-wrap: wrap;
-  
-      > li {
-        position: relative;
-        margin-bottom: 24px;
-  
-        img {
-            width: 335px;
-            height: 335px;
-            border-radius: 15px;
+  ul {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
 
-            
-        }
+    > li {
+      position: relative;
+      margin-bottom: 24px;
+
+      img {
+        width: 335px;
+        height: 335px;
+        border-radius: 15px;
       }
     }
   }
+}
 
+.svg:hover {
+  fill: red;
+  stroke: red;
+}
 
-  .svg:hover{
-    fill:red;
-    stroke: red;
+.description-rating-container {
+  color: $light-text-color;
+  position: absolute;
+  font-family: 'Inter';
+  bottom: 16px;
+  padding: 0 16px;
+
+  h3 {
+    font-weight: 600;
+    font-size: 14px;
+
+    line-height: 0.7;
+    text-transform: uppercase;
+    margin-bottom: 8px;
   }
-  
-  
-  .description-rating-container {
-    color: $light-text-color;
-    position: absolute;
-    font-family: 'Inter';
-    bottom: 16px;
-    padding: 0 16px;
-  
-    p {
-      font-weight: 600;
-      font-size: 14px;
-  
-      line-height: 0.7;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    span {
-      display: block;
-      font-weight: 400;
-      font-size: 12px;
-      max-height: 32px;
-      overflow: hidden;
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .rating {
+  p {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    max-height: 32px;
+    overflow: hidden;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .number {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin-right: 4px;
+  }
+  .rating {
+    display: flex;
+    align-items: center;
+    div {
       display: flex;
       align-items: center;
-      div {
-        display: flex;
-        align-items: center;
-      }
-      ul {
-        margin-top: 0;
-  
-        li {
-          padding: 2px;
-          margin: 0;
-          svg {
-            fill: #eea10c;
-          }
-        }
-      }
-      button {
-        background-color: $green-color;
-        padding: 8px, 16px;
-        height: 31px;
-        width: 93px;
-        border-radius: 8px;
-        border: none;
-        margin-left: 9px;
-  
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 1.2;
-      }
     }
-  }
-
-  @media screen and (min-width: 768px) {
-
-    .cards-and-search-container{
-        margin-left: 32px;
+    .rating-wrap {
     }
-
-
-    .gallery-container {
-        ul {
-      
-          > li {
-            margin-bottom: 16px;
-            
-            &:nth-child(odd){
-                margin-right: 16px;
-            }
-            img {
-                width: 240px;
-                height: 264px;
-                border-radius: 15px;
-            }
-          }
-        }
-      }
-    
-  }
-
-  @media screen and (min-width: 1280px) {
-    .gallery-container {
     ul {
-        justify-content: left;
-      
-        > li {
-          margin-bottom: 16px;
-          
-          margin-right: 16px;
+      margin-top: 0;
 
-          &:nth-child(3n){
-            margin-right: 0;
-          }
-          img {
-              width: 250px;
-              height: 287px;
-              border-radius: 15px;
-          }
+      li {
+        padding: 2px;
+        margin: 0;
+        svg {
+          fill: #eea10c;
+        }
+      }
+    }
+    button {
+      display: inline-block;
+      color: $primaryWhite;
+      background-color: $green-color;
+      padding: 8px 16px;
+      height: 31px;
+      width: 93px;
+      border-radius: 8px;
+      border: none;
+      margin-left: auto;
+
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards-and-search-container {
+    margin-left: 32px;
+  }
+
+  .gallery-container {
+    ul {
+      > li {
+        margin-bottom: 16px;
+
+        &:nth-child(odd) {
+          margin-right: 16px;
+        }
+        img {
+          width: 240px;
+          height: 264px;
+          border-radius: 15px;
         }
       }
     }
   }
+}
+
+@media screen and (min-width: 1280px) {
+  .gallery-container {
+    ul {
+      justify-content: left;
+
+      > li {
+        margin-bottom: 16px;
+
+        margin-right: 16px;
+
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+        img {
+          width: 250px;
+          height: 287px;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}
