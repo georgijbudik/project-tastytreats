@@ -7,11 +7,11 @@ import { categorsCards } from './api/gallery-api';
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
 
-export const tuiPagination = (category, totalPages, limit) => {
+export const tuiPagination = (category, totalPages, limit,visiblePages) => {
   const pagination = new Pagination(paginationElement, {
     totalItems: totalPages,
     itemsPerPage: limit,
-    visiblePages: 3,
+    visiblePages: visiblePages,
     centerAlign: true,
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
