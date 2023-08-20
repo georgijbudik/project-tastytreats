@@ -12,7 +12,8 @@
   
     function toggleModal() {
         this.blur();
-      refs.modal.classList.toggle("is-hidden");
+      refs.modal.classList.remove("is-hidden");
+      document.body.style.overflow = 'hidden';
     }
 
     document.addEventListener('keydown', e => {
