@@ -8,8 +8,8 @@
   margin-bottom: 8px;
 }
 
-.filters-select{
- height: 180px;
+.filters-select {
+  height: 180px;
 }
 
 .filters-input-wrap {
@@ -136,8 +136,11 @@
   .cards-and-search-container {
     margin-top: -20px;
   }
-  .filters-input {
-    width: 278px;
+  // .filters-input {
+  //   width: 278px;
+  // }
+  .filter-wrap {
+    display: inline-block;
   }
   .js-select-time {
     width: 125px;
