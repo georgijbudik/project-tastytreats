@@ -1,4 +1,5 @@
 import fetchRecipeById from './api/recipe-info-api';
+import { clickModal } from './renderCards';
 
 const backdrop = document.querySelector('.popup-backdrop');
 const modalRecipe = document.querySelector('.modal-recipe');
@@ -27,11 +28,12 @@ function escapePressHandler(e) {
   }
 }
 
-function openModal() {
+export function openModal(id) {
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
   backdrop.classList.add('is-visible');
   document.body.style.overflow = 'hidden';
+  fetchRecipeById(id).then(renderModalByRecipe);
 }
 
 function closeModal() {
@@ -47,7 +49,8 @@ export function renderModal(e) {
   if (e.target.classList.contains('js-see-recipe')) {
     // const jsSeeRecipeBtnRef = document.querySelector('[data-id]');
     jsSeeRecipeBtnRef.addEventListener('click', e => {
-      fetchRecipeById(e.target.dataset.id).then(renderModalByRecipe);
+      console.log(clickModal);
+      fetchRecipeById(clickModal).then(renderModalByRecipe);
     });
   }
 }

@@ -1,8 +1,8 @@
 export function createMarkup(arr) {
-    const listOfCards = document.querySelector('.list-of-cards');
-    const markup = arr
-      .map(({ preview, title, description, rating }) => {
-        return `<li >
+  const listOfCards = document.querySelector('.list-of-cards');
+  const markup = arr
+    .map(({ preview, title, description, rating, _id }) => {
+      return `<li >
                 <div class="icon-heart">
                 <a>
                 <svg height="22px" id="icon-heart" viewBox="0 0 36 32">
@@ -61,15 +61,16 @@ export function createMarkup(arr) {
                     
                     <div>
                      
-                      <button class="see-recipe-button" type="button">
+                    <button class="see-recipe-button js-see-recipe" type="button" data-id="${_id}" >
+
                         See recipe
                       </button>
                     </div>
                   </div>
                 </div>
               </li>`;
-      })
-      .join('');
-  
-    listOfCards.insertAdjacentHTML('beforeend', markup);
-  }
+    })
+    .join('');
+
+  listOfCards.insertAdjacentHTML('beforeend', markup);
+}
