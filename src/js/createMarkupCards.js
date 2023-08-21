@@ -58,11 +58,8 @@ export function createMarkup(arr) {
                     </svg>
                   </li>
                 </ul></div>
-                    
                     <div>
-                     
                     <button class="see-recipe-button js-see-recipe" type="button" data-id="${_id}" >
-
                         See recipe
                       </button>
                     </div>
