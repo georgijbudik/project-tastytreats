@@ -1,8 +1,9 @@
 import {fetchEvents} from './api/events-api'
+$(document).ready(function () {
 
-import Swiper from 'swiper';
+// import Swiper from 'swiper';
 
-import 'swiper/swiper-bundle.css';
+// import 'swiper/swiper-bundle.css';
 
 
 const swiperWrapperEl = document.querySelector('.swiper-wrapper');
@@ -12,21 +13,17 @@ fetchEvents().then(data => {
    
 const markup = createMarkup(data);
 swiperWrapperEl.insertAdjacentHTML('beforeend', markup);
-    
-    const swiper = new Swiper('.swiper', {
-        loop: true,
-       observer: true,
-            observParents: true,
-            observeSlideChildren: true,
 
-        pagination: {
-           
-            el: '.swiper-pagination', 
-            type: 'bullets',
-            clickable: true 
+$('.swiper-wrapper').slick({
+    dots: true,
+    infinite: false,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  draggable: true,
+  swipe: true
+});
 
-        }
-    }); 
     
 }).catch(error => {
     console.error(error);
@@ -55,3 +52,6 @@ function createMarkup(results) {
     return eventsArr.join('');
 }
 
+
+    
+}) ;
