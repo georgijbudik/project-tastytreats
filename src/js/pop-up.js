@@ -36,7 +36,7 @@ export function openModal(id) {
   document.body.style.overflow = 'hidden';
   fetchRecipeById(id).then(data => {
     Notiflix.Block.init({
-      backgroundColor: 'transparent',
+      // backgroundColor: 'transparent',
     });
     Notiflix.Block.standard('.popup-backdrop');
     renderModalByRecipe(data);
