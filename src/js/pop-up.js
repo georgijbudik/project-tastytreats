@@ -41,7 +41,16 @@ function closeModal() {
   document.body.style.overflow = 'auto';
 }
 
-fetchRecipeById('6462a8f74c3d0ddd28898056').then(renderModalByRecipe);
+fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
+
+export function renderModal(e) {
+  if (e.target.classList.contains('js-see-recipe')) {
+    // const jsSeeRecipeBtnRef = document.querySelector('[data-id]');
+    jsSeeRecipeBtnRef.addEventListener('click', e => {
+      fetchRecipeById(e.target.dataset.id).then(renderModalByRecipe);
+    });
+  }
+}
 
 function renderModalByRecipe(recipe) {
   const markup = `
