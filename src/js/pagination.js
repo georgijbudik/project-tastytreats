@@ -18,7 +18,7 @@ export const tuiPagination = (category, totalPages, limit,visiblePages) => {
     template: {
       page: '<button href="#" class="tui-page-btn {{classes}}" name="{{page}}">{{page}}</button>',
       currentPage:
-        '<button class="tui-page-btn tui-is-selected {{classes}}">{{page}}</button>',
+        '<button class="tui-page-btn s tui-is-selected {{classes}}">{{page}}</button>',
       moveButton:
         '<button href="#" class="tui-page-btn tui-{{type}} {{classes}}">{{customValue}}</button>',
       disabledMoveButton:
