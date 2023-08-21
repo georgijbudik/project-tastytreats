@@ -24,7 +24,7 @@
   
 
 .pagination {
-  margin-top: 20px;
+  padding-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,8 +36,8 @@
     font-weight: bold;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border: 1px solid rgba($text-color, 0.3);
     border-radius: 50%;
     background-color: #fff;
@@ -116,6 +116,36 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .pagination{
+    padding-top: 44px;
+    gap: 10px;
+
+    .tui-first{
+      margin-right: -2px;
+    }
+    .tui-prev{
+       margin-right: 14px;
+    }
+    .tui-first-child{
+      margin-right: 0px;
+    }
+    .tui-last-child{
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+    .tui-next{
+      margin-left: 14px;
+      margin-right: 0px;
+    }
+    .tui-last{
+      margin-left: -2px;
+    }
+  }
+  
+}
+
+
 
 @media screen and (min-width: 1280px) {
   .pagination {
@@ -130,7 +160,7 @@
       margin-right: 0px;
     }
     .tui-last-child{
-      margin-right: 14pxpx;
+      margin-right: 14px;
       margin-left: 0px;
     }
     .tui-next{

@@ -3,6 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
 import { createMarkupOfCard } from './categories';
 import { categorsCards } from './api/gallery-api';
+import{createMarkup} from "./createMarkupCards"
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
@@ -45,14 +46,14 @@ export const tuiPagination = (category, totalPages, limit,visiblePages) => {
     if (category) {
       categorsCards(category, newPage, limit)
         .then(data => {
-          createMarkupOfCard(data.results);
+          createMarkup(data.results);
         })
         .catch(error => console.log(error.message));
     } else {
       pageCards(newPage, limit)
         .then(data => {
           console.log(data);
-          createMarkupOfCard(data.results);
+          createMarkup(data.results);
         })
         .catch(error => {
           console.error(error.message);
