@@ -22,6 +22,7 @@ const refs = {
   starsListEl: document.querySelector('.rating-stars-list'),
 };
 
+let clickModal = '';
 let prevSearchQuery = '';
 const windowWidth = window.innerWidth;
 
