@@ -1,10 +1,11 @@
-.swiper-wrapper {
-    overflow: hidden; /* Hide scrollbars */
-  }
+
   .hero {
     padding-top: 89px;
     padding-bottom: 80px;
     overflow-x: hidden;
+  }
+  .slick-dots {
+    // margin-left: -3700px;
   }
 .hero-heading {
     color: #050505;
