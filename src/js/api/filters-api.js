@@ -13,18 +13,18 @@ export const filterCards = (
   return axios.get(url).then(response => response.data);
 };
 
-export const filterFood = ingredient => {
-  const url = `${BASE_URL}?ingredient=${ingredient}`;
+export const filterFood = (ingredient, limit, page) => {
+  const url = `${BASE_URL}?ingredient=${ingredient}&limit=${limit}&page=${page}`;
   return axios.get(url).then(response => response.data);
 };
 
-export const selectTime = time => {
-  const url = `${BASE_URL}?time=${time}`;
+export const selectTime = (time, limit, page) => {
+  const url = `${BASE_URL}?time=${time}&limit=${limit}&page=${page}`;
   return axios.get(url).then(response => response.data);
 };
 
-export const selectArea = area => {
-  const url = `${BASE_URL}?area=${area}`;
+export const selectArea = (area, limit, page) => {
+  const url = `${BASE_URL}?area=${area}&limit=${limit}&page=${page}`;
   return axios.get(url).then(response => response.data);
 };
 
