@@ -1,12 +1,10 @@
-// const { debounce } = require("lodash.debounce");
+import Notiflix from 'notiflix';
 
 const footFormEl = document.querySelector('.sub-form');
 const footInputEl = document.querySelector('input');
 const footButtonEl = document.querySelector('.sub-btn');
 
-// console.log(footButtonEl)
-// console.log(footFormEl)
-// console.log(footInputEl)
+
 
 const userEmail = (event) => {
     event.preventDefault();
@@ -14,9 +12,9 @@ const userEmail = (event) => {
         elements: { email }
       } = event.currentTarget;
 
-      console.log( {
-        email: email.value
-    })
+    //   console.log( {
+    //     email: email.value
+    // })
     updateLocalStorage(email.value);}
 
 
@@ -38,9 +36,17 @@ const userEmail = (event) => {
     
     function onFormElSubmit(event) {
         event.preventDefault();
+
         console.log(JSON.parse(localStorage.getItem('email-input')));
+        
+
         footFormEl.reset();
         localStorage.removeItem('email-input');
-    };
+
+          
+          Notiflix.Notify.success("Thank you for subscribing! Enjoy your meal!")
+        };
+   
     
     footFormEl.addEventListener('submit', onFormElSubmit);
+    
