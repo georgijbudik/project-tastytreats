@@ -21,7 +21,8 @@ $('.swiper-wrapper').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   draggable: true,
-  swipe: true
+  swipe: true,
+ 
 });
 
     
