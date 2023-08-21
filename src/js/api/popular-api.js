@@ -11,7 +11,7 @@ async function fetchPopularRecipes() {
 
 fetchPopularRecipes()
   .then(response => {
-    console.log(response.data);
+    // console.log(response.data);
     // if (document.documentElement.clientWidth < 376) {
     //   response.data.splice(0, 2);
     //   createGalleryRecipes(response.data);

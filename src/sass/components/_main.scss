@@ -3,6 +3,7 @@
  $light-text-color: #f8f8f8;
 
 .icon-heart {
+  z-index: 1;
   position: absolute;
   cursor: pointer;
   
@@ -20,13 +21,15 @@
 // .cards-and-search-container {
 //   margin-left: 64px;
 // }
+  
 
 .pagination {
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  padding-bottom: 80px;
+ 
 
   .tui-page-btn {
     display: flex;
@@ -52,6 +55,18 @@
     cursor: pointer;
   }
 
+
+  .tui-first-child{
+    margin-right: 8px;
+  }
+
+  .tui-last-child{
+    margin-left: 8px;
+    margin-right: 14px;
+  }
+  
+
+
   .tui-prev,
   .tui-next,
   .tui-first,
@@ -62,6 +77,15 @@
     color: $text-color;
     border: none;
     border-radius: 50%;
+  }
+
+  .tui-prev{
+    margin-right: 14px;
+  }
+
+  
+  .tui-next{
+    margin-right: 4px;
   }
 
   .tui-prev:hover,
@@ -79,13 +103,48 @@
   }
 
   .tui-prev {
-    margin-left: -2px;
-    margin-right: 14px;
+    // margin-left: -2px;
+    // margin-right: 14px;
   }
   .tui-next {
-    margin-right: -2px;
-    margin-left: 14px;
+    // margin-right: -2px;
+    // margin-left: 14px;
   }
+
+  .tui-first{
+    margin-right: 4px;
+  }
+}
+
+
+@media screen and (min-width: 1280px) {
+  .pagination {
+    gap: 10px;
+    .tui-first{
+      margin-right: 0px;
+    }
+    .tui-prev{
+       margin-right: 14px;
+    }
+    .tui-first-child{
+      margin-right: 0px;
+    }
+    .tui-last-child{
+      margin-right: 14pxpx;
+      margin-left: 0px;
+    }
+    .tui-next{
+      margin-right: 0px;
+    }
+  }
+  
+
+ 
+  
+  .tui-last-child{
+    
+  }
+  
 }
 
 
