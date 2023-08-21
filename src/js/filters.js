@@ -7,7 +7,10 @@ import { filterCards, filterFood } from './api/filters-api';
 import { selectTime } from './api/filters-api';
 import { selectArea } from './api/filters-api';
 import { pageCards } from './api/gallery-api';
-import {createMarkup} from "../js/renderCards"
+import { createMarkup } from '../js/createMarkupCards';
+import { render } from "./renderCards"
+import {tuiPagination} from "../js/pagination"
+
 
 const refs = {
   filterInputEl: document.querySelector('.js-filter-input'),
@@ -20,18 +23,18 @@ const refs = {
 };
 
 let prevSearchQuery = '';
+const windowWidth = window.innerWidth;
+
 
 const handleInput = e => {
   const value = e.target.value.trim();
+  
   if (value === '') {
     Notiflix.Notify.warning('Please enter a search term.');
-    return;
+    clearGallery();
+    render();
+    return ;
   }
-
-  if (value === prevSearchQuery) {
-    return;
-  }
-  prevSearchQuery === value;
   let page = 1;
   filterCards(value, page).then(response => {
     const data = response.results;
@@ -45,67 +48,95 @@ const handleInput = e => {
     page += 1;
 
     clearGallery();
-    renderCards(data);
+    createMarkup(data);
   });
 };
 
 const clearGallery = () => {
   refs.galleryListEl.innerHTML = '';
 };
-const handleSelectArea = () => {
-  const name = refs.selectAreaEl.value;
-  selectArea(name)
+
+const handleSelectTime = () => {
+  const time = refs.selectTimeEl.value;
+
+  selectTime(time)
     .then(response => {
+
+      if(response.results.length === 0){
+        clearGallery();
+        return render();
+      }
       const data = response.results;
-      renderCards(data);
+      clearGallery();
+      createMarkup(data);
     })
     .catch();
 };
-const createRecipeCard = recipe => {
-  return `<li>
-                <div class="icon-heart">
-                <a>
-              <svg height="22px" id="icon-heart" viewBox="0 0 36 32">
-              <path class="svg" fill="none" opacity="0.8" stroke="#f8f8f8"  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091" d="M15.991 6.848c-2.666-3.117-7.113-3.956-10.451-1.101-3.341 2.854-3.811 7.625-1.188 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.243 0.214 0.364 0.321 0.505 0.364 0.057 0.017 0.123 0.028 0.191 0.028s0.133-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.762-7.834 10.943-10.64 2.624-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.785-2.016-10.451 1.101z"></path>
-              </svg>
-              </a>
-                </div>
-                <img
-                  src="${recipe.preview}"
-                  alt=""
-                  width="335px"
-                  height="335px"
-                />
-                <div class="description-rating-container">
-                  <h3>${recipe.title}</h3>
-                  <p>${recipe.description}a</p
-                  >
-                  <div class="rating">
-                  <div>
-                    <span class="number">${recipe.rating}</span>
-                      <ul class="rating-stars-list">
-                      </ul>
-                      </div>
-                      <button class="see-recipe-button" type="button">
-                        See recipe
-                      </button>
-                  </div>
-                </div>
-              </li>`;
-};
 
-const renderCards = recipes => {
-  const markup = recipes.map(createRecipeCard).join('');
-  refs.galleryListEl.innerHTML = markup;
+
+const handleSelectArea = () => {
+  const name = refs.selectAreaEl.value;
+  
+  selectArea(name)
+    .then(response => {
+      if(response.results.length === 0){
+        clearGallery();
+        return render();
+      }
+      const data = response.results;
+      clearGallery();
+      createMarkup(data);
+    })
+    .catch();
 };
+// const createRecipeCard = recipe => {
+//   return `<li>
+//                 <div class="icon-heart">
+//                 <a>
+//               <svg height="22px" id="icon-heart" viewBox="0 0 36 32">
+//               <path class="svg" fill="none" opacity="0.8" stroke="#f8f8f8"  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091" d="M15.991 6.848c-2.666-3.117-7.113-3.956-10.451-1.101-3.341 2.854-3.811 7.625-1.188 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.243 0.214 0.364 0.321 0.505 0.364 0.057 0.017 0.123 0.028 0.191 0.028s0.133-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.762-7.834 10.943-10.64 2.624-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.785-2.016-10.451 1.101z"></path>
+//               </svg>
+//               </a>
+//                 </div>
+//                 <img
+//                   src="${recipe.preview}"
+//                   alt=""
+//                   width="335px"
+//                   height="335px"
+//                 />
+//                 <div class="description-rating-container">
+//                   <h3>${recipe.title}</h3>
+//                   <p>${recipe.description}a</p
+//                   >
+//                   <div class="rating">
+//                   <div>
+//                     <span class="number">${recipe.rating}</span>
+//                       <ul class="rating-stars-list">
+//                       </ul>
+//                       </div>
+//                       <button class="see-recipe-button" type="button">
+//                         See recipe
+//                       </button>
+//                   </div>
+//                 </div>
+//               </li>`;
+// };
+
+// const renderCards = recipes => {
+//   const markup = recipes.map(createRecipeCard).join('');
+//   refs.galleryListEl.innerHTML = markup;
+// };
 
 const handleSelectIngredients = () => {
   const ingredient = refs.selectFoodEl.value;
   filterFood(ingredient)
-    .then(response => {
-      const data = response.results;
-      console.log(response);
-      renderCards(data);
+    .then(data => {
+      if(data.results.length === 0){
+        clearGallery();
+        return render();
+      }
+      clearGallery();
+      createMarkup(data.results);
     })
     .catch();
 };
@@ -114,10 +145,13 @@ const debouncedOnChange = debounce(handleInput, 300);
 refs.filterInputEl.addEventListener('input', debouncedOnChange);
 refs.selectAreaEl.addEventListener('change', handleSelectArea);
 refs.selectFoodEl.addEventListener('change', handleSelectIngredients);
+refs.selectTimeEl.addEventListener('change', handleSelectTime);
+
 
 filterAreas().then(response => {
   renderAreas(response);
 });
+
 
 const renderAreas = areas => {
   const optionsHTML = areas
@@ -193,3 +227,25 @@ const handleResetFilters = () => {
 
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);
+
+
+function createArrayWithStep(start, end, step) {
+  const result = [];
+  for (let i = start; i <= end; i += step) {
+    result.push(i);
+    
+  }
+  return result;
+}
+
+const valuesArr = createArrayWithStep(5, 120, 5);
+
+createOptions(valuesArr);
+
+function createOptions(arr) {
+  const markup = arr.map(option => `<option value="${option}" class="select-option">${option} min</option>`);
+  refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
+  refs.selectTimeEl.style.overflow = "auto"
+}
+
+

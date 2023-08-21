@@ -20,10 +20,15 @@ export const filterFood = ingredient => {
 
 export const selectTime = time => {
   const url = `${BASE_URL}?time=${time}`;
-  return axios.get(url).then(response => console.log(response.data));
+  return axios.get(url).then(response => response.data);
 };
 
 export const selectArea = area => {
   const url = `${BASE_URL}?area=${area}`;
   return axios.get(url).then(response => response.data);
 };
+
+// export const selectTimeOption = time => {
+//   const url = `${BASE_URL}?time=${time}`;
+//   return axios.get(url).then(response => response.data);
+// };

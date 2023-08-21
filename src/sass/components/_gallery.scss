@@ -1,6 +1,6 @@
 .gallery-container {
   ul {
-    justify-content: center;
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
 
@@ -65,6 +65,7 @@
   
 
   .title-cards{
+    line-height: 1.28;
     text-transform: uppercase;
     margin-bottom: 8px;
   }
@@ -171,7 +172,7 @@
   }
   .gallery-container {
     ul {
-      justify-content: left;
+      // justify-content: left;
 
       > li {
         &:nth-child(3n) {
