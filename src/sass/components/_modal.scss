@@ -9,7 +9,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    transition: opacity .25s $cubic-bezier, visibility $cubic-bezier;
+    transition: opacity .25s cubic-bezier(.4, 0, .2, 1), visibility .25s cubic-bezier(.4, 0, .2, 1);
     z-index: 10001;
 }
 
@@ -122,7 +122,7 @@
     color: #FFF;
     &:hover {
         color: #050505;
-        transition: background-color $cubic-bezier, color $cubic-bezier;
+        transition: color $cubic-bezier;
     }
     padding-bottom: 15px;
     padding-top: 15px;
