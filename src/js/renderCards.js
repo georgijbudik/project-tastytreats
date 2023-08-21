@@ -5,7 +5,6 @@ import { renderModal, openModal } from './pop-up';
 const listOfCards = document.querySelector('.list-of-cards');
 
 const windowWidth = window.innerWidth;
-// console.log(windowWidth);
 
 export let clickModal = '';
 render();
@@ -57,7 +56,6 @@ export function render() {
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
-        console.log(data);
         tuiPagination('', totalItems, limit, 3);
         const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
         jsSeeRecipeBtnRef.forEach(btn => {
