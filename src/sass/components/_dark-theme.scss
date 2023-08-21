@@ -188,6 +188,7 @@ body.dark-theme {
 .dark-theme .side-bar .categories li {
   color: rgba(255, 255, 255, 0.3);
   &:hover {
+    transition: color $cubic-bezier;
     color: #9bb537;
   }
 }
@@ -227,4 +228,80 @@ body.dark-theme {
 
 .dark-theme .filters-icon-search {
   fill: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .filters-select {
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  &:focus,
+  &:hover {
+    transition: color $cubic-bezier;
+    color: #fff;
+  }
+}
+
+.dark-theme .filter-reset-btn {
+  background-color: #161616;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .select-option {
+  background: #050505;
+  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+// cards dark
+
+// paginaation dark
+
+.dark-theme .pagination .tui-page-btn {
+  background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  &:hover {
+    background-color: #9bb537;
+    color: #fff;
+  }
+}
+
+.dark-theme .pagination .tui-is-selected {
+  background-color: #9bb537;
+  color: #fff;
+}
+
+.dark-theme .pagination .tui-prev,
+.dark-theme .pagination .tui-next,
+.dark-theme .pagination .tui-first,
+.dark-theme .pagination .tui-last {
+  color: #ffffff50;
+  background-color: #050505;
+  border: 0px solid rgba(255, 255, 255, 0.3);
+  &:hover {
+    transition: background-color $cubic-bezier, color $cubic-bezier;
+    color: #050505;
+    background-color: #9bb537;
+  }
+}
+
+//footer dark
+.dark-theme .nav-li-deep,
+.dark-theme .final-text,
+.dark-theme .logo-btn2,
+.dark-theme .slogan,
+.dark-theme .contacts,
+.dark-theme .sub-text,
+.dark-theme .sub-btn {
+  color: #fff;
+}
+
+.dark-theme .modal-icon {
+  fill: #fff;
+}
+
+.dark-theme .sub-form input {
+  background-color: #161616;
+  color: #fff;
+  border: 1px solid #fff3;
 }

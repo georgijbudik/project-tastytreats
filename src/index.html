@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tasty treats</title>
     <link rel="icon" type="image/x-icon" href="./images/pizza.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"
+    />
+   
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./index.js"></script>
   </head>
@@ -15,21 +26,31 @@
     <main>
       <include src="./partials/hero.html"></include>
       <!-- <include src="./partials/main.html"></include> -->
-      <section class="main-container container ">
+      <section class="main-container container">
         <section class="side-bar">
-        <include src="./partials/categories.html"></include>
-        <include src="./partials/popular.html"></include>
+          <include src="./partials/categories.html"></include>
+          <include src="./partials/popular.html"></include>
+        </section>
+        <section class="cards-and-search-container">
+          <include src="./partials/filters.html"></include>
+          <include src="./partials/gallery.html"></include>
+        </section>
       </section>
-      <section class="cards-and-search-container">
-        <include src="./partials/filters.html"></include>
-        <include src="./partials/gallery.html"></include>
-      </section>
-      </section>
-      
+
       <include src="./partials/pagination.html"></include>
       <include src="./partials/pop-up.html"></include>
       <include src="./partials/modal.html"></include>
     </main>
     <footer><include src="./partials/footer.html"></include></footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"
+    ></script>
   </body>
 </html>

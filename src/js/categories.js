@@ -32,6 +32,13 @@ function handleSelectCategory(evt) {
           createMarkup(data.results);
           console.log(createMarkup);
           tuiPagination(category, totalItems, limit, 2);
+          const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+          jsSeeRecipeBtnRef.forEach(btn => {
+            btn.addEventListener('click', e => {
+              clickModal = e.target.dataset.id;
+              openModal(clickModal);
+            });
+          });
         })
         .catch(error => {
           console.error('Error:', error);
@@ -43,6 +50,13 @@ function handleSelectCategory(evt) {
           const totalItems = data.results.length * data.totalPages;
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
+          const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+          jsSeeRecipeBtnRef.forEach(btn => {
+            btn.addEventListener('click', e => {
+              clickModal = e.target.dataset.id;
+              openModal(clickModal);
+            });
+          });
         })
         .catch(error => {
           console.error('Error:', error);
@@ -54,6 +68,13 @@ function handleSelectCategory(evt) {
           const totalItems = data.results.length * data.totalPages;
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
+          const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+          jsSeeRecipeBtnRef.forEach(btn => {
+            btn.addEventListener('click', e => {
+              clickModal = e.target.dataset.id;
+              openModal(clickModal);
+            });
+          });
         })
         .catch(error => {
           console.error('Error:', error);
