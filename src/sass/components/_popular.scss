@@ -50,6 +50,7 @@
 
 .popular-recipes-item {
   display: flex;
+  justify-content: space-between;
   gap: 16;
   margin-bottom: 24px;
   p {
@@ -169,5 +170,9 @@
 
   .popular-recipes-img {
     width: 64px;
+  }
+
+  .popular-recipes-text-wrapper {
+    width: 96px;
   }
 }
