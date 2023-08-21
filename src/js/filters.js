@@ -404,6 +404,7 @@ const renderIngredients = ingredients => {
 const handleResetFilters = () => {
   let page = 1;
   let limit = 6;
+  // const totalItems = data.results.length * data.totalPages;
 
   refs.filterInputEl.value = '';
   refs.selectTimeEl.value = 'time';
@@ -413,16 +414,55 @@ const handleResetFilters = () => {
 
   if (windowWidth > 768 && windowWidth < 1280) {
     limit = 8;
-    creatPageCards(page, limit);
-    tuiPagination('', totalItems, limit, 3);
+    pageCards(page, limit)
+      .then(data => {
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch();
   } else if (windowWidth < 768) {
     limit = 6;
-    creatPageCards(page, limit);
-    tuiPagination('', totalItems, limit, 2);
+    pageCards(page, limit)
+      .then(data => {
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 2);
+
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch();
   } else {
     limit = 9;
-    creatPageCards(page, limit);
-    tuiPagination('', totalItems, limit, 3);
+    pageCards(page, limit)
+      .then(data => {
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch();
   }
 
   pageCards(page, limit)
@@ -460,20 +500,4 @@ function createOptions(arr) {
   );
   refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
   refs.selectTimeEl.style.overflow = 'auto';
-}
-
-function creatPageCards(page, limit) {
-  pageCards(page, limit)
-    .then(data => {
-      const totalItems = data.results.length * data.totalPages;
-      createMarkup(data.results);
-      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-      jsSeeRecipeBtnRef.forEach(btn => {
-        btn.addEventListener('click', e => {
-          clickModal = e.target.dataset.id;
-          openModal(clickModal);
-        });
-      });
-    })
-    .catch();
 }
