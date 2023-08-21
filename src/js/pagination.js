@@ -3,12 +3,13 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
 import { createMarkupOfCard } from './categories';
 import { categorsCards } from './api/gallery-api';
-import{createMarkup} from "./createMarkupCards"
+import { createMarkup } from './createMarkupCards';
+import { openModal } from './pop-up';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
 
-export const tuiPagination = (category, totalPages, limit,visiblePages) => {
+export const tuiPagination = (category, totalPages, limit, visiblePages) => {
   const pagination = new Pagination(paginationElement, {
     totalItems: totalPages,
     itemsPerPage: limit,
@@ -52,8 +53,13 @@ export const tuiPagination = (category, totalPages, limit,visiblePages) => {
     } else {
       pageCards(newPage, limit)
         .then(data => {
-          console.log(data);
           createMarkup(data.results);
+          const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+          jsSeeRecipeBtnRef.forEach(btn => {
+            btn.addEventListener('click', e => {
+              openModal(e.target.dataset.id);
+            });
+          });
         })
         .catch(error => {
           console.error(error.message);

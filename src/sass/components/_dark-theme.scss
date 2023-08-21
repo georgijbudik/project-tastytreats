@@ -164,10 +164,9 @@ body.dark-theme {
   color: $darkThemePrimaryTextColor;
 }
 
-
 //hero dark
 
-.dark-theme .hero-heading{
+.dark-theme .hero-heading {
   color: #fff;
 }
 
@@ -176,59 +175,133 @@ body.dark-theme {
 }
 
 .dark-theme .hero-btn {
-color: #fff;
+  color: #fff;
 }
-
 
 // all categories dark
 
-.dark-theme .side-bar button{
-  color: rgba(255, 255, 255, 0.50);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+.dark-theme .side-bar button {
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .dark-theme .side-bar .categories li {
-  color: rgba(255, 255, 255, 0.30);
-  &:hover{
-    color: #9BB537;
+  color: rgba(255, 255, 255, 0.3);
+  &:hover {
+    transition: color $cubic-bezier;
+    color: #9bb537;
   }
-}   
-
+}
 
 // popular dark
 
 .dark-theme .popular-recipes-heading {
-  color: #FFF;
+  color: #fff;
 }
 
 .dark-theme .popular-recipes-title {
-  color: #FFF;
+  color: #fff;
 }
 .dark-theme .popular-recipes-text {
-  color: rgba(255, 255, 255, 0.80);
+  color: rgba(255, 255, 255, 0.8);
 }
 
-
-//filter dark 
+//filter dark
 
 .dark-theme .filters-top-text {
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dark-theme .filters-input {
   background-color: #161616;
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  color: #FFF;
-  &:active, &:focus{
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  &:active,
+  &:focus {
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.20);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
-  &::placeholder{
-    color:  rgba(255, 255, 255, 0.50);
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
   }
 }
 
 .dark-theme .filters-icon-search {
-  fill: rgba(255, 255, 255, 0.50);
+  fill: rgba(255, 255, 255, 0.5);
 }
 
+.dark-theme .filters-select {
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  &:focus,
+  &:hover {
+    transition: color $cubic-bezier;
+    color: #fff;
+  }
+}
+
+.dark-theme .filter-reset-btn {
+  background-color: #161616;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .select-option {
+  background: #050505;
+  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+// cards dark
+
+// paginaation dark
+
+.dark-theme .pagination .tui-page-btn {
+  background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  &:hover {
+    background-color: #9bb537;
+    color: #fff;
+  }
+}
+
+.dark-theme .pagination .tui-is-selected {
+  background-color: #9bb537;
+  color: #fff;
+}
+
+.dark-theme .pagination .tui-prev,
+.dark-theme .pagination .tui-next,
+.dark-theme .pagination .tui-first,
+.dark-theme .pagination .tui-last {
+  color: #ffffff50;
+  background-color: #050505;
+  border: 0px solid rgba(255, 255, 255, 0.3);
+  &:hover {
+    transition: background-color $cubic-bezier, color $cubic-bezier;
+    color: #050505;
+    background-color: #9bb537;
+  }
+}
+
+//footer dark
+.dark-theme .nav-li-deep,
+.dark-theme .final-text,
+.dark-theme .logo-btn2,
+.dark-theme .slogan,
+.dark-theme .contacts,
+.dark-theme .sub-text,
+.dark-theme .sub-btn {
+  color: #fff;
+}
+
+.dark-theme .modal-icon {
+  fill: #fff;
+}
+
+.dark-theme .sub-form input {
+  background-color: #161616;
+  color: #fff;
+  border: 1px solid #fff3;
+}

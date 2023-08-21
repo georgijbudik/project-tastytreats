@@ -21,12 +21,20 @@
   gap: 24px;
 }
 
-.icon-heart {
-  svg:hover,
-  svg:focus {
-    fill: red;
-    stroke: red;
-  }
+.heart-svg-button {
+  background-color: transparent;
+  line-height: 0;
+  border: none;
+}
+
+.heart-svg-button:hover .svg,
+.heart-svg-button:focus .svg {
+  fill: red;
+  stroke: red;
+}
+
+.svg {
+  transition: all 100ms ease;
 }
 
 .list-cards {
@@ -70,14 +78,17 @@
     text-transform: uppercase;
     margin-bottom: 8px;
   }
+
   .rating {
     display: flex;
     align-items: center;
     margin-top: 16px;
+
     div {
       display: flex;
       align-items: center;
     }
+
     ul {
       margin-top: 0;
       li {
@@ -108,6 +119,19 @@
 @media screen and (min-width: 375px) {
   .list-cards {
     margin-right: 98px;
+  }
+
+  .gallery-container {
+    ul {
+      > li {
+        // &:nth-child(odd) {
+        //   margin-right: 16px;
+        // }
+        img {
+          object-fit: cover;
+        }
+      }
+    }
   }
 }
 
@@ -145,18 +169,19 @@
       }
     }
   }
+}
 
-  .gallery-container {
-    ul {
-      > li {
-        // &:nth-child(odd) {
-        //   margin-right: 16px;
-        // }
-        img {
-          width: 240px;
-          height: 264px;
-          border-radius: 15px;
-        }
+.gallery-container {
+  ul {
+    > li {
+      // &:nth-child(odd) {
+      //   margin-right: 16px;
+      // }
+      img {
+        width: 240px;
+        height: 264px;
+        border-radius: 15px;
+        object-fit: cover;
       }
     }
   }
