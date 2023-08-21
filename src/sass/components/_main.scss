@@ -64,8 +64,8 @@ $light-text-color: #f8f8f8;
   .tui-next,
   .tui-first,
   .tui-last {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     background-color: $green-color;
     color: $text-color;
     border: none;
@@ -94,6 +94,7 @@ $light-text-color: #f8f8f8;
     border-color: $text-color;
   }
 
+
   .tui-prev {
     // margin-left: -2px;
     // margin-right: 14px;
@@ -113,6 +114,11 @@ $light-text-color: #f8f8f8;
     padding-top: 64px;
     gap: 10px;
 
+    .tui-page-btn {
+      width: 44px;
+      height: 44px;
+    }
+    
     .tui-first {
       margin-right: -2px;
     }
