@@ -3,8 +3,8 @@ import { categorsCards } from './api/gallery-api';
 import { pageCards } from './api/gallery-api';
 import Notiflix from 'notiflix';
 import { tuiPagination } from './pagination';
-import{createMarkup} from "./createMarkupCards"
-import{render} from"./renderCards"
+import { createMarkup } from './createMarkupCards';
+import { render } from './renderCards';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
@@ -12,7 +12,7 @@ const listOfCards = document.querySelector('.list-of-cards');
 
 let page = 1;
 // const limit = 9;
-limit = 6;
+let limit = 6;
 let selectedCategoryId = null;
 let category = '';
 const windowWidth = window.innerWidth;
@@ -26,37 +26,37 @@ function handleSelectCategory(evt) {
     selectedCategoryId = evt.target.dataset.id;
     category = evt.target.dataset.name;
     if (windowWidth < 768) {
-      categorsCards(category,page, limit)
+      categorsCards(category, page, limit)
         .then(data => {
           const totalItems = data.results.length * data.totalPages;
           createMarkup(data.results);
-          console.log(createMarkup)
+          console.log(createMarkup);
           tuiPagination(category, totalItems, limit, 2);
         })
         .catch(error => {
-          console.error("Error:", error);
+          console.error('Error:', error);
         });
     } else if (windowWidth < 1280) {
       limit = 8;
-      categorsCards(category,page, limit)
+      categorsCards(category, page, limit)
         .then(data => {
           const totalItems = data.results.length * data.totalPages;
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
         })
         .catch(error => {
-          console.error("Error:", error);
+          console.error('Error:', error);
         });
     } else {
       limit = 9;
-      categorsCards(category,page, limit)
+      categorsCards(category, page, limit)
         .then(data => {
           const totalItems = data.results.length * data.totalPages;
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
         })
         .catch(error => {
-          console.error("Error:", error);
+          console.error('Error:', error);
         });
     }
 
