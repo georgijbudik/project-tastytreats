@@ -17,7 +17,6 @@ function render() {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        console.log(data);
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
       })
@@ -29,7 +28,6 @@ function render() {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        console.log(data);
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
       })
@@ -42,13 +40,10 @@ function render() {
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
-        console.log('hello');
         tuiPagination('', totalItems, limit, 3);
         const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        console.log(jsSeeRecipeBtnRef);
         jsSeeRecipeBtnRef.forEach(btn => {
           btn.addEventListener('click', e => {
-            console.log(e.target.dataset.id);
             clickModal = e.target.dataset.id;
             openModal(clickModal);
           });
