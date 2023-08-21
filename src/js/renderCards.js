@@ -5,7 +5,7 @@ import { renderModal, openModal } from './pop-up';
 const listOfCards = document.querySelector('.list-of-cards');
 
 const windowWidth = window.innerWidth;
-console.log(windowWidth);
+// console.log(windowWidth);
 
 export let clickModal = '';
 render();
