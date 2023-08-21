@@ -56,14 +56,17 @@ refsData.form.addEventListener('submit', onFormSubmit);
 
 refsData.form.addEventListener('input', (e) => {
     for(const key in item) {
-        if(key === "phone") {
+        if(key === "phone" || key === "name" || key === "email" || key === "comment") {
             formData.phone = item.phone
-        }   else if(key === "name") {
-            formData.name = item.name
-        }   else if(key === "email") {
-            formData.email = item.email
-        }   else if(key === "comment") {
             formData.comment = item.comment
+            formData.email = item.email
+            formData.name = item.name
+        // }   else if(key === "name") {
+        //     formData.name = item.name
+        // }   else if(key === "email") {
+        //     formData.email = item.email
+        // }   else if(key === "comment") {
+        //     formData.comment = item.comment
         }
     }
     formData[e.target.name] = e.target.value;
