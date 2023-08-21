@@ -8,9 +8,9 @@ import { selectTime } from './api/filters-api';
 import { selectArea } from './api/filters-api';
 import { pageCards } from './api/gallery-api';
 import { createMarkup } from '../js/createMarkupCards';
-import { render } from "./renderCards"
-import {tuiPagination} from "../js/pagination"
-
+import { render } from './renderCards';
+import { tuiPagination } from '../js/pagination';
+import { openModal } from './pop-up';
 
 const refs = {
   filterInputEl: document.querySelector('.js-filter-input'),
@@ -25,15 +25,14 @@ const refs = {
 let prevSearchQuery = '';
 const windowWidth = window.innerWidth;
 
-
 const handleInput = e => {
   const value = e.target.value.trim();
-  
+
   if (value === '') {
     Notiflix.Notify.warning('Please enter a search term.');
     clearGallery();
     render();
-    return ;
+    return;
   }
   let page = 1;
   filterCards(value, page).then(response => {
@@ -49,6 +48,13 @@ const handleInput = e => {
 
     clearGallery();
     createMarkup(data);
+    const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+    jsSeeRecipeBtnRef.forEach(btn => {
+      btn.addEventListener('click', e => {
+        clickModal = e.target.dataset.id;
+        openModal(clickModal);
+      });
+    });
   });
 };
 
@@ -61,31 +67,44 @@ const handleSelectTime = () => {
 
   selectTime(time)
     .then(response => {
-
-      if(response.results.length === 0){
+      if (response.results.length === 0) {
         clearGallery();
         return render();
       }
       const data = response.results;
       clearGallery();
       createMarkup(data);
+      console.log(data);
+      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+      jsSeeRecipeBtnRef.forEach(btn => {
+        btn.addEventListener('click', e => {
+          clickModal = e.target.dataset.id;
+          openModal(clickModal);
+        });
+      });
     })
     .catch();
 };
 
-
 const handleSelectArea = () => {
   const name = refs.selectAreaEl.value;
-  
+  clearGallery();
   selectArea(name)
     .then(response => {
-      if(response.results.length === 0){
+      if (response.results.length === 0) {
         clearGallery();
         return render();
       }
       const data = response.results;
       clearGallery();
       createMarkup(data);
+      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+      jsSeeRecipeBtnRef.forEach(btn => {
+        btn.addEventListener('click', e => {
+          clickModal = e.target.dataset.id;
+          openModal(clickModal);
+        });
+      });
     })
     .catch();
 };
@@ -129,14 +148,22 @@ const handleSelectArea = () => {
 
 const handleSelectIngredients = () => {
   const ingredient = refs.selectFoodEl.value;
+  clearGallery();
   filterFood(ingredient)
     .then(data => {
-      if(data.results.length === 0){
+      if (data.results.length === 0) {
         clearGallery();
         return render();
       }
       clearGallery();
       createMarkup(data.results);
+      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+      jsSeeRecipeBtnRef.forEach(btn => {
+        btn.addEventListener('click', e => {
+          clickModal = e.target.dataset.id;
+          openModal(clickModal);
+        });
+      });
     })
     .catch();
 };
@@ -147,11 +174,9 @@ refs.selectAreaEl.addEventListener('change', handleSelectArea);
 refs.selectFoodEl.addEventListener('change', handleSelectIngredients);
 refs.selectTimeEl.addEventListener('change', handleSelectTime);
 
-
 filterAreas().then(response => {
   renderAreas(response);
 });
-
 
 const renderAreas = areas => {
   const optionsHTML = areas
@@ -205,7 +230,7 @@ const renderIngredients = ingredients => {
 // refs.selectTimeEl.addEventListener('change', renderArea);
 
 let page = 1;
-const limit = 9;
+let limit = 6;
 
 const handleResetFilters = () => {
   refs.filterInputEl.value = '';
@@ -214,26 +239,38 @@ const handleResetFilters = () => {
   refs.selectAreaEl.value = 'region';
   refs.galleryListEl.innerHTML = '';
   pageCards(page, limit)
-  .then(data => {
-    const totalItems = data.results.length * data.totalPages;
-    createMarkup(data.results);
-    if(windowWidth >768){
-      tuiPagination("",totalItems, limit,3); 
-    }else if(windowWidth < 768){
-      tuiPagination("",totalItems, limit,2); 
-    }
-  })
-  .catch();
-
+    .then(data => {
+      const totalItems = data.results.length * data.totalPages;
+      createMarkup(data.results);
+      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+      jsSeeRecipeBtnRef.forEach(btn => {
+        btn.addEventListener('click', e => {
+          clickModal = e.target.dataset.id;
+          openModal(clickModal);
+        });
+      });
+      if (windowWidth > 768) {
+        limit = 8;
+        tuiPagination('', totalItems, limit, 3);
+        return;
+      } else if (windowWidth < 768) {
+        limit = 6;
+        tuiPagination('', totalItems, limit, 2);
+        return;
+      } else {
+        limit = 9;
+        tuiPagination('', totalItems, limit, 3);
+        return;
+      }
+    })
+    .catch();
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);
-
 
 function createArrayWithStep(start, end, step) {
   const result = [];
   for (let i = start; i <= end; i += step) {
     result.push(i);
-    
   }
   return result;
 }
@@ -243,9 +280,10 @@ const valuesArr = createArrayWithStep(5, 120, 5);
 createOptions(valuesArr);
 
 function createOptions(arr) {
-  const markup = arr.map(option => `<option value="${option}" class="select-option">${option} min</option>`);
+  const markup = arr.map(
+    option =>
+      `<option value="${option}" class="select-option">${option} min</option>`
+  );
   refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
-  refs.selectTimeEl.style.overflow = "auto"
+  refs.selectTimeEl.style.overflow = 'auto';
 }
-
-

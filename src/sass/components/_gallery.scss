@@ -18,15 +18,35 @@
   }
 }
 
-.icon-heart {
-  svg:hover,
-  svg:focus {
-    fill: red;
-    stroke: red;
-  }
+.heart-svg-button {
+  background-color: transparent;
+  line-height: 0;
+  border: none;
 }
 
-.list-cards{
+.heart-svg-button:hover .svg,
+.heart-svg-button:focus .svg {
+  fill: red;
+  stroke: red;
+}
+
+.svg {
+  transition: all 100ms ease;
+}
+
+// .svg:hover,
+// .svg:focus {
+//   fill: red;
+//   stroke: red;
+// }
+
+// svg:hover,
+// svg:focus {
+//   fill: red;
+//   stroke: red;
+// }
+
+.list-cards {
   margin-right: 50px;
 }
 
@@ -62,9 +82,7 @@
     margin-right: 4px;
   }
 
-  
-
-  .title-cards{
+  .title-cards {
     line-height: 1.28;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -79,7 +97,7 @@
     }
     .rating-wrap {
     }
-    
+
     ul {
       margin-top: 0;
       li {
@@ -108,8 +126,21 @@
 }
 
 @media screen and (min-width: 375px) {
-  .list-cards{
+  .list-cards {
     margin-right: 98px;
+  }
+
+  .gallery-container {
+    ul {
+      > li {
+        // &:nth-child(odd) {
+        //   margin-right: 16px;
+        // }
+        img {
+          object-fit: cover;
+        }
+      }
+    }
   }
 }
 
@@ -117,42 +148,40 @@
   .cards-and-search-container {
     margin-left: 32px;
   }
-.list-of-cards{
-  gap:16px 16px;
-}
+  .list-of-cards {
+    gap: 16px 16px;
+  }
 
-  .description-rating-container{
-    .rating{
+  .description-rating-container {
+    .rating {
       justify-content: space-between;
-      .button{
+      .button {
         width: 89px;
       }
     }
   }
 
   .description-rating-container {
-    .number{
+    .number {
       margin-right: 2px;
     }
   }
 
-  .list-cards{
+  .list-cards {
     margin-right: 0px;
   }
 
-  .gallery-container{
-    ul{
-      li{
+  .gallery-container {
+    ul {
+      li {
         margin-bottom: 0px;
       }
     }
-  } 
+  }
 
   .gallery-container {
     ul {
       > li {
-        
-
         // &:nth-child(odd) {
         //   margin-right: 16px;
         // }
@@ -160,6 +189,7 @@
           width: 240px;
           height: 264px;
           border-radius: 15px;
+          object-fit: cover;
         }
       }
     }
@@ -167,8 +197,8 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .list-of-cards{
-    gap:32px 16px;
+  .list-of-cards {
+    gap: 32px 16px;
   }
   .gallery-container {
     ul {
