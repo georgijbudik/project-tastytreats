@@ -53,14 +53,10 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
     } else {
       pageCards(newPage, limit)
         .then(data => {
-          console.log(data);
           createMarkup(data.results);
-          console.log(1);
           const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-          console.log(jsSeeRecipeBtnRef);
           jsSeeRecipeBtnRef.forEach(btn => {
             btn.addEventListener('click', e => {
-              console.log(e.target.dataset.id);
               openModal(e.target.dataset.id);
             });
           });
