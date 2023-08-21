@@ -12,7 +12,7 @@ let limit = 6;
 export let clickModal = '';
 render();
 
-function render() {
+export function render() {
   if (windowWidth < 768) {
     pageCards(page, limit)
       .then(data => {
