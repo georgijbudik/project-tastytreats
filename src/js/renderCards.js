@@ -7,12 +7,13 @@ const listOfCards = document.querySelector('.list-of-cards');
 const windowWidth = window.innerWidth;
 console.log(windowWidth);
 
-let page = 1;
-let limit = 6;
 export let clickModal = '';
 render();
 
 export function render() {
+  let page = 1;
+  let limit = 6;
+
   if (windowWidth < 768) {
     pageCards(page, limit)
       .then(data => {

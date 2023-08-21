@@ -63,50 +63,151 @@ const clearGallery = () => {
 };
 
 const handleSelectTime = () => {
+  let page = 1;
+  let limit = 6;
   const time = refs.selectTimeEl.value;
+  clearGallery();
 
-  selectTime(time)
-    .then(response => {
-      if (response.results.length === 0) {
-        clearGallery();
-        return render();
-      }
-      const data = response.results;
-      clearGallery();
-      createMarkup(data);
-      console.log(data);
-      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-      jsSeeRecipeBtnRef.forEach(btn => {
-        btn.addEventListener('click', e => {
-          clickModal = e.target.dataset.id;
-          openModal(clickModal);
+  if (windowWidth < 768) {
+    selectTime(time, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 2);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
         });
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-    })
-    .catch();
+  } else if (windowWidth < 1280) {
+    limit = 8;
+    selectTime(time, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  } else {
+    limit = 9;
+    selectTime(time, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 };
 
 const handleSelectArea = () => {
-  const name = refs.selectAreaEl.value;
+  let page = 1;
+  let limit = 6;
+  const area = refs.selectAreaEl.value;
   clearGallery();
-  selectArea(name)
-    .then(response => {
-      if (response.results.length === 0) {
-        clearGallery();
-        return render();
-      }
-      const data = response.results;
-      clearGallery();
-      createMarkup(data);
-      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-      jsSeeRecipeBtnRef.forEach(btn => {
-        btn.addEventListener('click', e => {
-          clickModal = e.target.dataset.id;
-          openModal(clickModal);
+
+  if (windowWidth < 768) {
+    selectArea(area, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 2);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
         });
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-    })
-    .catch();
+  } else if (windowWidth < 1280) {
+    limit = 8;
+    selectArea(area, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  } else {
+    limit = 9;
+    selectArea(area, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 };
 // const createRecipeCard = recipe => {
 //   return `<li>
@@ -147,25 +248,96 @@ const handleSelectArea = () => {
 // };
 
 const handleSelectIngredients = () => {
+  let page = 1;
+  let limit = 6;
   const ingredient = refs.selectFoodEl.value;
   clearGallery();
-  filterFood(ingredient)
-    .then(data => {
-      if (data.results.length === 0) {
-        clearGallery();
-        return render();
-      }
-      clearGallery();
-      createMarkup(data.results);
-      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-      jsSeeRecipeBtnRef.forEach(btn => {
-        btn.addEventListener('click', e => {
-          clickModal = e.target.dataset.id;
-          openModal(clickModal);
+
+  if (windowWidth < 768) {
+    filterFood(ingredient, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 2);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
         });
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-    })
-    .catch();
+  } else if (windowWidth < 1280) {
+    limit = 8;
+    filterFood(ingredient, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  } else {
+    limit = 9;
+    filterFood(ingredient, limit, page)
+      .then(data => {
+        if (data.results.length === 0) {
+          clearGallery();
+          return render();
+        }
+        const totalItems = data.results.length * data.totalPages;
+        createMarkup(data.results);
+        tuiPagination('', totalItems, limit, 3);
+        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+        jsSeeRecipeBtnRef.forEach(btn => {
+          btn.addEventListener('click', e => {
+            clickModal = e.target.dataset.id;
+            openModal(clickModal);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  // // filterFood(ingredient, limit, page)
+  //   .then(data => {
+  //     if (data.results.length === 0) {
+  //       clearGallery();
+  //       return render();
+  //     }
+  //
+  //     clearGallery();
+  //     createMarkup(data.results);
+  //     const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+  //     jsSeeRecipeBtnRef.forEach(btn => {
+  //       btn.addEventListener('click', e => {
+  //         clickModal = e.target.dataset.id;
+  //         openModal(clickModal);
+  //       });
+  //     });
+  //   })
+  //   .catch();
 };
 const debouncedOnChange = debounce(handleInput, 300);
 
@@ -229,15 +401,30 @@ const renderIngredients = ingredients => {
 
 // refs.selectTimeEl.addEventListener('change', renderArea);
 
-let page = 1;
-let limit = 6;
-
 const handleResetFilters = () => {
+  let page = 1;
+  let limit = 6;
+
   refs.filterInputEl.value = '';
   refs.selectTimeEl.value = 'time';
   refs.selectFoodEl.value = 'product';
   refs.selectAreaEl.value = 'region';
   refs.galleryListEl.innerHTML = '';
+
+  if (windowWidth > 768 && windowWidth < 1280) {
+    limit = 8;
+    creatPageCards(page, limit);
+    tuiPagination('', totalItems, limit, 3);
+  } else if (windowWidth < 768) {
+    limit = 6;
+    creatPageCards(page, limit);
+    tuiPagination('', totalItems, limit, 2);
+  } else {
+    limit = 9;
+    creatPageCards(page, limit);
+    tuiPagination('', totalItems, limit, 3);
+  }
+
   pageCards(page, limit)
     .then(data => {
       const totalItems = data.results.length * data.totalPages;
@@ -249,19 +436,6 @@ const handleResetFilters = () => {
           openModal(clickModal);
         });
       });
-      if (windowWidth > 768) {
-        limit = 8;
-        tuiPagination('', totalItems, limit, 3);
-        return;
-      } else if (windowWidth < 768) {
-        limit = 6;
-        tuiPagination('', totalItems, limit, 2);
-        return;
-      } else {
-        limit = 9;
-        tuiPagination('', totalItems, limit, 3);
-        return;
-      }
     })
     .catch();
 };
@@ -286,4 +460,20 @@ function createOptions(arr) {
   );
   refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
   refs.selectTimeEl.style.overflow = 'auto';
+}
+
+function creatPageCards(page, limit) {
+  pageCards(page, limit)
+    .then(data => {
+      const totalItems = data.results.length * data.totalPages;
+      createMarkup(data.results);
+      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+      jsSeeRecipeBtnRef.forEach(btn => {
+        btn.addEventListener('click', e => {
+          clickModal = e.target.dataset.id;
+          openModal(clickModal);
+        });
+      });
+    })
+    .catch();
 }
