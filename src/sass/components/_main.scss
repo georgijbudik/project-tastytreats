@@ -71,8 +71,8 @@
   .tui-next,
   .tui-first,
   .tui-last {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     background-color: $green-color;
     color: $text-color;
     border: none;
@@ -102,6 +102,7 @@
     border-color: $text-color;
   }
 
+
   .tui-prev {
     // margin-left: -2px;
     // margin-right: 14px;
@@ -120,6 +121,11 @@
   .pagination{
     padding-top: 44px;
     gap: 10px;
+
+    .tui-page-btn {
+      width: 44px;
+      height: 44px;
+    }
 
     .tui-first{
       margin-right: -2px;
