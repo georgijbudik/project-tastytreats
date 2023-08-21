@@ -149,10 +149,10 @@
 
 @media (min-width: 768px) {
   .modal-recipe-info {
-    flex-direction: row;
+    // flex-direction: row;
     margin-bottom: 16px;
     justify-content: space-between;
-    align-items: start;
+    // align-items: start;
     gap: 10px;
   }
 }
@@ -178,6 +178,12 @@
 
   border-radius: 35px;
   border: 1px solid $borderColor;
+}
+
+.modal-recipe-info-no-tag-item {
+  color: rgba(5, 5, 5, 0.5);
+  font-size: 14px;
+  line-height: 128.571%;
 }
 
 .modal-recipe-info-rating {
@@ -213,7 +219,7 @@
   font-weight: 500;
   line-height: 128.57%;
 
-  width: 47px;
+  min-width: 10px;
 }
 
 .modal-recipe-ingredient-list {

@@ -1,8 +1,10 @@
 import fetchRecipeById from './api/recipe-info-api';
 import { clickModal } from './renderCards';
+import Notiflix from 'notiflix';
 
 const backdrop = document.querySelector('.popup-backdrop');
 const modalRecipe = document.querySelector('.modal-recipe');
+const modalWrapper = document.querySelector('.modal-wrapper');
 
 const openModalBtn = document.querySelectorAll('[data-action="open"]');
 const closeModalBtn = document.querySelector('[data-action="close"]');
@@ -31,9 +33,16 @@ function escapePressHandler(e) {
 export function openModal(id) {
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
-  backdrop.classList.add('is-visible');
   document.body.style.overflow = 'hidden';
-  fetchRecipeById(id).then(renderModalByRecipe);
+  fetchRecipeById(id).then(data => {
+    Notiflix.Block.init({
+      backgroundColor: 'transparent',
+    });
+    Notiflix.Block.standard('.popup-backdrop');
+    renderModalByRecipe(data);
+    backdrop.classList.add('is-visible');
+    Notiflix.Block.remove('.popup-backdrop');
+  });
 }
 
 function closeModal() {
@@ -45,15 +54,15 @@ function closeModal() {
 
 fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
 
-export function renderModal(e) {
-  if (e.target.classList.contains('js-see-recipe')) {
-    // const jsSeeRecipeBtnRef = document.querySelector('[data-id]');
-    jsSeeRecipeBtnRef.addEventListener('click', e => {
-      console.log(clickModal);
-      fetchRecipeById(clickModal).then(renderModalByRecipe);
-    });
-  }
-}
+// export function renderModal(e) {
+//   if (e.target.classList.contains('js-see-recipe')) {
+//     // const jsSeeRecipeBtnRef = document.querySelector('[data-id]');
+//     jsSeeRecipeBtnRef.addEventListener('click', e => {
+//       console.log(clickModal);
+//       fetchRecipeById(clickModal).then(renderModalByRecipe);
+//     });
+//   }
+// }
 
 function renderModalByRecipe(recipe) {
   const markup = `
@@ -73,7 +82,9 @@ function renderModalByRecipe(recipe) {
         <ul class="modal-recipe-info-tag-list">
         ${recipe.tags
           .map(tag => {
-            return `<li class="modal-recipe-info-tag-item">#${tag}</li>`;
+            return tag !== ''
+              ? `<li class="modal-recipe-info-tag-item">#${tag}</li>`
+              : `<p class="modal-recipe-info-no-tag-item">Sorry, there are no tags for this dish</p>`;
           })
           .join('')}
         </ul>
