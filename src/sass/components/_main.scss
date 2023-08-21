@@ -1,35 +1,31 @@
- $text-color: rgb(5, 5, 5);
- $green-color: #9bb537;
- $light-text-color: #f8f8f8;
+$text-color: rgb(5, 5, 5);
+$green-color: #9bb537;
+$light-text-color: #f8f8f8;
 
 .icon-heart {
   z-index: 1;
   position: absolute;
   cursor: pointer;
-  
+
   top: 16px;
   right: 16px;
 }
-
 
 // .main-container {
 //   display: flex;
 //   align-items: center;
 // }
 
-
 // .cards-and-search-container {
 //   margin-left: 64px;
 // }
-  
 
 .pagination {
-  padding-top: 20px;
+  padding-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 80px;
- 
 
   .tui-page-btn {
     display: flex;
@@ -55,17 +51,14 @@
     cursor: pointer;
   }
 
-
-  .tui-first-child{
+  .tui-first-child {
     margin-right: 8px;
   }
 
-  .tui-last-child{
+  .tui-last-child {
     margin-left: 8px;
     margin-right: 14px;
   }
-  
-
 
   .tui-prev,
   .tui-next,
@@ -79,12 +72,11 @@
     border-radius: 50%;
   }
 
-  .tui-prev{
+  .tui-prev {
     margin-right: 14px;
   }
 
-  
-  .tui-next{
+  .tui-next {
     margin-right: 4px;
   }
 
@@ -111,70 +103,60 @@
     // margin-left: 14px;
   }
 
-  .tui-first{
+  .tui-first {
     margin-right: 4px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .pagination{
-    padding-top: 44px;
+  .pagination {
+    padding-top: 64px;
     gap: 10px;
 
-    .tui-first{
+    .tui-first {
       margin-right: -2px;
     }
-    .tui-prev{
-       margin-right: 14px;
+    .tui-prev {
+      margin-right: 14px;
     }
-    .tui-first-child{
+    .tui-first-child {
       margin-right: 0px;
     }
-    .tui-last-child{
+    .tui-last-child {
       margin-right: 0px;
       margin-left: 0px;
     }
-    .tui-next{
+    .tui-next {
       margin-left: 14px;
       margin-right: 0px;
     }
-    .tui-last{
+    .tui-last {
       margin-left: -2px;
     }
   }
-  
 }
-
-
 
 @media screen and (min-width: 1280px) {
   .pagination {
     gap: 10px;
-    .tui-first{
+    .tui-first {
       margin-right: 0px;
     }
-    .tui-prev{
-       margin-right: 14px;
+    .tui-prev {
+      margin-right: 14px;
     }
-    .tui-first-child{
+    .tui-first-child {
       margin-right: 0px;
     }
-    .tui-last-child{
+    .tui-last-child {
       margin-right: 14px;
       margin-left: 0px;
     }
-    .tui-next{
+    .tui-next {
       margin-right: 0px;
     }
   }
-  
 
- 
-  
-  .tui-last-child{
-    
+  .tui-last-child {
   }
-  
 }
-
-

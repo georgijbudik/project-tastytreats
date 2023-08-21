@@ -6,7 +6,6 @@
 
     > li {
       position: relative;
-      margin-bottom: 24px;
 
       img {
         filter: brightness(75%);
@@ -18,6 +17,10 @@
   }
 }
 
+.list-of-cards {
+  gap: 24px;
+}
+
 .icon-heart {
   svg:hover,
   svg:focus {
@@ -26,7 +29,7 @@
   }
 }
 
-.list-cards{
+.list-cards {
   margin-right: 50px;
 }
 
@@ -62,9 +65,7 @@
     margin-right: 4px;
   }
 
-  
-
-  .title-cards{
+  .title-cards {
     line-height: 1.28;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -77,9 +78,6 @@
       display: flex;
       align-items: center;
     }
-    .rating-wrap {
-    }
-    
     ul {
       margin-top: 0;
       li {
@@ -108,7 +106,7 @@
 }
 
 @media screen and (min-width: 375px) {
-  .list-cards{
+  .list-cards {
     margin-right: 98px;
   }
 }
@@ -117,42 +115,40 @@
   .cards-and-search-container {
     margin-left: 32px;
   }
-.list-of-cards{
-  gap:16px 16px;
-}
+  .list-of-cards {
+    gap: 16px 16px;
+  }
 
-  .description-rating-container{
-    .rating{
+  .description-rating-container {
+    .rating {
       justify-content: space-between;
-      .button{
+      .button {
         width: 89px;
       }
     }
   }
 
   .description-rating-container {
-    .number{
+    .number {
       margin-right: 2px;
     }
   }
 
-  .list-cards{
+  .list-cards {
     margin-right: 0px;
   }
 
-  .gallery-container{
-    ul{
-      li{
+  .gallery-container {
+    ul {
+      li {
         margin-bottom: 0px;
       }
     }
-  } 
+  }
 
   .gallery-container {
     ul {
       > li {
-        
-
         // &:nth-child(odd) {
         //   margin-right: 16px;
         // }
@@ -167,8 +163,8 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .list-of-cards{
-    gap:32px 16px;
+  .list-of-cards {
+    gap: 32px 16px;
   }
   .gallery-container {
     ul {
