@@ -171,22 +171,6 @@
   }
 }
 
-.gallery-container {
-  ul {
-    > li {
-      // &:nth-child(odd) {
-      //   margin-right: 16px;
-      // }
-      img {
-        width: 240px;
-        height: 264px;
-        border-radius: 15px;
-        object-fit: cover;
-      }
-    }
-  }
-}
-
 @media screen and (min-width: 1280px) {
   .list-of-cards {
     gap: 32px 16px;
