@@ -8,6 +8,7 @@ import { openModal } from './pop-up';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
+let clickModal = '';
 
 export const tuiPagination = (category, totalPages, limit, visiblePages) => {
   const pagination = new Pagination(paginationElement, {
@@ -63,7 +64,7 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
   });
 };
 
-function clickBtnModal(){
+function clickBtnModal() {
   const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
   jsSeeRecipeBtnRef.forEach(btn => {
     btn.addEventListener('click', e => {

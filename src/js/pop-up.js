@@ -2,6 +2,7 @@ import fetchRecipeById from './api/recipe-info-api';
 import { clickModal } from './renderCards';
 import Notiflix from 'notiflix';
 
+const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
 const modalRecipe = document.querySelector('.modal-recipe');
 const modalWrapper = document.querySelector('.modal-wrapper');
@@ -22,11 +23,17 @@ function outerClickHandler(e) {
   if (e.target === backdrop) {
     closeModal();
   }
+  if (e.target === ratingModal) {
+    ratingModal.classList.remove('is-visible');
+  }
 }
 
 function escapePressHandler(e) {
-  if (e.code === 'Escape') {
+  if (!ratingModal.classList.contains('is-visible') && e.code === 'Escape') {
     closeModal();
+  }
+  if (ratingModal.classList.contains('is-visible') && e.code === 'Escape') {
+    ratingModal.classList.remove('is-visible');
   }
 }
 
@@ -36,11 +43,17 @@ export function openModal(id) {
   document.body.style.overflow = 'hidden';
   fetchRecipeById(id).then(data => {
     Notiflix.Block.init({
-      // backgroundColor: 'transparent',
+      backgroundColor: 'transparent',
     });
     Notiflix.Block.standard('.popup-backdrop');
     renderModalByRecipe(data);
     backdrop.classList.add('is-visible');
+    const openRatingModalBtn = document.querySelector('[data-rating-open]');
+    openRatingModalBtn.addEventListener('click', () => {
+      window.addEventListener('mousedown', outerClickHandler);
+      window.addEventListener('keydown', escapePressHandler);
+      ratingModal.classList.add('is-visible');
+    });
     Notiflix.Block.remove('.popup-backdrop');
   });
 }

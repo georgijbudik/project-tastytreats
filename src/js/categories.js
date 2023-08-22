@@ -16,6 +16,7 @@ let limit = 6;
 let selectedCategoryId = null;
 let category = '';
 const windowWidth = window.innerWidth;
+let clickModal = '';
 
 btnAllCategories.addEventListener('click', handleResetCategory);
 listOfCategories.addEventListener('click', handleSelectCategory);
@@ -45,7 +46,6 @@ function handleSelectCategory(evt) {
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
           clickBtnModal();
-          
         })
         .catch(error => {
           console.error('Error:', error);
@@ -66,7 +66,7 @@ function handleSelectCategory(evt) {
   }
 }
 
-function clickBtnModal(){
+function clickBtnModal() {
   const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
   jsSeeRecipeBtnRef.forEach(btn => {
     btn.addEventListener('click', e => {
@@ -95,7 +95,7 @@ const fetchAllCategories = () => {
   fetchCategories()
     .then(response => {
       const { data } = response;
-      
+
       listOfCategories.insertAdjacentHTML(
         'beforeend',
         createMarkupOfCategories(data)
@@ -107,4 +107,3 @@ const fetchAllCategories = () => {
 };
 
 fetchAllCategories();
-
