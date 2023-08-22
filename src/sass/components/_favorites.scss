@@ -1,7 +1,7 @@
 .favorites-img {
   background-image: url(/src/images/favorite-mob.jpg);
   background-size: contain;
-  height: 526px;
+  height: 516px;
   width: 335px;
   background-repeat: no-repeat;
   margin-left: auto;
@@ -9,6 +9,7 @@
   display: flex;
   margin-bottom: 40px;
   margin-top: 50px;
+  border-radius: 15px;
 }
 .food-type-list {
   display: flex;
@@ -24,6 +25,7 @@
   margin-bottom: 32px;
   flex-direction: column;
 }
+
 .btn {
   padding: 14px 18px;
   border: 1px solid rgba(5, 5, 5, 0.2);
