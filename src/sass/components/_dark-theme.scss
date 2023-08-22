@@ -50,7 +50,7 @@ body.dark-theme {
 }
 
 .dark-theme .is-active {
-  color: #9BB537;
+  color: #9bb537;
 }
 
 // order now and rating
@@ -163,9 +163,11 @@ body.dark-theme {
 .dark-theme .modal-recipe-rating-button {
   color: $darkThemePrimaryTextColor;
 }
-
+.dark-theme .modal-recipe-info-no-tag-item {
+  color: rgba(255, 255, 255, 0.5);
+}
 .dark-theme .modal-recipe-add-button {
-  color: $darkThemePrimaryTextColor;
+  color: #050505;
 }
 
 //hero dark
@@ -311,5 +313,5 @@ body.dark-theme {
 }
 
 .dark-theme .is-active {
-  color: #9BB537;
+  color: #9bb537;
 }

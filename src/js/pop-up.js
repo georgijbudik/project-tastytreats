@@ -5,7 +5,6 @@ import Notiflix from 'notiflix';
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
 const modalRecipe = document.querySelector('.modal-recipe');
-const modalWrapper = document.querySelector('.modal-wrapper');
 
 const openModalBtn = document.querySelectorAll('[data-action="open"]');
 const closeModalBtn = document.querySelector('[data-action="close"]');
