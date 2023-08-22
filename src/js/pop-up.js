@@ -66,6 +66,7 @@ function closeModal() {
 }
 
 fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
+// fetchRecipeById(idPopularRecipes[0]).then(renderModalByRecipe);
 
 // export function renderModal(e) {
 //   if (e.target.classList.contains('js-see-recipe')) {
