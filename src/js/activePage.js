@@ -7,3 +7,12 @@ activePage.forEach(function(isActive){
         isActive.classList.add('is-active')
     }
 })
+
+const footerActivePage = document.querySelectorAll('.nav-li-deep');
+
+footerActivePage.forEach(function(isActive){
+    if(isActive.href === currentPage){
+        isActive.classList.add('is-active')
+    }
+})
+console.log(footerActivePage);
