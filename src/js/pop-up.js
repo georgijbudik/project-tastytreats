@@ -2,6 +2,7 @@ import fetchRecipeById from './api/recipe-info-api';
 import { clickModal } from './renderCards';
 import Notiflix from 'notiflix';
 import { createRatingInModal } from './rating';
+import SPRITE from '../images/sprite/sprite.svg';
 
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
@@ -83,7 +84,8 @@ function renderModalByRecipe(recipe) {
   const markup = `
       <div class="modal-recipe-name-and-img">
         <h2 class="modal-recipe-name">${recipe.title}</h2>
-        <img class="modal-recipe-img" src="${recipe.preview}" alt="${
+        <div class="modal-recipe-video-wrapper">
+           <img class="modal-recipe-img" src="${recipe.preview}" alt="${
     recipe.title
   }" style="background: linear-gradient(
       0deg,
@@ -91,17 +93,28 @@ function renderModalByRecipe(recipe) {
       rgba(5, 5, 5, 0.4) 100%
     ),
     url('${recipe.thumb}'), lightgray -34.64px -20px / 109.993% 120%;"/>
+<a href="${
+    recipe.youtube
+  }" class="modal-recipe-video-youtube-button" target="_blank">
+<svg class="modal-recipe-video-youtube-svg" width="40" height="40">
+<use href="${SPRITE}#icon-youtube"></use>
+</svg>
+</a>
+        </div>
       </div>
 
       <div class="modal-recipe-info">
         <ul class="modal-recipe-info-tag-list">
-        ${recipe.tags
-          .map(tag => {
-            return tag !== ''
-              ? `<li class="modal-recipe-info-tag-item">#${tag}</li>`
-              : `<p class="modal-recipe-info-no-tag-item">Sorry, there are no tags for this dish</p>`;
-          })
-          .join('')}
+        ${
+          recipe.tags.length === 0 || recipe.tags[0] === ''
+            ? `<li class="modal-recipe-info-no-tag-item">Sorry, there are no tags for this dish</li>`
+            : recipe.tags
+                .filter(tag => tag.length > 0)
+                .map(tag => {
+                  return `<li class="modal-recipe-info-tag-item">#${tag}</li>`;
+                })
+                .join('')
+        }
         </ul>
         <div class="modal-recipe-info-rating">
           <p class="modal-recipe-info-rating-points">${recipe.rating}</p>

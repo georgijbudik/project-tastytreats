@@ -32,13 +32,27 @@
   background: $primaryWhite;
   padding: 40px 20px;
   height: 90%;
-  width: 80%;
   max-width: 335px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   overflow: auto;
 
   transform: scale(0.8);
   transition: transform $cubic-bezier;
+}
+
+.modal-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-wrapper::-webkit-scrollbar-track {
+  height: 110%;
+  border-radius: 8px;
+  background-color: transparent;
+}
+
+.modal-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: $accentColor;
 }
 
 .popup-backdrop.is-visible .modal-wrapper {
@@ -95,6 +109,22 @@
     transform: rotate(180deg);
   }
 }
+
+.modal-recipe-video-wrapper {
+  position: relative;
+}
+
+.modal-recipe-video-youtube-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.modal-recipe-video-youtube-svg {
+  stroke: red;
+  fill: red;
+  cursor: pointer;
+}
+
 .modal-recipe-name-and-img {
   display: flex;
   flex-direction: column-reverse;
@@ -150,10 +180,8 @@
 
 @media (min-width: 768px) {
   .modal-recipe-info {
-    // flex-direction: row;
     margin-bottom: 16px;
     justify-content: space-between;
-    // align-items: start;
     gap: 10px;
   }
 }
@@ -161,7 +189,8 @@
 .modal-recipe-info-tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 4;
+  justify-content: center;
+  gap: 8px;
 }
 
 .modal-recipe-info-tag-item {
