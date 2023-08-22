@@ -43,7 +43,7 @@ export function openModal(id) {
   document.body.style.overflow = 'hidden';
   fetchRecipeById(id).then(data => {
     Notiflix.Block.init({
-      backgroundColor: 'transparent',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
     });
     Notiflix.Block.standard('.popup-backdrop');
     renderModalByRecipe(data);
@@ -64,18 +64,6 @@ function closeModal() {
   backdrop.classList.remove('is-visible');
   document.body.style.overflow = 'auto';
 }
-
-fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
-
-// export function renderModal(e) {
-//   if (e.target.classList.contains('js-see-recipe')) {
-//     // const jsSeeRecipeBtnRef = document.querySelector('[data-id]');
-//     jsSeeRecipeBtnRef.addEventListener('click', e => {
-//       console.log(clickModal);
-//       fetchRecipeById(clickModal).then(renderModalByRecipe);
-//     });
-//   }
-// }
 
 function renderModalByRecipe(recipe) {
   const markup = `
