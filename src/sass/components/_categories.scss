@@ -10,8 +10,7 @@
     width: 174px;
     height: 50px;
     opacity: 50%;
-    background: none;
-    outline: inherit;
+    background-color: transparent;
     border: 1px solid $borderColor;
     border-radius: 15px;
     margin-bottom: 40px;
@@ -19,6 +18,9 @@
     line-height: 0.82;
     font-weight: 500;
     font-size: 18px;
+
+    transition: background-color $cubic-bezier, opacity $cubic-bezier,
+      color $cubic-bezier;
   }
 
   button:hover,
@@ -48,14 +50,14 @@
       font-size: 16px;
       line-height: 0.8;
 
-      opacity: 0.3;
-      color: $text-color;
+      color: rgba(5, 5, 5, 0.3);
       margin-top: 18px;
+
+      transition: all $cubic-bezier;
 
       &:hover,
       &:focus {
         color: $green-color;
-        opacity: 1;
         cursor: pointer;
       }
 

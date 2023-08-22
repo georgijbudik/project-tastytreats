@@ -141,6 +141,19 @@
   padding: 0;
 }
 
+.filters-reset-icon {
+  stroke: $borderColor;
+  margin-right: 4px;
+  transform: rotate(0);
+  transition: all $cubic-bezier;
+}
+
+.filter-reset-btn:hover + .filters-reset-icon,
+.filter-reset-btn:focus + .filters-reset-icon {
+  stroke: $accentColor;
+  transform: rotate(180deg);
+}
+
 .filters-select-wrap {
   display: flex;
   margin-bottom: 14px;
@@ -150,17 +163,14 @@
 }
 .button-wrap {
   display: flex;
-  margin-left: auto;
+  // margin-left: auto;
   align-items: center;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  // justify-content: flex-end;
   // margin-left: 660px;
 }
 .filter-container {
   margin-bottom: 20px;
-}
-.filters-reset-icon {
-  stroke: $accentColor;
-  margin-right: 4px;
 }
 
 .search-container {
