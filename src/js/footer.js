@@ -15,39 +15,41 @@ scrollToTheTop.addEventListener('click', () => {
 //   updateLocalStorage(email.value);
 // };
 
-const updateLocalStorage = email => {
-  const feedbackFormState = {
-    email: email,
+const saveInputData = () => {
+  const formData = {
+    email: footInputEl.value,
   };
-
-  localStorage.setItem('email-input', JSON.stringify(feedbackFormState));
+  localStorage.setItem('email-input', JSON.stringify(formData));
 };
-
-footInputEl.addEventListener('input', e => {
-  updateLocalStorage(e.currentTarget.value);
-});
-
+const loadInputData = () => {
+  const savedData = localStorage.getItem('email-input');
+  if (savedData) {
+    const parsedData = JSON.parse(savedData);
+    footInputEl.value = parsedData.email;
+  }
+};
+// loadInputData();
+footInputEl.addEventListener('input', saveInputData);
+loadInputData();
+const clearInputData = () => {
+  localStorage.removeItem('email-input');
+  footInputEl.value = '';
+};
 // localStorage.getItem();
-footInputEl.value = JSON.parse(localStorage.getItem('email-input')).email;
+// footInputEl.value = JSON.parse(localStorage.getItem('email-input')).email;
 // const parsedItem = JSON.parse(getItem);
 // if (parsedItem !== null) {
 //   footInputEl.value = parsedItem.email;
 // }
 
 function onFormElSubmit(event) {
-  const {
-    elements: { email },
-  } = event.currentTarget;
-
   event.preventDefault();
-
   // console.log(JSON.parse(localStorage.getItem('email-input')));
 
-  if (email.value === '') {
+  if (footInputEl.value === '') {
     return Notiflix.Notify.failure('Please, type in the correct email');
   }
-
+  saveInputData();
   Notiflix.Notify.success('Thank you for subscribing! Enjoy your meal!');
-  event.currentTarget.reset();
-  // localStorage.removeItem('email-input');
+  clearInputData(); // localStorage.removeItem('email-input');
 }
