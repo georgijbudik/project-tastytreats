@@ -49,6 +49,10 @@ body.dark-theme {
   stroke: #fff;
 }
 
+.dark-theme .is-active {
+  color: #9BB537;
+}
+
 // order now and rating
 
 .dark-theme .modal-close-icon {
@@ -304,4 +308,8 @@ body.dark-theme {
   background-color: #161616;
   color: #fff;
   border: 1px solid #fff3;
+}
+
+.dark-theme .is-active {
+  color: #9BB537;
 }
