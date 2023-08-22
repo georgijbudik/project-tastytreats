@@ -238,9 +238,9 @@
 }
 
 .modal-rating-disabled::before {
-  content: "★★★★★";
-    display: block;
-    color: rgba(5, 5, 5, 0.10);
+  content: '★★★★★';
+  display: block;
+  color: rgba(5, 5, 5, 0.1);
 }
 
 .modal-rating-active::before {
@@ -251,7 +251,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  color: #EEA10C;
+  color: #eea10c;
 }
 
 .modal-rating-items {

@@ -1,4 +1,4 @@
-import {fetchPopularRecipes} from './api/popular-recipes-api';
+import { fetchPopularRecipes } from './api/popular-recipes-api';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const listRecipes = document.querySelector('.popular-recipes-list');
@@ -17,7 +17,9 @@ function createGalleryRecipes(recipes) {
     .map(({ title, preview, description, _id }) => {
       return `
       <li class="popular-recipes-item">
+      <button class="popular-recipes-img-btn">
        <img class="popular-recipes-img js-see-recipe" src="${preview}" alt="${title}" width="64"  data-id="${_id}"/>
+      </button>
    <div class="popular-recipes-text-wrapper">
     <h3 class="popular-recipes-title">
       ${title}
@@ -32,4 +34,3 @@ function createGalleryRecipes(recipes) {
     .join('');
   listRecipes.insertAdjacentHTML('beforeend', markup);
 }
-

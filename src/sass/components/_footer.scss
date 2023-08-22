@@ -251,5 +251,30 @@
 }
 
 .is-active {
-  color: #9BB537;
+  color: #9bb537;
+}
+
+.scroll-to-the-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0;
+  line-height: 0;
+  background-color: transparent;
+  border: none;
+
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+
+  transition: all $cubic-bezier;
+}
+.scroll-to-the-top-svg {
+  transition: fill $cubic-bezier;
+  fill: #050505;
+}
+
+.scroll-to-the-top-btn:hover .scroll-to-the-top-svg,
+.scroll-to-the-top-btn:focus .scroll-to-the-top-svg {
+  fill: $accentColor;
 }

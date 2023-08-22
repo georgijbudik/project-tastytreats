@@ -281,6 +281,7 @@ const renderIngredients = ingredients => {
 };
 
 const handleResetFilters = () => {
+  refs.resetFilterBtnEl.blur();
   let page = 1;
   let limit = 6;
 
