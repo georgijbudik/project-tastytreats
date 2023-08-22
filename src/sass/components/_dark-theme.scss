@@ -183,12 +183,12 @@ body.dark-theme {
 // all categories dark
 
 .dark-theme .side-bar button {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .dark-theme .side-bar .categories li {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255);
   &:hover {
     transition: color $cubic-bezier;
     color: #9bb537;
