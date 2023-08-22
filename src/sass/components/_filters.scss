@@ -47,22 +47,32 @@
   fill: $placeholderTextColor;
 }
 .filter-wrap {
-  margin-bottom: 14px;
+  height: 68px;
+  width: 335px;
 }
 
 .filters-select-list {
   margin-bottom: 14px;
   display: flex;
   flex-wrap: wrap;
+
+  li:not(:first-child) {
+      margin-top: 14px;
+    }
+
+        li:nth-child(2) {
+          margin-right: 14px;
+        }
+
+        li:nth-child(2),
+        li:nth-child(3) {
+          // margin-top: 14px;
+          width: 160px;
+        }
 }
 .filters-select-item {
-  margin-right: 14px;
   display: flex;
   flex-direction: column;
-
-  :first-child {
-    margin-right: 14px;
-  }
 }
 
 .filters-select {
@@ -72,7 +82,7 @@
   font-weight: 500;
   line-height: 1.28;
 
-  height: 48px;
+  height: 46px;
   padding: 14px 0 14px 0;
   border-radius: 15px;
   border: 1px solid $borderColor;
@@ -125,7 +135,6 @@
 
 
 .search-container {
-  // max-width: 335px;
   margin-left: 0;
 }
 .js-select-food {
@@ -134,14 +143,62 @@
 
 @media screen and (min-width: 768px) {
   .cards-and-search-container {
-    margin-top: -20px;
+    margin-top: -27px;
   }
-  // .filters-input {
-  //   width: 278px;
-  // }
+
+  .filter {
+    display: flex;
+  }
+
+  .filter-wrap {
+    width: 278px;
+    height: 74;
+  }
+
+  .filters-input-wrap {
+    height: 48px;
+  }
+
+  .filters-top-text {
+    font-size: 14px;
+    line-height: 1.28;
+  }
+
+  .filters-select-wrap {
+    flex-wrap: wrap;
+  }
+
+  .filters-select-list {
+    li:nth-child(2) {
+      margin-top: 0;
+      margin-right: 0;
+      margin-left: 16px;
+      width: 125px;
+    }
+
+        li:nth-child(3), li:nth-child(4) {
+          margin-top: 16px;
+        }
+
+        li:nth-child(3) {
+          width: 140px;
+          margin-right: 16px;
+        }
+  }
+
   .filter-wrap {
     display: inline-block;
   }
+
+  .filters-input {
+    width: 278px;
+    height: 48px;
+  }
+
+    .filters-select {
+      height: 48px;
+    }
+
   .js-select-time {
     width: 125px;
   }
@@ -168,16 +225,20 @@
   }
 
   .cards-and-search-container {
-    margin-top: -20px;
     max-width: 790px;
-  }
-
-  .js-filter-input {
-    margin-right: 16px;
   }
 
   .filters-select-list {
     flex-wrap: nowrap;
+    gap: 16px;
+
+    li:nth-child(2),
+    li:nth-child(3),
+    li:nth-child(4) {
+        margin-top: 0;
+        margin-right: 0;
+        margin-left: 0;
+      }
   }
 
   .search-container {
