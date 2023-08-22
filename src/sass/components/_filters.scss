@@ -32,6 +32,9 @@
   border-radius: 15px;
   border: 1px solid $borderColor;
   transition: all $cubic-bezier;
+  background-color: transparent;
+  transition: all $cubic-bezier;
+
   ::placeholder {
     font-style: normal;
     font-weight: 500;
@@ -102,6 +105,7 @@
 }
 
 .filters-select {
+  background-color: transparent;
   color: $placeholderTextColor;
   font-size: 14px;
   font-style: normal;
@@ -135,7 +139,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.33;
-  background-color: $primaryWhite;
+  background-color: transparent;
   outline: none;
   border: none;
   padding: 0;
