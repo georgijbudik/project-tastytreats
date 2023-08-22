@@ -194,7 +194,7 @@ body.dark-theme {
 
 // all categories dark
 
-.dark-theme .side-bar button {
+.dark-theme .side-bar .all-categories-button {
   color: rgba(255, 255, 255);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -259,6 +259,10 @@ body.dark-theme {
 .dark-theme .filter-reset-btn {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .filters-reset-icon {
+  stroke: #ffffff80;
 }
 
 .dark-theme .select-option {
