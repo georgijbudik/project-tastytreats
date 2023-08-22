@@ -16,6 +16,9 @@
   position: relative;
 }
 
+.filter {
+  margin-bottom: 14px;
+}
 .filters-input {
   width: 100%;
   color: $primaryTextColor;
@@ -52,23 +55,22 @@
 }
 
 .filters-select-list {
-  margin-bottom: 14px;
   display: flex;
   flex-wrap: wrap;
 
   li:not(:first-child) {
-      margin-top: 14px;
-    }
+    margin-top: 14px;
+  }
 
-        li:nth-child(2) {
-          margin-right: 14px;
-        }
+  li:nth-child(2) {
+    margin-right: 14px;
+  }
 
-        li:nth-child(2),
-        li:nth-child(3) {
-          // margin-top: 14px;
-          width: 160px;
-        }
+  li:nth-child(2),
+  li:nth-child(3) {
+    // margin-top: 14px;
+    width: 160px;
+  }
 }
 .filters-select-item {
   display: flex;
@@ -115,7 +117,7 @@
   display: flex;
   margin-bottom: 14px;
   select {
-   width: 160px;
+    width: 160px;
   }
 }
 .button-wrap {
@@ -125,14 +127,13 @@
   justify-content: flex-end;
   // margin-left: 660px;
 }
-.filter-container{
+.filter-container {
   margin-bottom: 20px;
 }
 .filters-reset-icon {
   stroke: $accentColor;
   margin-right: 4px;
 }
-
 
 .search-container {
   margin-left: 0;
@@ -153,6 +154,9 @@
   .filter-wrap {
     width: 278px;
     height: 74;
+  }
+  .filter-container {
+    margin-bottom: 14px;
   }
 
   .filters-input-wrap {
@@ -176,14 +180,15 @@
       width: 125px;
     }
 
-        li:nth-child(3), li:nth-child(4) {
-          margin-top: 16px;
-        }
+    li:nth-child(3),
+    li:nth-child(4) {
+      margin-top: 16px;
+    }
 
-        li:nth-child(3) {
-          width: 140px;
-          margin-right: 16px;
-        }
+    li:nth-child(3) {
+      width: 140px;
+      margin-right: 16px;
+    }
   }
 
   .filter-wrap {
@@ -195,9 +200,9 @@
     height: 48px;
   }
 
-    .filters-select {
-      height: 48px;
-    }
+  .filters-select {
+    height: 48px;
+  }
 
   .js-select-time {
     width: 125px;
@@ -211,17 +216,15 @@
 }
 
 @media screen and (min-width: 1280px) {
-
-  .filter-container{
-   > div{
-    display: flex;
+  .filter-container {
+    > div {
+      display: flex;
     }
   }
 
   .button-wrap {
     display: block;
     margin-left: 660px;
-   
   }
 
   .cards-and-search-container {
@@ -235,10 +238,10 @@
     li:nth-child(2),
     li:nth-child(3),
     li:nth-child(4) {
-        margin-top: 0;
-        margin-right: 0;
-        margin-left: 0;
-      }
+      margin-top: 0;
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
 
   .search-container {

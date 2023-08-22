@@ -76,16 +76,12 @@
     width: 176px;
     margin-bottom: 64px;
     .categories {
-      
       ul {
-        
         height: 416px;
         &::-webkit-scrollbar-thumb {
-          
-          height: 116px;
-          
+          height: 201px;
         }
-        li{
+        li {
           margin-top: 24px;
         }
       }
