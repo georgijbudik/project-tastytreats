@@ -2,7 +2,7 @@ import './js/mobile-menu';
 import './js/swiper';
 import './js/filters';
 import './js/pop-up';
-import './js/api/popular-api';
+import './js/popular';
 import './js/categories';
 import './js/renderCards';
 import './js/modal';
