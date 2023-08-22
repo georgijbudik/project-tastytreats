@@ -5,6 +5,7 @@ import { createMarkupOfCard } from './categories';
 import { categorsCards } from './api/gallery-api';
 import { createMarkup } from './createMarkupCards';
 import { openModal } from './pop-up';
+import { createRating } from './rating';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
@@ -49,6 +50,8 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
       categorsCards(category, newPage, limit)
         .then(data => {
           createMarkup(data.results);
+          const ratings = document.querySelectorAll('.rating');
+          createRating(ratings);
         })
         .catch(error => console.log(error.message));
     } else {
@@ -56,6 +59,8 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
         .then(data => {
           createMarkup(data.results);
           clickBtnModal();
+          const ratings = document.querySelectorAll('.rating');
+          createRating(ratings);
         })
         .catch(error => {
           console.error(error.message);

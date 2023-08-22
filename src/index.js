@@ -9,3 +9,4 @@ import './js/modal';
 import './js/changeTheme';
 import './js/footer';
 import './js/activePage';
+import './js/rating';
