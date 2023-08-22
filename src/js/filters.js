@@ -28,13 +28,15 @@ const windowWidth = window.innerWidth;
 
 const handleInput = e => {
   const value = e.target.value.trim();
-
   if (value === '') {
     Notiflix.Notify.warning('Please enter a search term.');
     clearGallery();
     render();
     return;
+  } if(prevSearchQuery === value){
+    return;
   }
+  prevSearchQuery = value;
   let page = 1;
   filterCards(value, page).then(response => {
     const data = response.results;
@@ -44,18 +46,12 @@ const handleInput = e => {
       );
       clearGallery();
       return;
+
     }
     page += 1;
-
     clearGallery();
     createMarkup(data);
-    const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-    jsSeeRecipeBtnRef.forEach(btn => {
-      btn.addEventListener('click', e => {
-        clickModal = e.target.dataset.id;
-        openModal(clickModal);
-      });
-    });
+    clickBtnModal();
   });
 };
 
@@ -79,13 +75,7 @@ const handleSelectTime = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -101,13 +91,7 @@ const handleSelectTime = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -123,13 +107,7 @@ const handleSelectTime = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -153,13 +131,7 @@ const handleSelectArea = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -175,13 +147,7 @@ const handleSelectArea = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -197,13 +163,7 @@ const handleSelectArea = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -228,13 +188,7 @@ const handleSelectIngredients = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -250,13 +204,7 @@ const handleSelectIngredients = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -272,19 +220,12 @@ const handleSelectIngredients = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
-
 };
 const debouncedOnChange = debounce(handleInput, 300);
 
@@ -337,14 +278,7 @@ const handleResetFilters = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch();
   } else if (windowWidth < 768) {
@@ -354,14 +288,7 @@ const handleResetFilters = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
-
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch();
   } else {
@@ -371,33 +298,23 @@ const handleResetFilters = () => {
         const totalItems = data.results.length * data.totalPages;
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
-
-        const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-        jsSeeRecipeBtnRef.forEach(btn => {
-          btn.addEventListener('click', e => {
-            clickModal = e.target.dataset.id;
-            openModal(clickModal);
-          });
-        });
+        clickBtnModal();
       })
       .catch();
   }
 
-  pageCards(page, limit)
-    .then(data => {
-      const totalItems = data.results.length * data.totalPages;
-      createMarkup(data.results);
-      const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-      jsSeeRecipeBtnRef.forEach(btn => {
-        btn.addEventListener('click', e => {
-          clickModal = e.target.dataset.id;
-          openModal(clickModal);
-        });
-      });
-    })
-    .catch();
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);
+
+function clickBtnModal(){
+  const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+  jsSeeRecipeBtnRef.forEach(btn => {
+    btn.addEventListener('click', e => {
+      clickModal = e.target.dataset.id;
+      openModal(clickModal);
+    });
+  });
+}
 
 function createArrayWithStep(start, end, step) {
   const result = [];
@@ -406,9 +323,7 @@ function createArrayWithStep(start, end, step) {
   }
   return result;
 }
-
 const valuesArr = createArrayWithStep(5, 120, 5);
-
 createOptions(valuesArr);
 
 function createOptions(arr) {

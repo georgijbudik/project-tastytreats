@@ -77,8 +77,6 @@ export function createMarkup(arr) {
               <img
                 src="${preview}"
                 alt=""
-                width="335px"
-                height="335px"
               />
               <div class="description-rating-container">
                 <h3 class="title-cards">${title}</h3>

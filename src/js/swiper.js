@@ -51,8 +51,5 @@ function createMarkup(results) {
     });
 
     return eventsArr.join('');
-}
-
-
-    
+}   
 }) ;

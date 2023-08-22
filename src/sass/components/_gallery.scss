@@ -1,6 +1,5 @@
 .gallery-container {
   ul {
-    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
 
@@ -136,6 +135,10 @@
 }
 
 @media screen and (min-width: 768px) {
+
+  // .button-wrap {
+
+  // }
   .cards-and-search-container {
     margin-left: 32px;
   }
@@ -169,16 +172,27 @@
       }
     }
   }
+
+  .gallery-container {
+    ul {
+      > li {
+        img {
+          width: 240px;
+          height: 264px;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 1280px) {
+
+
   .list-of-cards {
     gap: 32px 16px;
   }
   .gallery-container {
     ul {
-      // justify-content: left;
-
       > li {
         &:nth-child(3n) {
           margin-right: 0;

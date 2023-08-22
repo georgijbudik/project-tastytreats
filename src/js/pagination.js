@@ -54,12 +54,7 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
       pageCards(newPage, limit)
         .then(data => {
           createMarkup(data.results);
-          const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-          jsSeeRecipeBtnRef.forEach(btn => {
-            btn.addEventListener('click', e => {
-              openModal(e.target.dataset.id);
-            });
-          });
+          clickBtnModal();
         })
         .catch(error => {
           console.error(error.message);
@@ -67,3 +62,13 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
     }
   });
 };
+
+function clickBtnModal(){
+  const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+  jsSeeRecipeBtnRef.forEach(btn => {
+    btn.addEventListener('click', e => {
+      clickModal = e.target.dataset.id;
+      openModal(clickModal);
+    });
+  });
+}
