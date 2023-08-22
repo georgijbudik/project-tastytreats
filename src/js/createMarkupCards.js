@@ -15,10 +15,12 @@ export function createMarkup(arr) {
                   alt=""
                 />
                 <div class="description-rating-container">
-                  <h3 class="title-cards">${title}</h3>
+                  <h3 class="title-cards">${
+                    title.length > 20 ? title.slice(0, 22) + '...' : title
+                  }</h3>
                   <p>${description}</p>
                   <div class="rating">
-                  <div><p class="number">${rating}</p>
+                  <div><span class="number">${rating}</span>
                   <ul class="list-cards">
                   <li  height="16px">
                     <svg height="14px" viewBox="0 0 32 32" fill="#EEA10C">
