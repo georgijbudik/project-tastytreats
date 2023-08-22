@@ -144,6 +144,7 @@ $light-text-color: #f8f8f8;
 
 @media screen and (min-width: 1280px) {
   .pagination {
+    margin-right: 5px;
     gap: 10px;
     .tui-first {
       margin-right: 0px;

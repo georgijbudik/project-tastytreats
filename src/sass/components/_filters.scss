@@ -17,7 +17,7 @@
 }
 
 .filters-input {
-  width: 280px;
+  width: 100%;
   color: $primaryTextColor;
   font-size: 16px;
   font-style: normal;
@@ -105,7 +105,7 @@
   display: flex;
   margin-bottom: 14px;
   select {
-    width: calc(266 / 2);
+   width: 160px;
   }
 }
 .button-wrap {
@@ -113,16 +113,16 @@
   margin-left: auto;
   align-items: center;
   justify-content: flex-end;
+  // margin-left: 660px;
+}
+.filter-container{
   margin-bottom: 20px;
 }
 .filters-reset-icon {
   stroke: $accentColor;
   margin-right: 4px;
 }
-// .select-wrap {
-//   display: flex;
-//   flex-direction: column;
-// }
+
 
 .search-container {
   // max-width: 335px;
@@ -154,6 +154,19 @@
 }
 
 @media screen and (min-width: 1280px) {
+
+  .filter-container{
+   > div{
+    display: flex;
+    }
+  }
+
+  .button-wrap {
+    display: block;
+    margin-left: 660px;
+   
+  }
+
   .cards-and-search-container {
     margin-top: -20px;
     max-width: 790px;

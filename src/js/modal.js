@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 (() => {
     const refs = {
       openModalBtn: document.querySelector("[data-orderNow-open]"),
@@ -61,12 +63,6 @@ refsData.form.addEventListener('input', (e) => {
             formData.comment = item.comment
             formData.email = item.email
             formData.name = item.name
-        // }   else if(key === "name") {
-        //     formData.name = item.name
-        // }   else if(key === "email") {
-        //     formData.email = item.email
-        // }   else if(key === "comment") {
-        //     formData.comment = item.comment
         }
     }
     formData[e.target.name] = e.target.value;
@@ -78,16 +74,11 @@ refsData.form.addEventListener('input', (e) => {
 
 populateTextarea()
 
-
-
 function onFormSubmit(e) {
     e.preventDefault();
     if(refsData.phone.value === "" || refsData.name.value === "" || refsData.email.value === "") {
-        alert("Всі поля мають бути заповненими");
+        Notiflix.Notify.info("Всі поля мають бути заповненими")
     } else {     
-
-        console.log(formData);
-        // console.log(`message: ${refs.textarea.value}`);
         e.target.reset();
         localStorage.clear();
         item = {};
@@ -97,20 +88,14 @@ function onFormSubmit(e) {
 
 function populateTextarea() {
     for(const key in item) {
-        if(key === "name") {
+        if(key === "name" || key === "email" || key === "phone" || key === "feedback") {
             refsData.name.value = item.name
-        }   else if(key === "email") {
             refsData.email.value = item.email
-        }   else if(key === "phone") {
             refsData.phone.value = item.phone
-        }   else if(key === "feedback") {
             refsData.comment.value = item.feedback
-        }
+        }   
     }
 }
-
-
-
   })();
 
 (() => {
@@ -118,11 +103,9 @@ function populateTextarea() {
       openModalBtn: document.querySelector("[data-rating-open]"),
       closeModalBtn: document.querySelector("[data-rating-close]"),
       modal: document.querySelector("[data-rating-form]"),
-    //   submit: document.querySelector("[data-rating-form-submit]"),
     };
 
     refs.closeModalBtn.addEventListener("click", closeModal);
-    // refs.submit.addEventListener("click", closeModal);
     refs.openModalBtn.addEventListener("click", openModal);
   
     function openModal() {
@@ -167,9 +150,7 @@ function initRatingsModal(){
 
     function initRatingsModal(rating) {
         initRatingModalVars(rating);
-
         setRatingModalActiveWidth();
-
         if (rating.classList.contains('rating__set')) {
             setRatingModal(rating);
         }
@@ -191,7 +172,6 @@ function initRatingsModal(){
             const ratingItemModal = ratingItemsModal[index];
             ratingItemModal.addEventListener("mouseenter", function (e) {
                 initRatingModalVars(rating);
-
                 setRatingModalActiveWidth(ratingItemModal.value)
             });
             ratingItemModal.addEventListener("mouseleave", function (e) {
@@ -221,27 +201,22 @@ function initRatingsModal(){
     
     refsData.form.addEventListener('input', (e) => {
         for(const key in item) {
-            if(key === "email") {
+            if(key === "email" || key === "rating") {
                 formData.email = item.email
-            }   else if(key === "rating") {
                 formData.rating = item.rating
-            }
+            } 
         }
         formData[e.target.name] = e.target.value;
         const formJSON = JSON.stringify(formData);
         localStorage.setItem(STORAGE_KEY, formJSON);
-    
-    
     });
     
     populateTextarea()
     
-    
-    
     function onFormSubmit(e) {
         e.preventDefault();
         if(refsData.email.value === "" || refsData.rating.innerHTML === "0" ) {
-            alert("Всі поля мають бути заповненими");
+            Notiflix.Notify.info("Всі поля мають бути заповненими")
         } else {     
             modal.classList.remove("is-visible");
             console.log(formData);
