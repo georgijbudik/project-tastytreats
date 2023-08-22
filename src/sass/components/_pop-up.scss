@@ -190,7 +190,54 @@
 .modal-recipe-info-rating {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+}
+
+.modal-rating-body {
+  display: flex;
+  position: relative;
+  height: 18px;
+  width: 90px;
+}
+
+.modal-rating-active {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.modal-rating-disabled::before {
+  content: "★★★★★";
+    display: block;
+    color: rgba(5, 5, 5, 0.10);
+}
+
+.modal-rating-active::before {
+  content: '★★★★★';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #EEA10C;
+}
+
+.modal-rating-items {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-rating-item {
+  flex: 0 0 20%;
+  height: 100%;
+  opacity: 0;
 }
 
 .modal-recipe-info-rating-points {

@@ -1,6 +1,7 @@
 import fetchRecipeById from './api/recipe-info-api';
 import { clickModal } from './renderCards';
 import Notiflix from 'notiflix';
+import { createRatingInModal } from './rating';
 
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
@@ -46,6 +47,8 @@ export function openModal(id) {
     });
     Notiflix.Block.standard('.popup-backdrop');
     renderModalByRecipe(data);
+    const ratings = document.querySelectorAll('.modal-recipe-info-rating');
+    createRatingInModal(ratings);
     backdrop.classList.add('is-visible');
     const openRatingModalBtn = document.querySelector('[data-rating-open]');
     openRatingModalBtn.addEventListener('click', () => {
@@ -64,7 +67,7 @@ function closeModal() {
   document.body.style.overflow = 'auto';
 }
 
-fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
+// fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
 
 // export function renderModal(e) {
 //   if (e.target.classList.contains('js-see-recipe')) {
@@ -102,33 +105,18 @@ function renderModalByRecipe(recipe) {
         </ul>
         <div class="modal-recipe-info-rating">
           <p class="modal-recipe-info-rating-points">${recipe.rating}</p>
-          <ul class="modal-recipe-info-rating-stars-list">
-            <li class="modal-recipe-info-rating-star">
-              <svg class="modal-recipe-info-rating-star-svg" viewBox="0 0 32 32">
-                <path d="M13.826 3.262c0.684-2.106 3.663-2.106 4.348 0l1.932 5.945c0.306 0.942 1.184 1.579 2.174 1.579h6.251c2.214 0 3.135 2.833 1.344 4.135l-5.057 3.674c-0.801 0.582-1.136 1.614-0.83 2.556l1.931 5.945c0.684 2.106-1.726 3.857-3.517 2.555l-5.057-3.674c-0.801-0.582-1.886-0.582-2.687 0l-5.057 3.674c-1.791 1.302-4.202-0.45-3.517-2.555l1.932-5.945c0.306-0.942-0.029-1.973-0.83-2.556l-5.057-3.674c-1.791-1.302-0.871-4.135 1.344-4.135h6.251c0.99 0 1.868-0.638 2.174-1.579l1.932-5.945z"></path>
-              </svg>
-            </li>
-            <li class="modal-recipe-info-rating-star">
-              <svg class="modal-recipe-info-rating-star-svg" viewBox="0 0 32 32">
-                <path d="M13.826 3.262c0.684-2.106 3.663-2.106 4.348 0l1.932 5.945c0.306 0.942 1.184 1.579 2.174 1.579h6.251c2.214 0 3.135 2.833 1.344 4.135l-5.057 3.674c-0.801 0.582-1.136 1.614-0.83 2.556l1.931 5.945c0.684 2.106-1.726 3.857-3.517 2.555l-5.057-3.674c-0.801-0.582-1.886-0.582-2.687 0l-5.057 3.674c-1.791 1.302-4.202-0.45-3.517-2.555l1.932-5.945c0.306-0.942-0.029-1.973-0.83-2.556l-5.057-3.674c-1.791-1.302-0.871-4.135 1.344-4.135h6.251c0.99 0 1.868-0.638 2.174-1.579l1.932-5.945z"></path>
-              </svg>
-            </li>
-            <li class="modal-recipe-info-rating-star">
-              <svg class="modal-recipe-info-rating-star-svg" viewBox="0 0 32 32">
-                <path d="M13.826 3.262c0.684-2.106 3.663-2.106 4.348 0l1.932 5.945c0.306 0.942 1.184 1.579 2.174 1.579h6.251c2.214 0 3.135 2.833 1.344 4.135l-5.057 3.674c-0.801 0.582-1.136 1.614-0.83 2.556l1.931 5.945c0.684 2.106-1.726 3.857-3.517 2.555l-5.057-3.674c-0.801-0.582-1.886-0.582-2.687 0l-5.057 3.674c-1.791 1.302-4.202-0.45-3.517-2.555l1.932-5.945c0.306-0.942-0.029-1.973-0.83-2.556l-5.057-3.674c-1.791-1.302-0.871-4.135 1.344-4.135h6.251c0.99 0 1.868-0.638 2.174-1.579l1.932-5.945z"></path>
-              </svg>
-            </li>
-            <li class="modal-recipe-info-rating-star">
-              <svg class="modal-recipe-info-rating-star-svg" viewBox="0 0 32 32">
-                <path d="M13.826 3.262c0.684-2.106 3.663-2.106 4.348 0l1.932 5.945c0.306 0.942 1.184 1.579 2.174 1.579h6.251c2.214 0 3.135 2.833 1.344 4.135l-5.057 3.674c-0.801 0.582-1.136 1.614-0.83 2.556l1.931 5.945c0.684 2.106-1.726 3.857-3.517 2.555l-5.057-3.674c-0.801-0.582-1.886-0.582-2.687 0l-5.057 3.674c-1.791 1.302-4.202-0.45-3.517-2.555l1.932-5.945c0.306-0.942-0.029-1.973-0.83-2.556l-5.057-3.674c-1.791-1.302-0.871-4.135 1.344-4.135h6.251c0.99 0 1.868-0.638 2.174-1.579l1.932-5.945z"></path>
-              </svg>
-            </li>
-            <li class="modal-recipe-info-rating-star">
-              <svg class="modal-recipe-info-rating-star-svg" viewBox="0 0 32 32">
-                <path d="M13.826 3.262c0.684-2.106 3.663-2.106 4.348 0l1.932 5.945c0.306 0.942 1.184 1.579 2.174 1.579h6.251c2.214 0 3.135 2.833 1.344 4.135l-5.057 3.674c-0.801 0.582-1.136 1.614-0.83 2.556l1.931 5.945c0.684 2.106-1.726 3.857-3.517 2.555l-5.057-3.674c-0.801-0.582-1.886-0.582-2.687 0l-5.057 3.674c-1.791 1.302-4.202-0.45-3.517-2.555l1.932-5.945c0.306-0.942-0.029-1.973-0.83-2.556l-5.057-3.674c-1.791-1.302-0.871-4.135 1.344-4.135h6.251c0.99 0 1.868-0.638 2.174-1.579l1.932-5.945z"></path>
-              </svg>
-            </li>
-          </ul>
+          <div class="modal-rating-body">
+            <div class="modal-rating-disabled"></div>
+            <div class="modal-rating-active"></div>
+            <div class="modal-rating-items">
+              <input type="radio" class="modal-rating-item" value="1" name="rating">
+              <input type="radio" class="modal-rating-item" value="2" name="rating">
+              <input type="radio" class="modal-rating-item" value="3" name="rating">
+              <input type="radio" class="modal-rating-item" value="4" name="rating">
+              <input type="radio" class="modal-rating-item" value="5" name="rating">
+            </div>
+          </div>
+                    
           <p class="modal-recipe-info-cooking-time">${recipe.time} min</p>
         </div>
       </div>

@@ -11,6 +11,7 @@ import { createMarkup } from '../js/createMarkupCards';
 import { render } from './renderCards';
 import { tuiPagination } from '../js/pagination';
 import { openModal } from './pop-up';
+import { createRating } from './rating';
 
 const refs = {
   filterInputEl: document.querySelector('.js-filter-input'),
@@ -33,7 +34,8 @@ const handleInput = e => {
     clearGallery();
     render();
     return;
-  } if(prevSearchQuery === value){
+  }
+  if (prevSearchQuery === value) {
     return;
   }
   prevSearchQuery = value;
@@ -46,12 +48,13 @@ const handleInput = e => {
       );
       clearGallery();
       return;
-
     }
     page += 1;
     clearGallery();
     createMarkup(data);
     clickBtnModal();
+    const ratings = document.querySelectorAll('.rating');
+    createRating(ratings);
   });
 };
 
@@ -76,6 +79,8 @@ const handleSelectTime = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -92,6 +97,8 @@ const handleSelectTime = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -108,6 +115,8 @@ const handleSelectTime = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -132,6 +141,8 @@ const handleSelectArea = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -148,6 +159,8 @@ const handleSelectArea = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -164,13 +177,14 @@ const handleSelectArea = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
 };
-
 
 const handleSelectIngredients = () => {
   let page = 1;
@@ -189,6 +203,8 @@ const handleSelectIngredients = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -205,6 +221,8 @@ const handleSelectIngredients = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -221,6 +239,8 @@ const handleSelectIngredients = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -260,7 +280,6 @@ const renderIngredients = ingredients => {
   refs.selectFoodEl.insertAdjacentHTML('beforeend', optionsHTML);
 };
 
-
 const handleResetFilters = () => {
   let page = 1;
   let limit = 6;
@@ -279,6 +298,8 @@ const handleResetFilters = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch();
   } else if (windowWidth < 768) {
@@ -289,6 +310,8 @@ const handleResetFilters = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch();
   } else {
@@ -299,14 +322,15 @@ const handleResetFilters = () => {
         createMarkup(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
+        const ratings = document.querySelectorAll('.rating');
+        createRating(ratings);
       })
       .catch();
   }
-
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);
 
-function clickBtnModal(){
+function clickBtnModal() {
   const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
   jsSeeRecipeBtnRef.forEach(btn => {
     btn.addEventListener('click', e => {

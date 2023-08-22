@@ -6,6 +6,7 @@ import { tuiPagination } from './pagination';
 import { createMarkup } from './createMarkupCards';
 import { render } from './renderCards';
 import { openModal } from './pop-up';
+import { createRating } from './rating';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
@@ -34,6 +35,8 @@ function handleSelectCategory(evt) {
           console.log(createMarkup);
           tuiPagination(category, totalItems, limit, 2);
           clickBtnModal();
+          const ratings = document.querySelectorAll('.rating');
+          createRating(ratings);
         })
         .catch(error => {
           console.error('Error:', error);
@@ -46,6 +49,8 @@ function handleSelectCategory(evt) {
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
           clickBtnModal();
+          const ratings = document.querySelectorAll('.rating');
+          createRating(ratings);
         })
         .catch(error => {
           console.error('Error:', error);
@@ -58,6 +63,8 @@ function handleSelectCategory(evt) {
           createMarkup(data.results);
           tuiPagination(category, totalItems, limit, 3);
           clickBtnModal();
+          const ratings = document.querySelectorAll('.rating');
+          createRating(ratings);
         })
         .catch(error => {
           console.error('Error:', error);
