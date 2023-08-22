@@ -60,11 +60,23 @@
     display: none;
   }
 }
+.popular-recipes-img-btn {
+  padding: 0;
+  line-height: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.popular-recipes-img-btn:hover .popular-recipes-img,
+.popular-recipes-img-btn:focus .popular-recipes-img {
+  box-shadow: 0px 0px 5px 4px $accentColor;
+}
 
 .popular-recipes-img {
   border-radius: 5px;
   max-width: none;
   cursor: pointer;
+  transition: box-shadow $cubic-bezier;
 }
 
 @keyframes tape {

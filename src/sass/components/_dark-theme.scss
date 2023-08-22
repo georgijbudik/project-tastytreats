@@ -20,7 +20,7 @@ body.dark-theme {
 }
 
 .dark-theme .header-order-btn {
-  background-color: #161616;
+  background-color: transparent;
 }
 
 .dark-theme .shopping-icon-use {
@@ -60,9 +60,15 @@ body.dark-theme {
 .dark-theme .modal-close-icon {
   stroke: #fff;
   background-color: #050505;
+  transform: rotate(0);
+  transition: all $cubic-bezier;
   &:hover {
-    stroke: #9bb537;
-    transition: stroke 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
+    stroke: $accentColor;
+    transform: rotate(180deg);
+  }
+  &:focus {
+    stroke: $accentColor;
+    transform: rotate(180deg);
   }
 }
 
@@ -92,12 +98,12 @@ body.dark-theme {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: #050505;
   color: #fff;
+  transition: border-color $cubic-bezier;
   &:hover {
-    transition: border-color 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
-    border-color: #6cb0ff;
+    border-color: $accentColor;
   }
   &:focus {
-    border-color: #6cb0ff;
+    border-color: $accentColor;
   }
 }
 
@@ -105,12 +111,12 @@ body.dark-theme {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: #050505;
   color: #fff;
+  transition: border-color $cubic-bezier;
   &:hover {
-    transition: border-color 0.5s cubic-bezier(0.47, 0.29, 0.84, 1.03);
-    border-color: #6cb0ff;
+    border-color: $accentColor;
   }
   &:focus {
-    border-color: #6cb0ff;
+    border-color: $accentColor;
   }
 }
 
@@ -188,7 +194,7 @@ body.dark-theme {
 
 // all categories dark
 
-.dark-theme .side-bar button {
+.dark-theme .side-bar .all-categories-button {
   color: rgba(255, 255, 255);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -221,9 +227,10 @@ body.dark-theme {
 }
 
 .dark-theme .filters-input {
-  background-color: #161616;
+  background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
+  transition: all $cubic-bezier;
   &:active,
   &:focus {
     border-radius: 15px;
@@ -239,7 +246,7 @@ body.dark-theme {
 }
 
 .dark-theme .filters-select {
-  background: #161616;
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.5);
   &:focus,
@@ -250,8 +257,12 @@ body.dark-theme {
 }
 
 .dark-theme .filter-reset-btn {
-  background-color: #161616;
+  background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .filters-reset-icon {
+  stroke: #ffffff80;
 }
 
 .dark-theme .select-option {

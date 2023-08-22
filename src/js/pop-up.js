@@ -43,10 +43,10 @@ export function openModal(id) {
   window.addEventListener('keydown', escapePressHandler);
   document.body.style.overflow = 'hidden';
   fetchRecipeById(id).then(data => {
-    Notiflix.Block.init({
-      backgroundColor: 'transparent',
-    });
-    Notiflix.Block.standard('.popup-backdrop');
+    // Notiflix.Block.init({
+    //   backgroundColor: 'transparent',
+    // });
+    Notiflix.Block.standard('.body');
     renderModalByRecipe(data);
     const ratings = document.querySelectorAll('.modal-recipe-info-rating');
     createRatingInModal(ratings);
@@ -57,7 +57,7 @@ export function openModal(id) {
       window.addEventListener('keydown', escapePressHandler);
       ratingModal.classList.add('is-visible');
     });
-    Notiflix.Block.remove('.popup-backdrop');
+    Notiflix.Block.remove('.body');
   });
 }
 

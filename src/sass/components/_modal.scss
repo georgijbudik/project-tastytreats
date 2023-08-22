@@ -48,10 +48,10 @@
   outline: transparent;
   transition: border-color $cubic-bezier;
   &:hover {
-    border-color: #6cb0ff;
+    border-color: $accentColor;
   }
   &:focus {
-    border-color: #6cb0ff;
+    border-color: $accentColor;
   }
 }
 
