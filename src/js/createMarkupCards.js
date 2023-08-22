@@ -31,7 +31,7 @@ export function createMarkup(arr) {
                       <input type="radio" class="rating-item" value="5" name="rating">
                   </div>
                   </div>
-                    <div>
+                    <div style="margin-left: auto">
                     <button class="see-recipe-button js-see-recipe" type="button" data-id="${_id}" >
                         See recipe
                       </button>
