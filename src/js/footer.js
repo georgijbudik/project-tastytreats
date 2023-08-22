@@ -5,10 +5,6 @@ footFormEl.addEventListener('submit', onFormElSubmit);
 
 const footInputEl = document.querySelector('.footer-form-email-input');
 const footButtonEl = document.querySelector('.sub-btn');
-const scrollToTheTop = document.querySelector('.scroll-to-the-top');
-scrollToTheTop.addEventListener('click', () => {
-  window.scrollTo(0, 0);
-});
 
 // const userEmail = event => {
 
@@ -53,3 +49,28 @@ function onFormElSubmit(event) {
   Notiflix.Notify.success('Thank you for subscribing! Enjoy your meal!');
   clearInputData(); // localStorage.removeItem('email-input');
 }
+
+const trackElement = document.querySelector('.pagination');
+const scrollToTheTop = document.querySelector('.scroll-to-the-top-btn');
+scrollToTheTop.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
+
+function isElementInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+window.addEventListener('scroll', () => {
+  if (isElementInViewport(trackElement)) {
+    scrollToTheTop.classList.add('is-visible');
+  } else {
+    scrollToTheTop.classList.remove('is-visible');
+  }
+});
