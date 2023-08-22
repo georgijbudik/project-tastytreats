@@ -45,6 +45,7 @@ export function openModal(id) {
     Notiflix.Block.init({
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
     });
+    console.log(1);
     Notiflix.Block.standard('.popup-backdrop');
     renderModalByRecipe(data);
     backdrop.classList.add('is-visible');
