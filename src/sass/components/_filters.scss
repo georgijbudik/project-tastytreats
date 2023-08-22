@@ -51,7 +51,7 @@
 }
 .filter-wrap {
   height: 68px;
-  width: 335px;
+  width: 100%;
 }
 
 .filters-select-list {
@@ -69,9 +69,21 @@
   li:nth-child(2),
   li:nth-child(3) {
     // margin-top: 14px;
-    width: 160px;
+    width: 133px;
   }
 }
+@media screen and (min-width: 375px) {
+  .filter-wrap {
+    width: 335px;
+  }
+  .filters-select-list {
+    li:nth-child(2),
+    li:nth-child(3) {
+      width: 160px;
+    }
+  }
+}
+
 .filters-select-item {
   display: flex;
   flex-direction: column;
