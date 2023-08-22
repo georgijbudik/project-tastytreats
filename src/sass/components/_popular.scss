@@ -47,7 +47,7 @@
 
 .popular-recipes-item {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   gap: 16;
   margin-bottom: 24px;
   p {
@@ -160,6 +160,10 @@
     width: 100%;
   }
 
+  // .popular-recipes-item{
+  //   justify-content: center;
+  // }
+
   .popular-recipes-item {
     margin-bottom: 32px;
     gap: 16;
@@ -170,6 +174,6 @@
   }
 
   .popular-recipes-text-wrapper {
-    width: 96px;
+    width: 155px;
   }
 }

@@ -136,9 +136,6 @@
 
 @media screen and (min-width: 768px) {
 
-  // .button-wrap {
-
-  // }
   .cards-and-search-container {
     margin-left: 32px;
   }
@@ -187,9 +184,12 @@
 
 @media screen and (min-width: 1280px) {
 
+  .cards-and-search-container {
+    margin-left: 64px;
+  }
 
   .list-of-cards {
-    gap: 32px 16px;
+    gap: 20px 16px;
   }
   .gallery-container {
     ul {
