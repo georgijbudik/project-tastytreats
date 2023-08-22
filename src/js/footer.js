@@ -28,7 +28,10 @@ footInputEl.addEventListener('input', e => {
 });
 
 // localStorage.getItem();
-footInputEl.value = JSON.parse(localStorage.getItem('email-input')).email;
+if (JSON.parse(localStorage.getItem('email-input')).email) {
+  footInputEl.value = JSON.parse(localStorage.getItem('email-input')).email;
+}
+
 // const parsedItem = JSON.parse(getItem);
 // if (parsedItem !== null) {
 //   footInputEl.value = parsedItem.email;
