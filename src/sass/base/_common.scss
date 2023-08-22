@@ -53,8 +53,7 @@ body {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
-    padding:0 32px;
-    
+    padding: 0 32px;
   }
 }
 
@@ -63,4 +62,8 @@ body {
     max-width: 1105px;
     padding: 0 12px;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
