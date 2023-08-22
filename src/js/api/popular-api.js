@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 
 const listRecipes = document.querySelector('.popular-recipes-list');
 
@@ -20,7 +20,7 @@ fetchPopularRecipes()
     createGalleryRecipes(response.data);
   })
   .catch(err => {
-    Notify.failure(`❌No popular recipes. Sorry ${err.message} ❌`);
+    Notiflix.Notify.failure(`❌No popular recipes. Sorry ${err.message} ❌`);
     console.log(err);
   });
 
