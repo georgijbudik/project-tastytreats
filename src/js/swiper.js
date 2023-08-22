@@ -17,11 +17,26 @@ swiperWrapperEl.insertAdjacentHTML('beforeend', markup);
 $('.swiper-wrapper').slick({
     dots: true,
     infinite: false,
-  speed: 300,
+  speed: 700,
   slidesToShow: 1,
   slidesToScroll: 1,
   draggable: true,
   swipe: true,
+  arrows: false
+  
+//   responsive: [{
+ 
+//     breakpoint: 1280,
+//     settings: {
+//         speed: 700,
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         draggable: true,
+//         swipe: true,
+//         cssEase: 'ease'
+//     }
+
+//   }]
  
 });
 

@@ -195,9 +195,9 @@
         height: 442px;
         background-position: right -381px bottom -164px;
     }
-    .swiper-container {
-        margin-right: -100px !important;
-    }
+    // .swiper-container {
+    //     margin-right: -100px !important;
+    // }
     .slick-dots {
         width: auto;
         left: 274px;
@@ -205,9 +205,13 @@
 }
 @media screen and (min-width: 1280px) {
     .hero {
-        padding-top: 88px;
+        padding-top: 88px; 
       }
+      .cook-img {
+        width: 191px;
+    }
     .dish-card {
+        width: 555px;
         .dish-img {
             width: 335px;
             height: 293px;
@@ -219,28 +223,35 @@
         }
         h2 {
             bottom: 53px;
-           left: 35px;
+           left: 28px;
             width: 157px;
             font-size: 14px;
             width: 276px;
         }
     } 
+    .dish-img-close {
+        background-position: right -273px bottom -96px;
+        background-size: 300%;
+        border-radius: 14px 0px 0px 14px / 14px 25px 25px 14px;
+  
+    }
     .hero-text-area {
         padding-top: 63px;
         margin-right: 20px;
     }
-   
-    .swiper-container {
-        margin-right: -100px !important;
-    }
-    .hero {
-        .container {
+    
+        .hero-container {
             display: flex;
+            width: 100%;
+           
         }
-    }
+   
     .slick-dots {
         width: auto;
         left: 316px;
+    }
+    .swiper-container {
+        overflow: hidden;
     }
 
 }
