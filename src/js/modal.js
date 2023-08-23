@@ -83,7 +83,7 @@ import Notiflix from 'notiflix';
       refsData.name.value === '' ||
       refsData.email.value === ''
     ) {
-      Notiflix.Notify.info('Всі поля мають бути заповненими');
+      return Notiflix.Notify.info('Всі поля мають бути заповненими');
     } else {
       e.target.reset();
       localStorage.clear();

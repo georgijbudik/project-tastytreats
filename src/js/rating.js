@@ -1,5 +1,3 @@
-import { openModal } from './pop-up';
-
 export function createRating(ratings) {
   let ratingActive, ratingValue;
 

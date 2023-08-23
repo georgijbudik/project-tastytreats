@@ -1,5 +1,4 @@
 import fetchRecipeById from './api/recipe-info-api';
-import { clickModal } from './renderCards';
 import Notiflix from 'notiflix';
 import { createRatingInModal } from './rating';
 import SPRITE from '../images/sprite/sprite.svg';
@@ -67,18 +66,6 @@ function closeModal() {
   backdrop.classList.remove('is-visible');
   document.body.style.overflow = 'auto';
 }
-
-// fetchRecipeById('6462a8f74c3d0ddd28898040').then(renderModalByRecipe);
-
-// export function renderModal(e) {
-//   if (e.target.classList.contains('js-see-recipe')) {
-//     // const jsSeeRecipeBtnRef = document.querySelector('[data-id]');
-//     jsSeeRecipeBtnRef.addEventListener('click', e => {
-//       console.log(clickModal);
-//       fetchRecipeById(clickModal).then(renderModalByRecipe);
-//     });
-//   }
-// }
 
 function renderModalByRecipe(recipe) {
   const markup = `

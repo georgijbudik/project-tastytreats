@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 import { filterAreas } from './api/areas-api';
 import { filterIngredients } from './api/ingredients-api';
-import { filterIngredientCards } from './api/ingredients-api';
 import debounce from 'lodash.debounce';
 import { filterCards, filterFood } from './api/filters-api';
 import { selectTime } from './api/filters-api';

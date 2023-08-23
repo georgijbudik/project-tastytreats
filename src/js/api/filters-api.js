@@ -20,8 +20,3 @@ export const selectArea = (area, limit, page) => {
   const url = `${BASE_URL}?area=${area}&limit=${limit}&page=${page}`;
   return axios.get(url).then(response => response.data);
 };
-
-// export const selectTimeOption = time => {
-//   const url = `${BASE_URL}?time=${time}`;
-//   return axios.get(url).then(response => response.data);
-// };

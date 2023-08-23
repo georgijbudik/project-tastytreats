@@ -1,7 +1,5 @@
 import { fetchCategories } from './api/categories-api';
 import { categorsCards } from './api/gallery-api';
-import { pageCards } from './api/gallery-api';
-import Notiflix from 'notiflix';
 import { tuiPagination } from './pagination';
 import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
 import { render } from './renderCards';

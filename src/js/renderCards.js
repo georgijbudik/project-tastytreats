@@ -1,8 +1,7 @@
 import { pageCards } from './api/gallery-api';
 import { tuiPagination } from '../js/pagination';
-import { renderModal, openModal } from './pop-up';
+import { openModal } from './pop-up';
 import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
-import { initRatings } from './rating';
 import { createRating } from './rating';
 
 const listOfCards = document.querySelector('.list-of-cards');

@@ -1,7 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
-import { createMarkupOfCard } from './categories';
 import { categorsCards } from './api/gallery-api';
 import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
 import { openModal } from './pop-up';
