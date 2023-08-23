@@ -224,7 +224,7 @@ function initRatingsModal() {
   function onFormSubmit(e) {
     e.preventDefault();
     if (refsData.email.value === '' || refsData.rating.innerHTML === '0') {
-      Notiflix.Notify.info('Всі поля мають бути заповненими');
+      return Notiflix.Notify.info('Всі поля мають бути заповненими');
     } else {
       modal.classList.remove('is-visible');
       console.log(formData);
