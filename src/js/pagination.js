@@ -3,7 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
 import { createMarkupOfCard } from './categories';
 import { categorsCards } from './api/gallery-api';
-import { createMarkup } from './createMarkupCards';
+import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
 
@@ -52,14 +52,7 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
           createMarkup(data.results);
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
-          const heartBtn = document.querySelectorAll('.heart-svg-button');
-          heartBtn.forEach(btn => {
-            btn.addEventListener('click', e => {
-              e.currentTarget.blur();
-              const heartSvg = btn.querySelector('.svg');
-              heartSvg.classList.toggle('svg-is-active');
-            });
-          });
+          clickCardHeartIcon();
         })
         .catch(error => console.log(error.message));
     } else {
@@ -69,14 +62,7 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
-          const heartBtn = document.querySelectorAll('.heart-svg-button');
-          heartBtn.forEach(btn => {
-            btn.addEventListener('click', e => {
-              e.currentTarget.blur();
-              const heartSvg = btn.querySelector('.svg');
-              heartSvg.classList.toggle('svg-is-active');
-            });
-          });
+          clickCardHeartIcon();
         })
         .catch(error => {
           console.error(error.message);

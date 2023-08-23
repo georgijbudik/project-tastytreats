@@ -7,7 +7,7 @@ import { filterCards, filterFood } from './api/filters-api';
 import { selectTime } from './api/filters-api';
 import { selectArea } from './api/filters-api';
 import { pageCards } from './api/gallery-api';
-import { createMarkup } from '../js/createMarkupCards';
+import { createMarkup, clickCardHeartIcon } from '../js/createMarkupCards';
 import { render } from './renderCards';
 import { tuiPagination } from '../js/pagination';
 import { openModal } from './pop-up';
@@ -55,6 +55,7 @@ const handleInput = e => {
     clickBtnModal();
     const ratings = document.querySelectorAll('.rating');
     createRating(ratings);
+    clickCardHeartIcon();
   });
 };
 
@@ -81,14 +82,7 @@ const handleSelectTime = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -107,14 +101,7 @@ const handleSelectTime = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -133,14 +120,7 @@ const handleSelectTime = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -167,14 +147,7 @@ const handleSelectArea = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -193,14 +166,7 @@ const handleSelectArea = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -219,14 +185,7 @@ const handleSelectArea = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -253,14 +212,7 @@ const handleSelectIngredients = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -279,14 +231,7 @@ const handleSelectIngredients = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -305,14 +250,7 @@ const handleSelectIngredients = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -373,14 +311,7 @@ const handleResetFilters = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch();
   } else if (windowWidth < 768) {
@@ -393,14 +324,7 @@ const handleResetFilters = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch();
   } else {
@@ -413,14 +337,7 @@ const handleResetFilters = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch();
   }
