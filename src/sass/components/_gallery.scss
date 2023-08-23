@@ -29,12 +29,16 @@
 
 .heart-svg-button:hover .svg,
 .heart-svg-button:focus .svg {
-  fill: red;
   stroke: red;
 }
 
 .svg {
-  transition: all 100ms ease;
+  transition: all 500ms ease;
+}
+
+.svg-is-active {
+  fill: red;
+  stroke: red;
 }
 
 .list-cards {
@@ -145,6 +149,11 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 1.2;
+      transition: color $cubic-bezier;
+      &:hover,
+      &:focus {
+        color: #050505;
+      }
     }
   }
 }

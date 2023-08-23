@@ -24,6 +24,14 @@ export function render() {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -39,6 +47,14 @@ export function render() {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -54,6 +70,14 @@ export function render() {
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
         clickBtnModal();
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -92,7 +116,7 @@ function clickBtnModal() {
 //               <path class="svg" fill="none" opacity="0.9" stroke="#f8f8f8"  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091" d="M15.991 6.848c-2.666-3.117-7.113-3.956-10.451-1.101-3.341 2.854-3.811 7.625-1.188 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.243 0.214 0.364 0.321 0.505 0.364 0.057 0.017 0.123 0.028 0.191 0.028s0.133-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.762-7.834 10.943-10.64 2.624-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.785-2.016-10.451 1.101z"></path>
 //               </svg>
 //               </button>
-              
+
 //               </div>
 //               <img
 //                 src="${preview}"

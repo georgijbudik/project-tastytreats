@@ -81,6 +81,14 @@ const handleSelectTime = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -99,6 +107,14 @@ const handleSelectTime = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -117,6 +133,14 @@ const handleSelectTime = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -143,6 +167,14 @@ const handleSelectArea = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -161,6 +193,14 @@ const handleSelectArea = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -179,6 +219,14 @@ const handleSelectArea = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -205,6 +253,14 @@ const handleSelectIngredients = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -223,6 +279,14 @@ const handleSelectIngredients = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -241,6 +305,14 @@ const handleSelectIngredients = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -301,6 +373,14 @@ const handleResetFilters = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch();
   } else if (windowWidth < 768) {
@@ -313,6 +393,14 @@ const handleResetFilters = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch();
   } else {
@@ -325,6 +413,14 @@ const handleResetFilters = () => {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
+        const heartBtn = document.querySelectorAll('.heart-svg-button');
+        heartBtn.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.currentTarget.blur();
+            const heartSvg = btn.querySelector('.svg');
+            heartSvg.classList.toggle('svg-is-active');
+          });
+        });
       })
       .catch();
   }

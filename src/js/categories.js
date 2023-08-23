@@ -37,6 +37,14 @@ function handleSelectCategory(evt) {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
+          const heartBtn = document.querySelectorAll('.heart-svg-button');
+          heartBtn.forEach(btn => {
+            btn.addEventListener('click', e => {
+              e.currentTarget.blur();
+              const heartSvg = btn.querySelector('.svg');
+              heartSvg.classList.toggle('svg-is-active');
+            });
+          });
         })
         .catch(error => {
           console.error('Error:', error);
@@ -51,6 +59,14 @@ function handleSelectCategory(evt) {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
+          const heartBtn = document.querySelectorAll('.heart-svg-button');
+          heartBtn.forEach(btn => {
+            btn.addEventListener('click', e => {
+              e.currentTarget.blur();
+              const heartSvg = btn.querySelector('.svg');
+              heartSvg.classList.toggle('svg-is-active');
+            });
+          });
         })
         .catch(error => {
           console.error('Error:', error);
@@ -65,6 +81,14 @@ function handleSelectCategory(evt) {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
+          const heartBtn = document.querySelectorAll('.heart-svg-button');
+          heartBtn.forEach(btn => {
+            btn.addEventListener('click', e => {
+              e.currentTarget.blur();
+              const heartSvg = btn.querySelector('.svg');
+              heartSvg.classList.toggle('svg-is-active');
+            });
+          });
         })
         .catch(error => {
           console.error('Error:', error);
