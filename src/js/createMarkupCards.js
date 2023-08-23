@@ -45,6 +45,17 @@ export function createMarkup(arr) {
   listOfCards.insertAdjacentHTML('beforeend', markup);
 }
 
+export function clickCardHeartIcon() {
+  const heartBtn = document.querySelectorAll('.heart-svg-button');
+  heartBtn.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.currentTarget.blur();
+      const heartSvg = btn.querySelector('.svg');
+      heartSvg.classList.toggle('svg-is-active');
+    });
+  });
+}
+
 {
   /* <li  height="16px">
 

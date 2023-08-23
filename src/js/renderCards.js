@@ -1,7 +1,7 @@
 import { pageCards } from './api/gallery-api';
 import { tuiPagination } from '../js/pagination';
 import { renderModal, openModal } from './pop-up';
-import { createMarkup } from './createMarkupCards';
+import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
 import { initRatings } from './rating';
 import { createRating } from './rating';
 
@@ -24,14 +24,7 @@ export function render() {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -47,14 +40,7 @@ export function render() {
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -70,14 +56,7 @@ export function render() {
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);
         clickBtnModal();
-        const heartBtn = document.querySelectorAll('.heart-svg-button');
-        heartBtn.forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.currentTarget.blur();
-            const heartSvg = btn.querySelector('.svg');
-            heartSvg.classList.toggle('svg-is-active');
-          });
-        });
+        clickCardHeartIcon();
       })
       .catch(error => {
         console.error('Error:', error);

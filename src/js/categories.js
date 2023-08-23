@@ -3,7 +3,7 @@ import { categorsCards } from './api/gallery-api';
 import { pageCards } from './api/gallery-api';
 import Notiflix from 'notiflix';
 import { tuiPagination } from './pagination';
-import { createMarkup } from './createMarkupCards';
+import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
 import { render } from './renderCards';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
@@ -37,14 +37,7 @@ function handleSelectCategory(evt) {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
-          const heartBtn = document.querySelectorAll('.heart-svg-button');
-          heartBtn.forEach(btn => {
-            btn.addEventListener('click', e => {
-              e.currentTarget.blur();
-              const heartSvg = btn.querySelector('.svg');
-              heartSvg.classList.toggle('svg-is-active');
-            });
-          });
+          clickCardHeartIcon();
         })
         .catch(error => {
           console.error('Error:', error);
@@ -59,14 +52,7 @@ function handleSelectCategory(evt) {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
-          const heartBtn = document.querySelectorAll('.heart-svg-button');
-          heartBtn.forEach(btn => {
-            btn.addEventListener('click', e => {
-              e.currentTarget.blur();
-              const heartSvg = btn.querySelector('.svg');
-              heartSvg.classList.toggle('svg-is-active');
-            });
-          });
+          clickCardHeartIcon();
         })
         .catch(error => {
           console.error('Error:', error);
@@ -81,14 +67,7 @@ function handleSelectCategory(evt) {
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
-          const heartBtn = document.querySelectorAll('.heart-svg-button');
-          heartBtn.forEach(btn => {
-            btn.addEventListener('click', e => {
-              e.currentTarget.blur();
-              const heartSvg = btn.querySelector('.svg');
-              heartSvg.classList.toggle('svg-is-active');
-            });
-          });
+          clickCardHeartIcon();
         })
         .catch(error => {
           console.error('Error:', error);
