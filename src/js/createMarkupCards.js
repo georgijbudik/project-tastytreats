@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 export function createMarkup(arr) {
   const listOfCards = document.querySelector('.list-of-cards');
   const markup = arr
@@ -45,7 +47,7 @@ export function createMarkup(arr) {
   listOfCards.insertAdjacentHTML('beforeend', markup);
 }
 
-let likedRecipes = [];
+export let likedRecipes = [];
 
 // Load existing data from local storage
 const storedLikedRecipes = localStorage.getItem('liked-recipes');
@@ -61,10 +63,9 @@ export function clickCardHeartIcon() {
       const heartSvg = btn.querySelector('.svg');
       heartSvg.classList.add('svg-is-active');
       btn.disabled = true;
+      Notiflix.Notify.info('You have added this dish to favorites');
       likedRecipes.push(e.currentTarget.dataset.heart);
       localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
-      console.log(likedRecipes);
     });
   });
 }
-

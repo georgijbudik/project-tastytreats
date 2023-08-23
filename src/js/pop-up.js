@@ -2,6 +2,7 @@ import fetchRecipeById from './api/recipe-info-api';
 import Notiflix from 'notiflix';
 import { createRatingInModal } from './rating';
 import SPRITE from '../images/sprite/sprite.svg';
+import { likedRecipes } from './createMarkupCards';
 
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
@@ -52,6 +53,12 @@ export function openModal(id) {
       window.addEventListener('mousedown', outerClickHandler);
       window.addEventListener('keydown', escapePressHandler);
       ratingModal.classList.add('is-visible');
+    });
+    const addToFavouriteBtn = document.querySelector('[data-add-favorite]');
+    addToFavouriteBtn.addEventListener('click', e => {
+      likedRecipes.push(e.currentTarget.dataset.favorite);
+      e.currentTarget.disabled = true;
+      Notiflix.Notify.info('You have added this dish to favorites');
     });
     Notiflix.Block.remove('.body');
   });
@@ -137,6 +144,8 @@ function renderModalByRecipe(recipe) {
       <ul class="modal-recipe-button-list">
         <li class="modal-recipe-button-item">
           <button
+          data-favorite="${recipe._id}"
+          data-add-favorite
             type="button"
             class="modal-recipe-add-button modal-recipe-button"
           >

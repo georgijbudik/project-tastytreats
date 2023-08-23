@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./favorites.js"></script>
   </head>
-  <body>
+  <body class="body">
     <include src="./partials/header.html"></include>
     <div class="container">
       <div class="favorites-img"></div>
@@ -34,5 +34,89 @@
     </div>
 
     <include src="./partials/footer.html"></include>
+
+    <div class="popup-backdrop">
+      <div class="modal-wrapper" id="myModal">
+        <button class="close-modal-button" data-action="close">
+          <svg class="close-modal-button-icon">
+            <use href="./images/sprite/sprite.svg#icon-cross"></use>
+          </svg>
+        </button>
+        <div class="modal-recipe"></div>
+      </div>
+    </div>
+
+    <div data-rating-form class="backdrop">
+      <div z-index: 1000001; class="container-rating-modal">
+        <button data-rating-close type="button" class="transition modal-close">
+          <svg class="modal-close-icon">
+            <use href="./images/sprite/sprite.svg#icon-cross"></use>
+          </svg>
+        </button>
+        <h3 class="modal-rating-title">Rating</h3>
+        <form class="modal-form form rating-modal-form">
+          <div class="form-group">
+            <label class="form-text">
+              <div class="rating-modal rating__set">
+                <span class="rating__value">0</span>
+                <div class="rating__body">
+                  <div class="rating__active"></div>
+                  <div class="rating__items">
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      value="1"
+                      name="rating"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      value="2"
+                      name="rating"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      value="3"
+                      name="rating"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      value="4"
+                      name="rating"
+                    />
+                    <input
+                      type="radio"
+                      class="rating__item"
+                      value="5"
+                      name="rating"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-rating-control">
+                <input
+                  type="email"
+                  class="form-input rating-email-modal"
+                  name="email"
+                  required
+                  placeholder="Enter email"
+                />
+              </div>
+            </label>
+          </div>
+          <div class="form-btn-rating-container">
+            <button
+              data-rating-form-submit
+              type="submit"
+              class="transition form-btn"
+            >
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
