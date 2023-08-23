@@ -63,7 +63,7 @@ export function render() {
   }
 }
 
-function clickBtnModal() {
+export function clickBtnModal() {
   const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
   jsSeeRecipeBtnRef.forEach(btn => {
     btn.addEventListener('click', e => {
