@@ -45,7 +45,13 @@ export function createMarkup(arr) {
   listOfCards.insertAdjacentHTML('beforeend', markup);
 }
 
-const likedRecipes = [];
+let likedRecipes = [];
+
+// Load existing data from local storage
+const storedLikedRecipes = localStorage.getItem('liked-recipes');
+if (storedLikedRecipes) {
+  likedRecipes = JSON.parse(storedLikedRecipes);
+}
 
 export function clickCardHeartIcon() {
   const heartBtn = document.querySelectorAll('.heart-svg-button');
@@ -53,7 +59,8 @@ export function clickCardHeartIcon() {
     btn.addEventListener('click', e => {
       e.currentTarget.blur();
       const heartSvg = btn.querySelector('.svg');
-      heartSvg.classList.toggle('svg-is-active');
+      heartSvg.classList.add('svg-is-active');
+      btn.disabled = true;
       likedRecipes.push(e.currentTarget.dataset.heart);
       localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
       console.log(likedRecipes);

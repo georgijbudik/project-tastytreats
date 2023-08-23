@@ -27,7 +27,7 @@ deleteBtnRef.addEventListener('click', () => {
   localStorage.setItem('liked-recipes', JSON.stringify([]));
   emptyPlaceholderRef.classList.remove('is-hidden');
   deleteBtnRef.classList.add('is-hidden');
-  likedRecipeList.innerHTML = 0;
+  likedRecipeList.innerHTML = '';
 });
 
 function createMarkup(arr) {
