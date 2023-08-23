@@ -1,53 +1,30 @@
-import {fetchEvents} from './api/events-api'
+import { fetchEvents } from './api/events-api';
 $(document).ready(function () {
+  const swiperWrapperEl = document.querySelector('.swiper-wrapper');
 
-// import Swiper from 'swiper';
+  fetchEvents()
+    .then(data => {
+      const markup = createMarkup(data);
+      swiperWrapperEl.insertAdjacentHTML('beforeend', markup);
 
-// import 'swiper/swiper-bundle.css';
+      $('.swiper-wrapper').slick({
+        dots: true,
+        infinite: false,
+        speed: 700,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        draggable: true,
+        swipe: true,
+        arrows: false
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
 
-
-const swiperWrapperEl = document.querySelector('.swiper-wrapper');
-
-
-fetchEvents().then(data => {
-   
-const markup = createMarkup(data);
-swiperWrapperEl.insertAdjacentHTML('beforeend', markup);
-
-$('.swiper-wrapper').slick({
-    dots: true,
-    infinite: false,
-  speed: 700,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  draggable: true,
-  swipe: true,
-  arrows: false
-  
-//   responsive: [{
- 
-//     breakpoint: 1280,
-//     settings: {
-//         speed: 700,
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         draggable: true,
-//         swipe: true,
-//         cssEase: 'ease'
-//     }
-
-//   }]
- 
-});
-
-    
-}).catch(error => {
-    console.error(error);
-});
-
-function createMarkup(results) {
+  function createMarkup(results) {
     const eventsArr = results.map(({ cook, topic }) => {
-        return ` 
+      return ` 
         <div class="swiper-slide">
                     <div class="cook-img" style="background-image: url('${cook.imgUrl}')"></div>
                     <div class="dish-card"> 
@@ -60,11 +37,9 @@ function createMarkup(results) {
                     
                 </div>
                 
-        `
-                
-                ;
+        `;
     });
 
     return eventsArr.join('');
-}   
-}) ;
+  }
+});
