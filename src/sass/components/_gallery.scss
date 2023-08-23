@@ -2,6 +2,7 @@
   ul {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     > li {
       position: relative;
@@ -75,7 +76,7 @@
     font-weight: 400;
     line-height: 1.28;
     margin-right: 4px;
-    max-width: 22px;
+    max-width: 30px;
   }
 
   .title-cards {
