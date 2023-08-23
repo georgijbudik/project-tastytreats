@@ -1,5 +1,36 @@
-export function createMarkup(arr) {
-  const listOfCards = document.querySelector('.list-of-cards');
+import { renderFavoriterecipes } from './api/favorites-api';
+
+const deleteBtnRef = document.querySelector('.favorites-delete-recipes-btn');
+const likedRecipeList = document.querySelector('.favorites-recipe-list');
+const emptyPlaceholderRef = document.querySelector('.empty-meal');
+
+const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
+console.log(likedRecipesArray);
+
+if (likedRecipesArray.length !== 0) {
+  emptyPlaceholderRef.classList.add('is-hidden');
+  deleteBtnRef.classList.remove('is-hidden');
+}
+
+if (!likedRecipesArray || likedRecipesArray.length === 0) {
+  return;
+} else {
+  console.log(likedRecipesArray);
+  for (const recipe of likedRecipesArray) {
+    renderFavoriterecipes(recipe).then(({ data }) => {
+      createMarkup([data]);
+    });
+  }
+}
+
+deleteBtnRef.addEventListener('click', () => {
+  localStorage.setItem('liked-recipes', JSON.stringify([]));
+  emptyPlaceholderRef.classList.remove('is-hidden');
+  deleteBtnRef.classList.add('is-hidden');
+  likedRecipeList.innerHTML = 0;
+});
+
+function createMarkup(arr) {
   const markup = arr
     .map(({ preview, title, description, rating, _id }) => {
       return `<li >
@@ -41,23 +72,5 @@ export function createMarkup(arr) {
               </li>`;
     })
     .join('');
-
-  listOfCards.insertAdjacentHTML('beforeend', markup);
+  likedRecipeList.insertAdjacentHTML('afterbegin', markup);
 }
-
-const likedRecipes = [];
-
-export function clickCardHeartIcon() {
-  const heartBtn = document.querySelectorAll('.heart-svg-button');
-  heartBtn.forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.currentTarget.blur();
-      const heartSvg = btn.querySelector('.svg');
-      heartSvg.classList.toggle('svg-is-active');
-      likedRecipes.push(e.currentTarget.dataset.heart);
-      localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
-      console.log(likedRecipes);
-    });
-  });
-}
-
