@@ -1,9 +1,11 @@
 import Notiflix from 'notiflix';
 
+console.log(document.body.innerHTML);
+
 const refs = {
   // openModalBtn: document.querySelector('data-orderNow-icon-open'),
-  heroOpenBtn: document.querySelector('[data-action="open"]'),
-  openModalBtn: document.querySelector('[data-orderNow-icon-open]'),
+  // heroOpenBtn: document.querySelector('[data-ordernow-icon-open]'),
+  openModalBtn: document.querySelectorAll('[data-orderNow-icon-open]'),
   closeModalBtn: document.querySelector('[data-orderNow-close]'),
   modal: document.querySelector('.backdrop'),
   form: document.querySelector('.order-now-form'),
@@ -17,6 +19,11 @@ const refs = {
   ratingEmail: document.querySelector('.rating-email-modal'),
   ratingValue: document.querySelector('.rating__value'),
 };
+
+// export function openHeroModal() {
+//   const modalBtn = document.querySelector('[data-ordernow-icon-open]');
+//   modalBtn.addEventListener('click', openModal);
+// }
 
 function openModal() {
   window.addEventListener('mousedown', outerClickHandler);
@@ -176,7 +183,6 @@ function initRatingsModal() {
       rating: refs.ratingValue.innerHTML,
       ratingWidth: ratingActive.style.width,
     };
-    console.log(formData);
     localStorage.setItem(
       'rating-email-modal-form-state',
       JSON.stringify(formData)
@@ -213,9 +219,13 @@ function initRatingsModal() {
   // const formJSON = JSON.stringify(refs);
   // localStorage.setItem(STORAGE_KEY, formJSON);
 
-  refs.openModalBtn.addEventListener('click', openRatingModal);
+  refs.openModalBtn.forEach(btn => {
+    btn.addEventListener('click', openRatingModal);
+  });
 }
-refs.openModalBtn.addEventListener('click', openModal);
+refs.openModalBtn.forEach(btn => {
+  btn.addEventListener('click', openModal);
+});
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.form.addEventListener('submit', onFormElSubmit);
-refs.heroOpenBtn.addEventListener('click', openModal);
+// refs.heroOpenBtn.addEventListener('click', openModal);
