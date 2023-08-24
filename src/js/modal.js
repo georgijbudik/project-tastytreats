@@ -172,8 +172,9 @@ function initRatingsModal() {
     const formData = {
       email: refs.ratingEmail.value,
       rating: refs.ratingValue.innerHTML,
+      ratingWidth: ratingActive.style.width,
     };
-    console.log(formData.rating);
+    console.log(formData);
     localStorage.setItem(
       'rating-email-modal-form-state',
       JSON.stringify(formData)
@@ -181,10 +182,13 @@ function initRatingsModal() {
   };
   const loadRatingInputData = () => {
     const savedData = localStorage.getItem('rating-email-modal-form-state');
+
     if (savedData) {
       const parsedData = JSON.parse(savedData);
+
       refs.ratingEmail.value = parsedData.email;
       refs.ratingValue.innerHTML = parsedData.rating;
+      ratingActive.style.width = parsedData.ratingWidth;
     }
   };
   loadRatingInputData();
