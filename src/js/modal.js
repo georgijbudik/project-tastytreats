@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 
 const refs = {
   // openModalBtn: document.querySelector('data-orderNow-icon-open'),
-  heroOpenBtn: document.querySelector('[data-orderNow-open]'),
+  heroOpenBtn: document.querySelector('[data-action="open"]'),
   openModalBtn: document.querySelector('[data-orderNow-icon-open]'),
   closeModalBtn: document.querySelector('[data-orderNow-close]'),
   modal: document.querySelector('.backdrop'),
@@ -70,6 +70,7 @@ function onFormElSubmit(event) {
   console.log(formData);
   Notiflix.Notify.success('Thank you for ordering!');
   clearInputData();
+  closeModal();
 }
 
 function closeModal() {
@@ -217,3 +218,4 @@ function initRatingsModal() {
 refs.openModalBtn.addEventListener('click', openModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.form.addEventListener('submit', onFormElSubmit);
+refs.heroOpenBtn.addEventListener('click', openModal);
