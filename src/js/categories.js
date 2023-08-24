@@ -1,7 +1,8 @@
 import { fetchCategories } from './api/categories-api';
-import { categorsCards } from './api/gallery-api';
+import { categorsCards,createError} from './api/gallery-api';
 import { render } from './renderCards';
 import { callAllOftenedFunctions } from './callFunctions';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
@@ -37,27 +38,36 @@ function handleSelectCategory({ target }) {
     if (windowWidth < 768) {
       categorsCards(category, page, limit)
         .then(({ results, totalPages }) => {
+          Loading.standard('Loading...');
           callAllOftenedFunctions(results, totalPages, category, limit, 2);
+          Loading.remove();
         })
         .catch(error => {
+          createError();
           console.error('Error:', error);
         });
     } else if (windowWidth < 1280) {
       limit = 8;
       categorsCards(category, page, limit)
         .then(({ results, totalPages }) => {
+          Loading.standard('Loading...');
           callAllOftenedFunctions(results, totalPages, category, limit, 3);
+          Loading.remove();
         })
         .catch(error => {
+          createError();
           console.error('Error:', error);
         });
     } else {
       limit = 9;
       categorsCards(category, page, limit)
         .then(({ results, totalPages }) => {
+          Loading.standard('Loading...');
           callAllOftenedFunctions(results, totalPages, category, limit, 3);
+          Loading.remove();
         })
         .catch(error => {
+          createError();
           console.error('Error:', error);
         });
     }
@@ -82,14 +92,19 @@ const createMarkupOfCategories = arr => {
 const fetchAllCategories = () => {
   fetchCategories()
     .then(({ data }) => {
+      Loading.standard('Loading...');
       listOfCategories.insertAdjacentHTML(
         'beforeend',
         createMarkupOfCategories(data)
+        
       );
+      Loading.remove();
     })
     .catch(error => {
+      createError();
       console.log(error.message);
     });
 };
+
 
 fetchAllCategories();

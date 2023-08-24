@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import { createRatingInModal } from './rating';
 import SPRITE from '../images/sprite/sprite.svg';
 import { likedRecipes } from './createMarkupCards';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
@@ -56,9 +57,9 @@ export function openModal(id) {
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
   document.body.style.overflow = 'hidden';
-
+ 
   return fetchRecipeById(id).then(data => {
-    Notiflix.Block.standard('.body');
+       Loading.standard('Loading...');
     const markup = renderModalByRecipe(data);
     modalRecipe.innerHTML = markup;
     const ratings = document.querySelectorAll('.modal-recipe-info-rating');
@@ -71,8 +72,15 @@ export function openModal(id) {
       ratingModal.classList.add('is-visible');
     });
     const addToFavouriteBtn = document.querySelector('[data-add-favorite]');
+    addToFavouriteBtn.addEventListener('click', e => {
+      closeModal();
+      likedRecipes.push(e.currentTarget.dataset.favorite);
+      localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
+      e.currentTarget.disabled = true;
+      Notiflix.Notify.info('You have added this dish to favorites');
+    });
+    Loading.remove();
     addToFavouriteBtn.addEventListener('click', addClickHandler);
-    Notiflix.Block.remove('.body');
   });
 }
 

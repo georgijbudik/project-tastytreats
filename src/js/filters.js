@@ -2,14 +2,16 @@ import Notiflix from 'notiflix';
 import { filterAreas } from './api/areas-api';
 import { filterIngredients } from './api/ingredients-api';
 import debounce from 'lodash.debounce';
-import { filterCards, filterFood } from './api/filters-api';
-import { selectTime } from './api/filters-api';
-import { selectArea } from './api/filters-api';
+import { filterCards, filterFood , selectTime,selectArea,} from './api/filters-api';
 import { pageCards } from './api/gallery-api';
-import { render } from './renderCards';
+import { render,createError} from './renderCards';
 import { callAllOftenedFunctions } from './callFunctions';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Notify } from 'notiflix';
+
 
 const refs = {
+  galleryError:document.querySelector(".gallery-container"),
   filterInputEl: document.querySelector('.js-filter-input'),
   selectTimeEl: document.querySelector('.js-select-time'),
   selectAreaEl: document.querySelector('.js-select-area'),
@@ -40,6 +42,7 @@ const handleInput = e => {
 
   if (windowWidth < 768) {
     filterCards(value, page, limit).then(({ results, totalPages }) => {
+     
       if (results.length === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -50,10 +53,12 @@ const handleInput = e => {
 
       clearGallery();
       callAllOftenedFunctions(results, totalPages, '', limit, 2);
-    });
+     
+    }).catch(createError());
   } else if (windowWidth < 1280) {
     limit = 8;
     filterCards(value, page, limit).then(({ results, totalPages }) => {
+     
       if (results.length === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -64,10 +69,12 @@ const handleInput = e => {
 
       clearGallery();
       callAllOftenedFunctions(results, totalPages, '', limit, 3);
-    });
+     
+    }).catch(createError());
   } else {
     limit = 9;
     filterCards(value, page, limit).then(({ results, totalPages }) => {
+      
       if (results.length === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -77,7 +84,8 @@ const handleInput = e => {
       }
       clearGallery();
       callAllOftenedFunctions(results, totalPages, '', limit, 3);
-    });
+     
+    }).catch(createError());
   }
 };
 
@@ -98,10 +106,12 @@ const handleSelectTime = () => {
           clearGallery();
           return render();
         }
-
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 2);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   } else if (windowWidth < 1280) {
@@ -112,10 +122,12 @@ const handleSelectTime = () => {
           clearGallery();
           return render();
         }
-
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   } else {
@@ -123,12 +135,17 @@ const handleSelectTime = () => {
     selectTime(time, limit, page)
       .then(({ results, totalPages }) => {
         if (results.length === 0) {
+          
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
       .catch(error => {
+
+        createError();
         console.error('Error:', error);
       });
   }
@@ -147,9 +164,12 @@ const handleSelectArea = () => {
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 2);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   } else if (windowWidth < 1280) {
@@ -160,9 +180,12 @@ const handleSelectArea = () => {
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   } else {
@@ -173,9 +196,12 @@ const handleSelectArea = () => {
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
       .catch(error => {
+        createError();
         console.error('Error:', error);
       });
   }
@@ -194,9 +220,12 @@ const handleSelectIngredients = () => {
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 2);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   } else if (windowWidth < 1280) {
@@ -207,9 +236,12 @@ const handleSelectIngredients = () => {
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   } else {
@@ -220,9 +252,12 @@ const handleSelectIngredients = () => {
           clearGallery();
           return render();
         }
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
       .catch(error => {
+        createError()
         console.error('Error:', error);
       });
   }
@@ -275,23 +310,26 @@ const handleResetFilters = () => {
     limit = 8;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 2);
       })
-      .catch();
+      .catch(createError());
   } else if (windowWidth < 768) {
     limit = 6;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
-      .catch();
+      .catch(createError());
   } else {
     limit = 9;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
+        Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
-      .catch();
+      .catch(createError());
   }
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);

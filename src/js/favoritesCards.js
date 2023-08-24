@@ -4,6 +4,7 @@ import { createMarkup } from './createMarkupCards';
 import fetchRecipeById from './api/recipe-info-api';
 import SPRITE from '../images/sprite/sprite.svg';
 import Notiflix from 'notiflix';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 Notiflix.Confirm.init({
   zindex: 100000,
@@ -114,14 +115,14 @@ function removeCardFromFavorite(e) {
       }
       closeModalPopup();
       localStorage.setItem('liked-recipes', JSON.stringify(uniqueLikedRecipes));
-      Notiflix.Block.standard('.body');
+      Loading.standard('Loading...');
       likedRecipeList.innerHTML = '';
       for (const recipe of uniqueLikedRecipes) {
         renderFavoriterecipes(recipe).then(({ data }) => {
           createCards([data]);
         });
       }
-      Notiflix.Block.remove('.body');
+      Loading.remove();
       document.body.style.overflow = 'auto';
     },
     () => {
