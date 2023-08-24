@@ -214,7 +214,6 @@ function initRatingsModal() {
 
   refs.openModalBtn.addEventListener('click', openRatingModal);
 }
-refs.heroOpenBtn.addEventListener('click', openModal);
 refs.openModalBtn.addEventListener('click', openModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.form.addEventListener('submit', onFormElSubmit);
