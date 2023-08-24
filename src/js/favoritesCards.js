@@ -28,7 +28,7 @@ const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
 let uniqueLikedRecipes;
 
 if (likedRecipesArray.length !== 0) {
-  emptyPlaceholderRef.classList.remove('is-visible');
+  emptyPlaceholderRef.classList.remove('empty-meal-is-visible');
   deleteBtnRef.classList.remove('is-hidden');
 }
 
@@ -57,7 +57,7 @@ deleteBtnRef.addEventListener('click', e => {
     'No',
     () => {
       localStorage.setItem('liked-recipes', JSON.stringify([]));
-      emptyPlaceholderRef.classList.add('is-visible');
+      emptyPlaceholderRef.classList.add('empty-meal-is-visible');
       deleteBtnRef.classList.add('is-hidden');
       likedRecipeList.innerHTML = '';
       document.body.style.overflow = 'auto';
@@ -107,7 +107,7 @@ function removeCardFromFavorite(e) {
       );
       if (uniqueLikedRecipes.length === 0) {
         deleteBtnRef.classList.add('is-hidden');
-        emptyPlaceholderRef.classList.add('is-visible');
+        emptyPlaceholderRef.classList.add('empty-meal-is-visible');
       }
       closeModalPopup();
       localStorage.setItem('liked-recipes', JSON.stringify(uniqueLikedRecipes));
