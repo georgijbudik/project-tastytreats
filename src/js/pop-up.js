@@ -10,6 +10,7 @@ const modalRecipe = document.querySelector('.modal-recipe');
 
 const openModalBtn = document.querySelectorAll('[data-action="open"]');
 const closeModalBtn = document.querySelector('[data-action="close"]');
+let clickModal = '';
 
 openModalBtn.forEach(btn => {
   btn.addEventListener('click', e => {
@@ -29,6 +30,17 @@ function outerClickHandler(e) {
   }
 }
 
+export function clickBtnModal() {
+  const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
+  jsSeeRecipeBtnRef.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.currentTarget.blur();
+      clickModal = e.target.dataset.id;
+      openModal(clickModal);
+    });
+  });
+}
+
 function escapePressHandler(e) {
   if (!ratingModal.classList.contains('is-visible') && e.code === 'Escape') {
     closeModal();
@@ -42,6 +54,7 @@ export function openModal(id) {
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
   document.body.style.overflow = 'hidden';
+
   fetchRecipeById(id).then(data => {
     Notiflix.Block.standard('.body');
     const markup = renderModalByRecipe(data);

@@ -6,13 +6,8 @@ import { filterCards, filterFood } from './api/filters-api';
 import { selectTime } from './api/filters-api';
 import { selectArea } from './api/filters-api';
 import { pageCards } from './api/gallery-api';
-import { clickCardHeartIcon } from '../js/createMarkupCards';
 import { render } from './renderCards';
-import { tuiPagination } from '../js/pagination';
-import { openModal } from './pop-up';
-import { createRating } from './rating';
-import { clickBtnModal } from './renderCards';
-import { renderGalleryCard } from '../js/createMarkupCards';
+import { callAllOftenedFunctions } from './callFunctions';
 
 const refs = {
   filterInputEl: document.querySelector('.js-filter-input'),
@@ -24,12 +19,14 @@ const refs = {
   starsListEl: document.querySelector('.rating-stars-list'),
 };
 
-let clickModal = '';
 let prevSearchQuery = '';
+let page = 1;
+let limit = 6;
 const windowWidth = window.innerWidth;
 
 const handleInput = e => {
   const value = e.target.value.trim();
+
   if (value === '') {
     Notiflix.Notify.warning('Please enter a search term.');
     clearGallery();
@@ -40,24 +37,48 @@ const handleInput = e => {
     return;
   }
   prevSearchQuery = value;
-  let page = 1;
-  filterCards(value, page).then(response => {
-    const data = response.results;
-    if (data.length === 0) {
-      Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
+
+  if (windowWidth < 768) {
+    filterCards(value, page, limit).then(({ results, totalPages }) => {
+      if (results.length === 0) {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+        clearGallery();
+        return;
+      }
+
       clearGallery();
-      return;
-    }
-    page += 1;
-    clearGallery();
-    renderGalleryCard(data);
-    clickBtnModal();
-    const ratings = document.querySelectorAll('.rating');
-    createRating(ratings);
-    clickCardHeartIcon();
-  });
+      callAllOftenedFunctions(results, totalPages, '', limit);
+    });
+  } else if (windowWidth < 1280) {
+    limit = 8;
+    filterCards(value, page, limit).then(({ results, totalPages }) => {
+      if (results.length === 0) {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+        clearGallery();
+        return;
+      }
+
+      clearGallery();
+      callAllOftenedFunctions(results, totalPages, '', limit);
+    });
+  } else {
+    limit = 9;
+    filterCards(value, page, limit).then(({ results, totalPages }) => {
+      if (results.length === 0) {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+        clearGallery();
+        return;
+      }
+      clearGallery();
+      callAllOftenedFunctions(results, totalPages, '', limit);
+    });
+  }
 };
 
 const clearGallery = () => {
@@ -72,18 +93,13 @@ const handleSelectTime = () => {
 
   if (windowWidth < 768) {
     selectTime(time, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 2);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -91,18 +107,13 @@ const handleSelectTime = () => {
   } else if (windowWidth < 1280) {
     limit = 8;
     selectTime(time, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -110,18 +121,12 @@ const handleSelectTime = () => {
   } else {
     limit = 9;
     selectTime(time, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -137,18 +142,12 @@ const handleSelectArea = () => {
 
   if (windowWidth < 768) {
     selectArea(area, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 2);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -156,18 +155,12 @@ const handleSelectArea = () => {
   } else if (windowWidth < 1280) {
     limit = 8;
     selectArea(area, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -175,18 +168,12 @@ const handleSelectArea = () => {
   } else {
     limit = 9;
     selectArea(area, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -202,18 +189,12 @@ const handleSelectIngredients = () => {
 
   if (windowWidth < 768) {
     filterFood(ingredient, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 2);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -221,18 +202,12 @@ const handleSelectIngredients = () => {
   } else if (windowWidth < 1280) {
     limit = 8;
     filterFood(ingredient, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -240,18 +215,12 @@ const handleSelectIngredients = () => {
   } else {
     limit = 9;
     filterFood(ingredient, limit, page)
-      .then(data => {
-        if (data.results.length === 0) {
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
           clearGallery();
           return render();
         }
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -305,40 +274,22 @@ const handleResetFilters = () => {
   if (windowWidth > 768 && windowWidth < 1280) {
     limit = 8;
     pageCards(page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+      .then(({ results, totalPages }) => {
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch();
   } else if (windowWidth < 768) {
     limit = 6;
     pageCards(page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 2);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+      .then(({ results, totalPages }) => {
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch();
   } else {
     limit = 9;
     pageCards(page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+      .then(({ results, totalPages }) => {
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch();
   }
