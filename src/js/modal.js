@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 
 const refs = {
   // openModalBtn: document.querySelector('data-orderNow-icon-open'),
+  heroOpenBtn: document.querySelector('[data-orderNow-open]'),
   openModalBtn: document.querySelector('[data-orderNow-icon-open]'),
   closeModalBtn: document.querySelector('[data-orderNow-close]'),
   modal: document.querySelector('.backdrop'),
@@ -172,8 +173,9 @@ function initRatingsModal() {
     const formData = {
       email: refs.ratingEmail.value,
       rating: refs.ratingValue.innerHTML,
+      ratingWidth: ratingActive.style.width,
     };
-    console.log(formData.rating);
+    console.log(formData);
     localStorage.setItem(
       'rating-email-modal-form-state',
       JSON.stringify(formData)
@@ -181,10 +183,13 @@ function initRatingsModal() {
   };
   const loadRatingInputData = () => {
     const savedData = localStorage.getItem('rating-email-modal-form-state');
+
     if (savedData) {
       const parsedData = JSON.parse(savedData);
+
       refs.ratingEmail.value = parsedData.email;
       refs.ratingValue.innerHTML = parsedData.rating;
+      ratingActive.style.width = parsedData.ratingWidth;
     }
   };
   loadRatingInputData();
@@ -209,7 +214,6 @@ function initRatingsModal() {
 
   refs.openModalBtn.addEventListener('click', openRatingModal);
 }
-
 refs.openModalBtn.addEventListener('click', openModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.form.addEventListener('submit', onFormElSubmit);

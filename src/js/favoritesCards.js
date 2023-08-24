@@ -27,8 +27,8 @@ ratingModalCloseBtn.addEventListener('click', () => {
 const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
 let uniqueLikedRecipes;
 
-if (likedRecipesArray) {
-  emptyPlaceholderRef.classList.add('is-hidden');
+if (likedRecipesArray.length !== 0) {
+  emptyPlaceholderRef.classList.remove('empty-meal-is-visible');
   deleteBtnRef.classList.remove('is-hidden');
 }
 
@@ -47,11 +47,25 @@ if (!likedRecipesArray || likedRecipesArray.length === 0) {
   }
 }
 
-deleteBtnRef.addEventListener('click', () => {
-  localStorage.setItem('liked-recipes', JSON.stringify([]));
-  emptyPlaceholderRef.classList.remove('is-hidden');
-  deleteBtnRef.classList.add('is-hidden');
-  likedRecipeList.innerHTML = '';
+deleteBtnRef.addEventListener('click', e => {
+  e.currentTarget.blur();
+  document.body.style.overflow = 'hidden';
+  Notiflix.Confirm.show(
+    'Delete all recipes',
+    'Are you sure you want to delete all the recipes?',
+    'Yes',
+    'No',
+    () => {
+      localStorage.setItem('liked-recipes', JSON.stringify([]));
+      emptyPlaceholderRef.classList.add('empty-meal-is-visible');
+      deleteBtnRef.classList.add('is-hidden');
+      likedRecipeList.innerHTML = '';
+      document.body.style.overflow = 'auto';
+    },
+    () => {
+      document.body.style.overflow = 'auto';
+    }
+  );
 });
 
 function closeModalPopup() {
@@ -80,20 +94,38 @@ function escapePressHandler(e) {
 }
 
 function removeCardFromFavorite(e) {
-  uniqueLikedRecipes = uniqueLikedRecipes.filter(
-    recipe => recipe !== e.currentTarget.dataset.heart
+  const cardToDelete = e.currentTarget.dataset.heart;
+  document.body.style.overflow = 'hidden';
+  Notiflix.Confirm.show(
+    'Delete recipe',
+    'Are you sure you want to delete this recipe from favorites?',
+    'Yes',
+    'No',
+    () => {
+      uniqueLikedRecipes = uniqueLikedRecipes.filter(
+        recipe => recipe !== cardToDelete
+      );
+      if (uniqueLikedRecipes.length === 0) {
+        deleteBtnRef.classList.add('is-hidden');
+        emptyPlaceholderRef.classList.add('empty-meal-is-visible');
+      }
+      closeModalPopup();
+      localStorage.setItem('liked-recipes', JSON.stringify(uniqueLikedRecipes));
+      Notiflix.Block.standard('.body');
+      likedRecipeList.innerHTML = '';
+      for (const recipe of uniqueLikedRecipes) {
+        renderFavoriterecipes(recipe).then(({ data }) => {
+          createCards([data]);
+          createRecipePopup(data);
+        });
+      }
+      Notiflix.Block.remove('.body');
+      document.body.style.overflow = 'auto';
+    },
+    () => {
+      document.body.style.overflow = 'auto';
+    }
   );
-  closeModalPopup();
-  localStorage.setItem('liked-recipes', JSON.stringify(uniqueLikedRecipes));
-  Notiflix.Block.standard('.body');
-  likedRecipeList.innerHTML = '';
-  for (const recipe of uniqueLikedRecipes) {
-    renderFavoriterecipes(recipe).then(({ data }) => {
-      createCards([data]);
-      createRecipePopup(data);
-    });
-  }
-  Notiflix.Block.remove('.body');
 }
 
 function renderMarkup(arr) {
@@ -106,6 +138,8 @@ function createCards(arr) {
   const seeRecipeBtn = document.querySelector('.js-see-recipe');
   const heartIcon = document.querySelector('.heart-svg-button');
   heartIcon.addEventListener('click', removeCardFromFavorite);
+  const heartSvg = heartIcon.querySelectorAll('.svg');
+  heartSvg.forEach(svg => svg.classList.add('svg-is-active'));
   seeRecipeBtn.addEventListener('click', e => {
     e.currentTarget.blur();
     backdrop.classList.add('is-visible');

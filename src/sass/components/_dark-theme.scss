@@ -5,6 +5,13 @@ body.dark-theme {
 .dark-theme .favorites-txt {
   color: rgba(255, 255, 255, 0.5);
 }
+.dark-theme .favorites-delete-recipes-btn {
+  color: #fff;
+}
+.dark-theme .favorites-delete-recipes-btn:hover,
+.dark-theme .favorites-delete-recipes-btn:focus {
+  color: #050505;
+}
 /* HEADER DARK*/
 .dark-theme .header-nav-links {
   color: #fff;

@@ -57,7 +57,9 @@ export function openModal(id) {
     });
     const addToFavouriteBtn = document.querySelector('[data-add-favorite]');
     addToFavouriteBtn.addEventListener('click', e => {
+      closeModal();
       likedRecipes.push(e.currentTarget.dataset.favorite);
+      localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
       e.currentTarget.disabled = true;
       Notiflix.Notify.info('You have added this dish to favorites');
     });
@@ -80,18 +82,20 @@ export function renderModalByRecipe(recipe) {
            <img class="modal-recipe-img" src="${recipe.preview}" alt="${
     recipe.title
   }" style="background: linear-gradient(
-      0deg,
-      rgba(5, 5, 5, 0.4) 0%,
-      rgba(5, 5, 5, 0.4) 100%
-    ),
-    url('${recipe.thumb}'), lightgray -34.64px -20px / 109.993% 120%;"/>
-<a href="${
-    recipe.youtube
-  }" class="modal-recipe-video-youtube-button" target="_blank">
-<svg class="modal-recipe-video-youtube-svg" width="40" height="40">
-<use href="${SPRITE}#icon-youtube"></use>
-</svg>
-</a>
+                0deg,
+                rgba(5, 5, 5, 0.4) 0%,
+                rgba(5, 5, 5, 0.4) 100%
+              ),
+              url('${
+                recipe.thumb
+              }'), lightgray -34.64px -20px / 109.993% 120%;"/>
+          <a href="${
+            recipe.youtube
+          }" class="modal-recipe-video-youtube-button" target="_blank">
+          <svg class="modal-recipe-video-youtube-svg" width="40" height="40">
+          <use href="${SPRITE}#icon-youtube"></use>
+          </svg>
+          </a>
         </div>
       </div>
 

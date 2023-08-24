@@ -10,10 +10,10 @@
   <body class="body">
     <include src="./partials/header.html"></include>
     <main>
-      <div class="container">
+      <div class="container favorite-container">
         <div class="favorites-img"></div>
 
-        <div class="empty-meal">
+        <div class="empty-meal empty-meal-is-visible">
           <svg class="favorites-icon">
             <use href="./images/sprite/sprite.svg#icon-hat"></use>
           </svg>
@@ -23,14 +23,14 @@
             for easier access in the future.
           </p>
         </div>
+        <button class="favorites-delete-recipes-btn is-hidden">
+          Delete all recipes
+        </button>
         <!-- <div class="cards-and-pagination-container"> -->
         <div class="gallery-container">
           <ul class="favorites-recipe-list list-of-cards"></ul>
         </div>
         <!-- </div> -->
-        <button class="favorites-delete-recipes-btn is-hidden">
-          Delete all recipes
-        </button>
       </div>
     </main>
     <include src="./partials/footer.html"></include>
