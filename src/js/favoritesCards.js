@@ -14,7 +14,6 @@ const emptyPlaceholderRef = document.querySelector('.empty-meal');
 const ratingModalCloseBtn = document.querySelector('[data-rating-close]');
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
-const modal = document.querySelector('.modal-recipe');
 const closeModalBtn = document.querySelector('[data-action="close"]');
 
 closeModalBtn.addEventListener('click', () => {
@@ -42,7 +41,7 @@ if (!likedRecipesArray || likedRecipesArray.length === 0) {
   for (const recipe of uniqueLikedRecipes) {
     renderFavoriterecipes(recipe).then(({ data }) => {
       createCards([data]);
-      createRecipePopup(data);
+      // createRecipePopup(data);
     });
   }
 }
@@ -116,7 +115,6 @@ function removeCardFromFavorite(e) {
       for (const recipe of uniqueLikedRecipes) {
         renderFavoriterecipes(recipe).then(({ data }) => {
           createCards([data]);
-          // createRecipePopup(data);
         });
       }
       Notiflix.Block.remove('.body');
