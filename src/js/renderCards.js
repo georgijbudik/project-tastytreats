@@ -12,7 +12,7 @@ export function render() {
   if (windowWidth < 768) {
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 2);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -22,7 +22,7 @@ export function render() {
     limit = 8;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -32,7 +32,7 @@ export function render() {
     limit = 9;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);

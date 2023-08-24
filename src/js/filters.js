@@ -49,7 +49,7 @@ const handleInput = e => {
       }
 
       clearGallery();
-      callAllOftenedFunctions(results, totalPages, '', limit);
+      callAllOftenedFunctions(results, totalPages, '', limit, 2);
     });
   } else if (windowWidth < 1280) {
     limit = 8;
@@ -63,7 +63,7 @@ const handleInput = e => {
       }
 
       clearGallery();
-      callAllOftenedFunctions(results, totalPages, '', limit);
+      callAllOftenedFunctions(results, totalPages, '', limit, 3);
     });
   } else {
     limit = 9;
@@ -76,7 +76,7 @@ const handleInput = e => {
         return;
       }
       clearGallery();
-      callAllOftenedFunctions(results, totalPages, '', limit);
+      callAllOftenedFunctions(results, totalPages, '', limit, 3);
     });
   }
 };
@@ -99,7 +99,7 @@ const handleSelectTime = () => {
           return render();
         }
 
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 2);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -113,7 +113,7 @@ const handleSelectTime = () => {
           return render();
         }
 
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -126,7 +126,7 @@ const handleSelectTime = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -147,7 +147,7 @@ const handleSelectArea = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 2);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -160,7 +160,7 @@ const handleSelectArea = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -173,7 +173,7 @@ const handleSelectArea = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -194,7 +194,7 @@ const handleSelectIngredients = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 2);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -207,7 +207,7 @@ const handleSelectIngredients = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -220,7 +220,7 @@ const handleSelectIngredients = () => {
           clearGallery();
           return render();
         }
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -275,21 +275,21 @@ const handleResetFilters = () => {
     limit = 8;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 2);
       })
       .catch();
   } else if (windowWidth < 768) {
     limit = 6;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch();
   } else {
     limit = 9;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
-        callAllOftenedFunctions(results, totalPages, '', limit);
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
       })
       .catch();
   }
