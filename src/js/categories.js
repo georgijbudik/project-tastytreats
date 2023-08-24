@@ -1,8 +1,8 @@
 import { fetchCategories } from './api/categories-api';
-import { categorsCards,createError} from './api/gallery-api';
-import { render } from './renderCards';
+import { categorsCards} from './api/gallery-api';
 import { callAllOftenedFunctions } from './callFunctions';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { createError,render } from './renderCards';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
