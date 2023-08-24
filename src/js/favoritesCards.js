@@ -24,11 +24,10 @@ closeModalBtn.addEventListener('click', () => {
 ratingModalCloseBtn.addEventListener('click', () => {
   ratingModal.classList.remove('is-visible');
 });
-
 const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
 let uniqueLikedRecipes;
 
-if (likedRecipesArray.length !== 0) {
+if (likedRecipesArray) {
   emptyPlaceholderRef.classList.add('is-hidden');
   deleteBtnRef.classList.remove('is-hidden');
 }

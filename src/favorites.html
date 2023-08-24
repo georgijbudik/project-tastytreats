@@ -9,32 +9,35 @@
   </head>
   <body class="body">
     <include src="./partials/header.html"></include>
-    <div class="container">
-      <div class="favorites-img"></div>
+    <main>
+      <div class="container">
+        <div class="favorites-img"></div>
 
-      <div class="empty-meal">
-        <svg class="favorites-icon">
-          <use href="./images/sprite/sprite.svg#icon-hat"></use>
-        </svg>
-        <p class="favorites-txt">
-          It appears that you haven't added any recipes to your favorites yet.
-          To get started, you can add recipes that you like to your favorites
-          for easier access in the future.
-        </p>
+        <div class="empty-meal">
+          <svg class="favorites-icon">
+            <use href="./images/sprite/sprite.svg#icon-hat"></use>
+          </svg>
+          <p class="favorites-txt">
+            It appears that you haven't added any recipes to your favorites yet.
+            To get started, you can add recipes that you like to your favorites
+            for easier access in the future.
+          </p>
+        </div>
+        <!-- <div class="cards-and-pagination-container"> -->
+        <div class="gallery-container">
+          <ul class="favorites-recipe-list list-of-cards"></ul>
+        </div>
+        <!-- </div> -->
+        <button class="favorites-delete-recipes-btn is-hidden">
+          Delete all recipes
+        </button>
       </div>
-      <!-- <div class="cards-and-pagination-container"> -->
-      <div class="gallery-container">
-        <ul class="favorites-recipe-list list-of-cards"></ul>
-      </div>
-      <!-- </div> -->
-      <button class="favorites-delete-recipes-btn is-hidden">
-        Delete all recipes
-      </button>
-    </div>
-
+    </main>
     <include src="./partials/footer.html"></include>
+    <include src="./partials/modal.html"></include>
+    <include src="./partials/pop-up.html"></include>
 
-    <div class="popup-backdrop">
+    <!-- <div class="popup-backdrop">
       <div class="modal-wrapper" id="myModal">
         <button class="close-modal-button" data-action="close">
           <svg class="close-modal-button-icon">
@@ -116,6 +119,6 @@
           </div>
         </form>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>

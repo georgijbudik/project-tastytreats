@@ -17,15 +17,24 @@ let selectedCategoryId = null;
 let category = '';
 const windowWidth = window.innerWidth;
 let clickModal = '';
+let selectedElement = null;
 
 btnAllCategories.addEventListener('click', handleResetCategory);
 listOfCategories.addEventListener('click', handleSelectCategory);
 
 function handleSelectCategory(evt) {
+  if (evt.target.tagName !== 'LI') {
+    return;
+  }
+  if (selectedElement) {
+    selectedElement.style.color = '#0505054D';
+  }
   listOfCards.innerHTML = '';
+  evt.target.style.color = '#9BB537';
   if (evt.target.tagName === 'LI') {
     selectedCategoryId = evt.target.dataset.id;
     category = evt.target.dataset.name;
+    selectedElement = evt.target;
     if (windowWidth < 768) {
       categorsCards(category, page, limit)
         .then(data => {
@@ -94,7 +103,7 @@ const createMarkupOfCategories = arr => {
   return arr
     .map(
       ({ _id, name }) => `
-  <li data-id="${_id}" data-name="${name}">${name}</></li>`
+  <li data-id="${_id}" data-name="${name}" class="categories-item">${name}</></li>`
     )
     .join('');
 };

@@ -15,7 +15,11 @@ export function createMarkup({ _id, preview, description, rating, title }) {
                   <h3 class="title-cards">${
                     title.length > 20 ? title.slice(0, 22) + '...' : title
                   }</h3>
-                  <p>${description}</p>
+                  <p>${
+                    description.length > 65
+                      ? description.slice(0, 65) + '...'
+                      : description
+                  }</p>
                   <div class="rating">
                     <p class="number js-number">${rating}</p>
                     <div class="rating-body">
