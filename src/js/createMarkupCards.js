@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 export function createMarkup({ _id, preview, description, rating, title }) {
   return `<li >
                 <div class="icon-heart">
@@ -66,6 +67,7 @@ export function clickCardHeartIcon() {
       btn.disabled = true;
       likedRecipes.push(e.currentTarget.dataset.heart);
       localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
+      Notiflix.Notify.info('You have added this dish to favorites');
     });
   });
 }

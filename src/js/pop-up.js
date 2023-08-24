@@ -57,6 +57,7 @@ export function openModal(id) {
     });
     const addToFavouriteBtn = document.querySelector('[data-add-favorite]');
     addToFavouriteBtn.addEventListener('click', e => {
+      closeModal();
       likedRecipes.push(e.currentTarget.dataset.favorite);
       e.currentTarget.disabled = true;
       Notiflix.Notify.info('You have added this dish to favorites');
