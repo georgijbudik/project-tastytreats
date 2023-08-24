@@ -1,4 +1,5 @@
-export function createRating(ratings) {
+export function createRating() {
+  const ratings = document.querySelectorAll('.rating');
   let ratingActive, ratingValue;
 
   if (ratings.length > 0) {
@@ -58,6 +59,5 @@ export const createRatingInModal = ratings => {
     const index = parseFloat(ratingValue.textContent);
     const ratingActiveWidth = (index / 5) * 100;
     ratingActive.style.width = `${ratingActiveWidth.toFixed(2)}%`;
-    console.log(ratingActiveWidth);
   }
 };

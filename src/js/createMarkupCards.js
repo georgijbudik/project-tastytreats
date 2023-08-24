@@ -58,13 +58,14 @@ if (storedLikedRecipes) {
 
 export function clickCardHeartIcon() {
   const heartBtn = document.querySelectorAll('.heart-svg-button');
+
   heartBtn.forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.currentTarget.blur();
+    btn.addEventListener('click', ({ currentTarget }) => {
+      currentTarget.blur();
       const heartSvg = btn.querySelector('.svg');
       heartSvg.classList.add('svg-is-active');
       btn.disabled = true;
-      likedRecipes.push(e.currentTarget.dataset.heart);
+      likedRecipes.push(currentTarget.dataset.heart);
       localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
     });
   });

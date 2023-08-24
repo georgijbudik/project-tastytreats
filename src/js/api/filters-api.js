@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
-export const filterCards = (searchQuery, page) => {
-  const url = `${BASE_URL}?title=${searchQuery}&page=${page}`;
+export const filterCards = (searchQuery, page, limit) => {
+  const url = `${BASE_URL}?title=${searchQuery}&limit=${limit}&page=${page}`;
   return axios.get(url).then(response => response.data);
 };
 

@@ -1,11 +1,5 @@
 import { pageCards } from './api/gallery-api';
-import { tuiPagination } from '../js/pagination';
-import { openModal } from './pop-up';
-import { clickCardHeartIcon } from './createMarkupCards';
-import { createRating } from './rating';
-import { renderGalleryCard } from './createMarkupCards';
-
-const listOfCards = document.querySelector('.list-of-cards');
+import { callAllOftenedFunctions } from './callFunctions';
 
 const windowWidth = window.innerWidth;
 
@@ -17,14 +11,8 @@ export function render() {
   let limit = 6;
   if (windowWidth < 768) {
     pageCards(page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 2);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+      .then(({ results, totalPages }) => {
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -33,14 +21,8 @@ export function render() {
   } else if (windowWidth < 1280) {
     limit = 8;
     pageCards(page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        clickBtnModal();
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickCardHeartIcon();
+      .then(({ results, totalPages }) => {
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -49,28 +31,11 @@ export function render() {
   } else {
     limit = 9;
     pageCards(page, limit)
-      .then(data => {
-        const totalItems = data.results.length * data.totalPages;
-        renderGalleryCard(data.results);
-        tuiPagination('', totalItems, limit, 3);
-        const ratings = document.querySelectorAll('.rating');
-        createRating(ratings);
-        clickBtnModal();
-        clickCardHeartIcon();
+      .then(({ results, totalPages }) => {
+        callAllOftenedFunctions(results, totalPages, '', limit);
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
-}
-
-export function clickBtnModal() {
-  const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-  jsSeeRecipeBtnRef.forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.currentTarget.blur();
-      clickModal = e.target.dataset.id;
-      openModal(clickModal);
-    });
-  });
 }

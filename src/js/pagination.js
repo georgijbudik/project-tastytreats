@@ -5,8 +5,9 @@ import { categorsCards } from './api/gallery-api';
 import { clickCardHeartIcon } from './createMarkupCards';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
-import { clickBtnModal } from './renderCards';
+import { clickBtnModal } from './modal';
 import { renderGalleryCard } from './createMarkupCards';
+import { callAllFunctionsInPagination } from './callFunctions';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
@@ -49,21 +50,14 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
 
     if (category) {
       categorsCards(category, newPage, limit)
-        .then(data => {
-          renderGalleryCard(data.results);
-          const ratings = document.querySelectorAll('.rating');
-          createRating(ratings);
-          clickCardHeartIcon();
+        .then(({ results }) => {
+          callAllFunctionsInPagination(results);
         })
         .catch(error => console.log(error.message));
     } else {
       pageCards(newPage, limit)
-        .then(data => {
-          renderGalleryCard(data.results);
-          clickBtnModal();
-          const ratings = document.querySelectorAll('.rating');
-          createRating(ratings);
-          clickCardHeartIcon();
+        .then(({ results }) => {
+          callAllFunctionsInPagination(results);
         })
         .catch(error => {
           console.error(error.message);
