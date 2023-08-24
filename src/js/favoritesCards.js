@@ -1,5 +1,5 @@
 import { renderFavoriterecipes } from './api/favorites-api';
-import { renderModalByRecipe } from './pop-up';
+import { renderModalByRecipe, openModal } from './pop-up';
 import { createMarkup } from './createMarkupCards';
 import fetchRecipeById from './api/recipe-info-api';
 import SPRITE from '../images/sprite/sprite.svg';
@@ -116,7 +116,7 @@ function removeCardFromFavorite(e) {
       for (const recipe of uniqueLikedRecipes) {
         renderFavoriterecipes(recipe).then(({ data }) => {
           createCards([data]);
-          createRecipePopup(data);
+          // createRecipePopup(data);
         });
       }
       Notiflix.Block.remove('.body');
@@ -141,6 +141,7 @@ function createCards(arr) {
   const heartSvg = heartIcon.querySelectorAll('.svg');
   heartSvg.forEach(svg => svg.classList.add('svg-is-active'));
   seeRecipeBtn.addEventListener('click', e => {
+    openModal(seeRecipeBtn.dataset.id);
     e.currentTarget.blur();
     backdrop.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
@@ -149,15 +150,15 @@ function createCards(arr) {
   });
 }
 
-function createRecipePopup(recipe) {
-  const modalMarkup = renderModalByRecipe(recipe);
-  modal.innerHTML = modalMarkup;
-  const openRatingModalBtn = document.querySelector('[data-rating-open]');
-  openRatingModalBtn.addEventListener('click', () => {
-    window.addEventListener('mousedown', outerClickHandler);
-    window.addEventListener('keydown', escapePressHandler);
-    ratingModal.classList.add('is-visible');
-  });
-  // const removeFavoriteBtnRef = document.querySelector('[data-remove-favorite]');
-  // removeFavoriteBtnRef.addEventListener('click', removeCardFromFavorite);
-}
+// function createRecipePopup(recipe) {
+//   const modalMarkup = renderModalByRecipe(recipe);
+//   modal.innerHTML = modalMarkup;
+//   const openRatingModalBtn = document.querySelector('[data-rating-open]');
+//   openRatingModalBtn.addEventListener('click', () => {
+//     window.addEventListener('mousedown', outerClickHandler);
+//     window.addEventListener('keydown', escapePressHandler);
+//     ratingModal.classList.add('is-visible');
+//   });
+// const removeFavoriteBtnRef = document.querySelector('[data-remove-favorite]');
+// removeFavoriteBtnRef.addEventListener('click', removeCardFromFavorite);
+// }
