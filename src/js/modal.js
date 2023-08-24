@@ -1,7 +1,5 @@
 import Notiflix from 'notiflix';
 
-console.log(document.body.innerHTML);
-
 const refs = {
   // openModalBtn: document.querySelector('data-orderNow-icon-open'),
   // heroOpenBtn: document.querySelector('[data-ordernow-icon-open]'),

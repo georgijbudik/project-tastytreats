@@ -7,6 +7,7 @@ import { likedRecipes } from './createMarkupCards';
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
 const modalRecipe = document.querySelector('.modal-recipe');
+const modalWrapper = document.querySelector('.modal-wrapper');
 
 const openModalBtn = document.querySelectorAll('[data-action="open"]');
 const closeModalBtn = document.querySelector('[data-action="close"]');
@@ -51,6 +52,7 @@ function escapePressHandler(e) {
 }
 
 export function openModal(id) {
+  modalWrapper.scrollTo(0, 0);
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
   document.body.style.overflow = 'hidden';
