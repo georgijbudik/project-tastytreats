@@ -1,9 +1,13 @@
 import { renderFavoriterecipes } from './api/favorites-api';
-import { renderModalByRecipe } from './pop-up';
+import { renderModalByRecipe, openModal, addClickHandler } from './pop-up';
 import { createMarkup } from './createMarkupCards';
 import fetchRecipeById from './api/recipe-info-api';
 import SPRITE from '../images/sprite/sprite.svg';
 import Notiflix from 'notiflix';
+
+Notiflix.Confirm.init({
+  zindex: 100000,
+});
 
 // localStorage.clear();
 
@@ -14,7 +18,6 @@ const emptyPlaceholderRef = document.querySelector('.empty-meal');
 const ratingModalCloseBtn = document.querySelector('[data-rating-close]');
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
-const modal = document.querySelector('.modal-recipe');
 const closeModalBtn = document.querySelector('[data-action="close"]');
 
 closeModalBtn.addEventListener('click', () => {
@@ -42,7 +45,7 @@ if (!likedRecipesArray || likedRecipesArray.length === 0) {
   for (const recipe of uniqueLikedRecipes) {
     renderFavoriterecipes(recipe).then(({ data }) => {
       createCards([data]);
-      createRecipePopup(data);
+      // createRecipePopup(data);
     });
   }
 }
@@ -116,7 +119,6 @@ function removeCardFromFavorite(e) {
       for (const recipe of uniqueLikedRecipes) {
         renderFavoriterecipes(recipe).then(({ data }) => {
           createCards([data]);
-          createRecipePopup(data);
         });
       }
       Notiflix.Block.remove('.body');
@@ -141,6 +143,46 @@ function createCards(arr) {
   const heartSvg = heartIcon.querySelectorAll('.svg');
   heartSvg.forEach(svg => svg.classList.add('svg-is-active'));
   seeRecipeBtn.addEventListener('click', e => {
+    openModal(seeRecipeBtn.dataset.id).then(() => {
+      const removeBtn = document.querySelector('[data-add-favorite]');
+      removeBtn.removeEventListener('click', addClickHandler);
+      removeBtn.innerHTML = 'Remove from favorites';
+      removeBtn.addEventListener('click', e => {
+        const cardToDelete = e.currentTarget.dataset.favorite;
+        Notiflix.Confirm.show(
+          'Delete recipe',
+          'Are you sure you want to delete this recipe from favorites?',
+          'Yes',
+          'No',
+          () => {
+            uniqueLikedRecipes = uniqueLikedRecipes.filter(
+              recipe => recipe !== cardToDelete
+            );
+            if (uniqueLikedRecipes.length === 0) {
+              deleteBtnRef.classList.add('is-hidden');
+              emptyPlaceholderRef.classList.add('empty-meal-is-visible');
+            }
+            closeModalPopup();
+            localStorage.setItem(
+              'liked-recipes',
+              JSON.stringify(uniqueLikedRecipes)
+            );
+            Notiflix.Block.standard('.body');
+            likedRecipeList.innerHTML = '';
+            for (const recipe of uniqueLikedRecipes) {
+              renderFavoriterecipes(recipe).then(({ data }) => {
+                createCards([data]);
+              });
+            }
+            Notiflix.Block.remove('.body');
+            document.body.style.overflow = 'auto';
+          },
+          () => {
+            document.body.style.overflow = 'auto';
+          }
+        );
+      });
+    });
     e.currentTarget.blur();
     backdrop.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
@@ -149,15 +191,15 @@ function createCards(arr) {
   });
 }
 
-function createRecipePopup(recipe) {
-  const modalMarkup = renderModalByRecipe(recipe);
-  modal.innerHTML = modalMarkup;
-  const openRatingModalBtn = document.querySelector('[data-rating-open]');
-  openRatingModalBtn.addEventListener('click', () => {
-    window.addEventListener('mousedown', outerClickHandler);
-    window.addEventListener('keydown', escapePressHandler);
-    ratingModal.classList.add('is-visible');
-  });
-  // const removeFavoriteBtnRef = document.querySelector('[data-remove-favorite]');
-  // removeFavoriteBtnRef.addEventListener('click', removeCardFromFavorite);
-}
+// function createRecipePopup(recipe) {
+//   const modalMarkup = renderModalByRecipe(recipe);
+//   modal.innerHTML = modalMarkup;
+//   const openRatingModalBtn = document.querySelector('[data-rating-open]');
+//   openRatingModalBtn.addEventListener('click', () => {
+//     window.addEventListener('mousedown', outerClickHandler);
+//     window.addEventListener('keydown', escapePressHandler);
+//     ratingModal.classList.add('is-visible');
+//   });
+// const removeFavoriteBtnRef = document.querySelector('[data-remove-favorite]');
+// removeFavoriteBtnRef.addEventListener('click', removeCardFromFavorite);
+// }
