@@ -44,7 +44,7 @@ export function renderGalleryCard(arr) {
   listOfCards.insertAdjacentHTML('beforeend', markup);
 }
 
-let likedRecipes = [];
+export let likedRecipes = [];
 
 // Load existing data from local storage
 const storedLikedRecipes = localStorage.getItem('liked-recipes');
