@@ -57,9 +57,9 @@ export function openModal(id) {
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
   document.body.style.overflow = 'hidden';
-
-  fetchRecipeById(id).then(data => {
-    Loading.standard('Loading...');
+ 
+  return fetchRecipeById(id).then(data => {
+       Loading.standard('Loading...');
     const markup = renderModalByRecipe(data);
     modalRecipe.innerHTML = markup;
     const ratings = document.querySelectorAll('.modal-recipe-info-rating');
@@ -80,7 +80,16 @@ export function openModal(id) {
       Notiflix.Notify.info('You have added this dish to favorites');
     });
     Loading.remove();
+    addToFavouriteBtn.addEventListener('click', addClickHandler);
   });
+}
+
+export function addClickHandler(e) {
+  closeModal();
+  likedRecipes.push(e.currentTarget.dataset.favorite);
+  localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
+  e.currentTarget.disabled = true;
+  Notiflix.Notify.info('You have added this dish to favorites');
 }
 
 function closeModal() {
