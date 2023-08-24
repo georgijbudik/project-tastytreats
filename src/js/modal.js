@@ -171,8 +171,9 @@ function initRatingsModal() {
   const saveRatingInputData = () => {
     const formData = {
       email: refs.ratingEmail.value,
-      rating: refs.ratingValue.value,
+      rating: refs.ratingValue.innerHTML,
     };
+    console.log(formData.rating);
     localStorage.setItem(
       'rating-email-modal-form-state',
       JSON.stringify(formData)
@@ -183,7 +184,7 @@ function initRatingsModal() {
     if (savedData) {
       const parsedData = JSON.parse(savedData);
       refs.ratingEmail.value = parsedData.email;
-      refs.ratingValue.value = parsedData.rating;
+      refs.ratingValue.innerHTML = parsedData.rating;
     }
   };
   loadRatingInputData();
