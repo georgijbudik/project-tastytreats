@@ -1,9 +1,8 @@
 import { calcTotalItems } from './totalItems';
-import { renderGalleryCard } from './createMarkupCards';
+import { renderGalleryCard,clickCardHeartIcon } from './createMarkupCards';
 import { tuiPagination } from './pagination';
 import { clickBtnModal } from './pop-up';
 import { createRating } from './rating';
-import { clickCardHeartIcon } from './createMarkupCards';
 
 export function callAllOftenedFunctions(
   results,

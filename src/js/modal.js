@@ -73,7 +73,7 @@ function onFormElSubmit(event) {
     return Notiflix.Notify.failure('All fields must be filled in');
   }
   console.log(formData);
-  Notiflix.Notify.success('Thank you for ordering!');
+  Notiflix.Notify.success('Thank you for feedback!');
   clearInputData();
   closeModal();
 }

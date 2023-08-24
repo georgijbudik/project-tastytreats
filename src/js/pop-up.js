@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import { createRatingInModal } from './rating';
 import SPRITE from '../images/sprite/sprite.svg';
 import { likedRecipes } from './createMarkupCards';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
@@ -58,7 +59,7 @@ export function openModal(id) {
   document.body.style.overflow = 'hidden';
 
   fetchRecipeById(id).then(data => {
-    Notiflix.Block.standard('.body');
+    Loading.standard('Loading...');
     const markup = renderModalByRecipe(data);
     modalRecipe.innerHTML = markup;
     const ratings = document.querySelectorAll('.modal-recipe-info-rating');
@@ -78,7 +79,7 @@ export function openModal(id) {
       e.currentTarget.disabled = true;
       Notiflix.Notify.info('You have added this dish to favorites');
     });
-    Notiflix.Block.remove('.body');
+    Loading.remove();
   });
 }
 

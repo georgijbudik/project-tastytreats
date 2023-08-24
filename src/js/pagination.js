@@ -1,13 +1,13 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { pageCards } from './api/gallery-api';
-import { categorsCards } from './api/gallery-api';
-import { clickCardHeartIcon } from './createMarkupCards';
+import { pageCards,categorsCards } from './api/gallery-api';
+import { clickCardHeartIcon,renderGalleryCard } from './createMarkupCards';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
 import { clickBtnModal } from './modal';
 import { renderGalleryCard } from './createMarkupCards';
 import { callAllFunctionsInPagination } from './callFunctions';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
@@ -51,13 +51,17 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
     if (category) {
       categorsCards(category, newPage, limit)
         .then(({ results }) => {
+          Loading.standard('Loading...');
           callAllFunctionsInPagination(results);
+          Loading.remove();
         })
         .catch(error => console.log(error.message));
     } else {
       pageCards(newPage, limit)
         .then(({ results }) => {
+          Loading.standard('Loading...');
           callAllFunctionsInPagination(results);
+          Loading.remove();
         })
         .catch(error => {
           console.error(error.message);
