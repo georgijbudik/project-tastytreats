@@ -213,9 +213,7 @@ function initRatingsModal() {
   // localStorage.setItem(STORAGE_KEY, formJSON);
 
   refs.openModalBtn.addEventListener('click', openRatingModal);
-  refs.heroOpenBtn.addEventListener('click', openRatingModal);
 }
 refs.openModalBtn.addEventListener('click', openModal);
-refs.heroOpenBtn.addEventListener('click', openModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.form.addEventListener('submit', onFormElSubmit);
