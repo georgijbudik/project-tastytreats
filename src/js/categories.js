@@ -37,7 +37,7 @@ function handleSelectCategory({ target }) {
     if (windowWidth < 768) {
       categorsCards(category, page, limit)
         .then(({ results, totalPages }) => {
-          callAllOftenedFunctions(results, totalPages, category, limit);
+          callAllOftenedFunctions(results, totalPages, category, limit, 2);
         })
         .catch(error => {
           console.error('Error:', error);
@@ -46,7 +46,7 @@ function handleSelectCategory({ target }) {
       limit = 8;
       categorsCards(category, page, limit)
         .then(({ results, totalPages }) => {
-          callAllOftenedFunctions(results, totalPages, category, limit);
+          callAllOftenedFunctions(results, totalPages, category, limit, 3);
         })
         .catch(error => {
           console.error('Error:', error);
@@ -55,7 +55,7 @@ function handleSelectCategory({ target }) {
       limit = 9;
       categorsCards(category, page, limit)
         .then(({ results, totalPages }) => {
-          callAllOftenedFunctions(results, totalPages, category, limit);
+          callAllOftenedFunctions(results, totalPages, category, limit, 3);
         })
         .catch(error => {
           console.error('Error:', error);

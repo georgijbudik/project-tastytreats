@@ -5,11 +5,17 @@ import { clickBtnModal } from './pop-up';
 import { createRating } from './rating';
 import { clickCardHeartIcon } from './createMarkupCards';
 
-export function callAllOftenedFunctions(results, totalPages, category, limit) {
+export function callAllOftenedFunctions(
+  results,
+  totalPages,
+  category,
+  limit,
+  visiblePages
+) {
   const totalItems = calcTotalItems(results.length, totalPages);
 
   renderGalleryCard(results);
-  tuiPagination(category, totalItems, limit, 2);
+  tuiPagination(category, totalItems, limit, visiblePages);
   clickBtnModal();
   createRating();
   clickCardHeartIcon();
