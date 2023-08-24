@@ -28,7 +28,7 @@ const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
 let uniqueLikedRecipes;
 
 if (likedRecipesArray.length !== 0) {
-  emptyPlaceholderRef.classList.add('is-hidden');
+  emptyPlaceholderRef.classList.remove('is-visible');
   deleteBtnRef.classList.remove('is-hidden');
 }
 
@@ -47,11 +47,25 @@ if (!likedRecipesArray || likedRecipesArray.length === 0) {
   }
 }
 
-deleteBtnRef.addEventListener('click', () => {
-  localStorage.setItem('liked-recipes', JSON.stringify([]));
-  emptyPlaceholderRef.classList.remove('is-hidden');
-  deleteBtnRef.classList.add('is-hidden');
-  likedRecipeList.innerHTML = '';
+deleteBtnRef.addEventListener('click', e => {
+  e.currentTarget.blur();
+  document.body.style.overflow = 'hidden';
+  Notiflix.Confirm.show(
+    'Delete all recipes',
+    'Are you sure you want to delete all the recipes?',
+    'Yes',
+    'No',
+    () => {
+      localStorage.setItem('liked-recipes', JSON.stringify([]));
+      emptyPlaceholderRef.classList.add('is-visible');
+      deleteBtnRef.classList.add('is-hidden');
+      likedRecipeList.innerHTML = '';
+      document.body.style.overflow = 'auto';
+    },
+    () => {
+      document.body.style.overflow = 'auto';
+    }
+  );
 });
 
 function closeModalPopup() {
@@ -93,7 +107,7 @@ function removeCardFromFavorite(e) {
       );
       if (uniqueLikedRecipes.length === 0) {
         deleteBtnRef.classList.add('is-hidden');
-        emptyPlaceholderRef.classList.remove('is-hidden');
+        emptyPlaceholderRef.classList.add('is-visible');
       }
       closeModalPopup();
       localStorage.setItem('liked-recipes', JSON.stringify(uniqueLikedRecipes));
