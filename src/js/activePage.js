@@ -1,18 +1,15 @@
 const currentPage = window.location.href;
 
-const activePage = document.querySelectorAll('nav a');
-
-activePage.forEach(function(isActive){
-    if(isActive.href === currentPage){
-        isActive.classList.add('is-active')
+function setActiveClass(elements) {
+  elements.forEach(function (element) {
+    if (element.href === currentPage) {
+      element.classList.add('is-active');
     }
-})
+  });
+}
+
+const activePage = document.querySelectorAll('nav a');
+setActiveClass(activePage);
 
 const footerActivePage = document.querySelectorAll('.nav-li-deep');
-
-footerActivePage.forEach(function(isActive){
-    if(isActive.href === currentPage){
-        isActive.classList.add('is-active')
-    }
-})
-console.log(footerActivePage);
+setActiveClass(footerActivePage);

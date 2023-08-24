@@ -15,7 +15,7 @@ $(document).ready(function () {
         slidesToScroll: 1,
         draggable: true,
         swipe: true,
-        arrows: false
+        arrows: false,
       });
     })
     .catch(error => {

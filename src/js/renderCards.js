@@ -1,8 +1,9 @@
 import { pageCards } from './api/gallery-api';
 import { tuiPagination } from '../js/pagination';
 import { openModal } from './pop-up';
-import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
+import { clickCardHeartIcon } from './createMarkupCards';
 import { createRating } from './rating';
+import { renderGalleryCard } from './createMarkupCards';
 
 const listOfCards = document.querySelector('.list-of-cards');
 
@@ -18,7 +19,7 @@ export function render() {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -34,7 +35,7 @@ export function render() {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -50,7 +51,7 @@ export function render() {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         const ratings = document.querySelectorAll('.rating');
         createRating(ratings);

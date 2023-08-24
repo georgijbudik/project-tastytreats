@@ -2,9 +2,11 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { pageCards } from './api/gallery-api';
 import { categorsCards } from './api/gallery-api';
-import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
+import { clickCardHeartIcon } from './createMarkupCards';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
+import { clickBtnModal } from './renderCards';
+import { renderGalleryCard } from './createMarkupCards';
 
 const paginationElement = document.getElementById('pagination');
 const listOfCards = document.querySelector('.list-of-cards');
@@ -48,7 +50,7 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
     if (category) {
       categorsCards(category, newPage, limit)
         .then(data => {
-          createMarkup(data.results);
+          renderGalleryCard(data.results);
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
           clickCardHeartIcon();
@@ -57,7 +59,7 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
     } else {
       pageCards(newPage, limit)
         .then(data => {
-          createMarkup(data.results);
+          renderGalleryCard(data.results);
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
           createRating(ratings);
@@ -69,13 +71,3 @@ export const tuiPagination = (category, totalPages, limit, visiblePages) => {
     }
   });
 };
-
-function clickBtnModal() {
-  const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-  jsSeeRecipeBtnRef.forEach(btn => {
-    btn.addEventListener('click', e => {
-      clickModal = e.target.dataset.id;
-      openModal(clickModal);
-    });
-  });
-}

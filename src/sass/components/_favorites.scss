@@ -2,7 +2,7 @@
   background-image: url(/src/images/favorite-mob.jpg);
   background-size: contain;
   height: 516px;
-  width: 335px;
+  max-width: 335px;
   background-repeat: no-repeat;
   margin-left: auto;
   margin-right: auto;
@@ -78,7 +78,7 @@
     margin-top: 44px;
     background-image: url(/src/images/favorite-tab.jpg);
     height: 356px;
-    width: 704px;
+    max-width: 704px;
     margin-bottom: 64px;
     .food-type-list {
       margin-bottom: 32px;
@@ -90,6 +90,6 @@
   .favorites-img {
     margin-top: 34px;
     background-image: url(/src/images/favorite-pc.jpg);
-    width: 1080px;
+    max-width: 1080px;
   }
 }

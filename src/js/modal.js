@@ -83,7 +83,7 @@ import Notiflix from 'notiflix';
       refsData.name.value === '' ||
       refsData.email.value === ''
     ) {
-      return Notiflix.Notify.info('Всі поля мають бути заповненими');
+      return Notiflix.Notify.info('All fields must be filled in');
     } else {
       e.target.reset();
       localStorage.clear();
@@ -224,10 +224,11 @@ function initRatingsModal() {
   function onFormSubmit(e) {
     e.preventDefault();
     if (refsData.email.value === '' || refsData.rating.innerHTML === '0') {
-      return Notiflix.Notify.info('Всі поля мають бути заповненими');
+      return Notiflix.Notify.info('All fields must be filled in');
     } else {
       modal.classList.remove('is-visible');
       console.log(formData);
+      Notiflix.Notify.success('You have successfully left a rating');
       e.target.reset();
       localStorage.clear();
       item = {};

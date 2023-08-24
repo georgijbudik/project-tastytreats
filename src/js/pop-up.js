@@ -44,7 +44,8 @@ export function openModal(id) {
   document.body.style.overflow = 'hidden';
   fetchRecipeById(id).then(data => {
     Notiflix.Block.standard('.body');
-    renderModalByRecipe(data);
+    const markup = renderModalByRecipe(data);
+    modalRecipe.innerHTML = markup;
     const ratings = document.querySelectorAll('.modal-recipe-info-rating');
     createRatingInModal(ratings);
     backdrop.classList.add('is-visible');
@@ -71,8 +72,8 @@ function closeModal() {
   document.body.style.overflow = 'auto';
 }
 
-function renderModalByRecipe(recipe) {
-  const markup = `
+export function renderModalByRecipe(recipe) {
+  return `
       <div class="modal-recipe-name-and-img">
         <h2 class="modal-recipe-name">${recipe.title}</h2>
         <div class="modal-recipe-video-wrapper">
@@ -162,5 +163,4 @@ function renderModalByRecipe(recipe) {
           </button>
         </li>
       </ul>`;
-  modalRecipe.innerHTML = markup;
 }

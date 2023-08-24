@@ -6,11 +6,13 @@ import { filterCards, filterFood } from './api/filters-api';
 import { selectTime } from './api/filters-api';
 import { selectArea } from './api/filters-api';
 import { pageCards } from './api/gallery-api';
-import { createMarkup, clickCardHeartIcon } from '../js/createMarkupCards';
+import { clickCardHeartIcon } from '../js/createMarkupCards';
 import { render } from './renderCards';
 import { tuiPagination } from '../js/pagination';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
+import { clickBtnModal } from './renderCards';
+import { renderGalleryCard } from '../js/createMarkupCards';
 
 const refs = {
   filterInputEl: document.querySelector('.js-filter-input'),
@@ -50,7 +52,7 @@ const handleInput = e => {
     }
     page += 1;
     clearGallery();
-    createMarkup(data);
+    renderGalleryCard(data);
     clickBtnModal();
     const ratings = document.querySelectorAll('.rating');
     createRating(ratings);
@@ -76,7 +78,7 @@ const handleSelectTime = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -95,7 +97,7 @@ const handleSelectTime = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -114,7 +116,7 @@ const handleSelectTime = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -141,7 +143,7 @@ const handleSelectArea = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -160,7 +162,7 @@ const handleSelectArea = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -179,7 +181,7 @@ const handleSelectArea = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -206,7 +208,7 @@ const handleSelectIngredients = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -225,7 +227,7 @@ const handleSelectIngredients = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -244,7 +246,7 @@ const handleSelectIngredients = () => {
           return render();
         }
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -305,7 +307,7 @@ const handleResetFilters = () => {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -318,7 +320,7 @@ const handleResetFilters = () => {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 2);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -331,7 +333,7 @@ const handleResetFilters = () => {
     pageCards(page, limit)
       .then(data => {
         const totalItems = data.results.length * data.totalPages;
-        createMarkup(data.results);
+        renderGalleryCard(data.results);
         tuiPagination('', totalItems, limit, 3);
         clickBtnModal();
         const ratings = document.querySelectorAll('.rating');
@@ -342,16 +344,6 @@ const handleResetFilters = () => {
   }
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);
-
-function clickBtnModal() {
-  const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
-  jsSeeRecipeBtnRef.forEach(btn => {
-    btn.addEventListener('click', e => {
-      clickModal = e.target.dataset.id;
-      openModal(clickModal);
-    });
-  });
-}
 
 function createArrayWithStep(start, end, step) {
   const result = [];

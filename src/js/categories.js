@@ -1,10 +1,11 @@
 import { fetchCategories } from './api/categories-api';
 import { categorsCards } from './api/gallery-api';
 import { tuiPagination } from './pagination';
-import { createMarkup, clickCardHeartIcon } from './createMarkupCards';
+import { clickCardHeartIcon } from './createMarkupCards';
 import { render } from './renderCards';
 import { openModal } from './pop-up';
 import { createRating } from './rating';
+import { renderGalleryCard } from './createMarkupCards';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
@@ -29,8 +30,7 @@ function handleSelectCategory(evt) {
       categorsCards(category, page, limit)
         .then(data => {
           const totalItems = data.results.length * data.totalPages;
-          createMarkup(data.results);
-          console.log(createMarkup);
+          renderGalleryCard(data.results);
           tuiPagination(category, totalItems, limit, 2);
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
@@ -45,7 +45,7 @@ function handleSelectCategory(evt) {
       categorsCards(category, page, limit)
         .then(data => {
           const totalItems = data.results.length * data.totalPages;
-          createMarkup(data.results);
+          renderGalleryCard(data.results);
           tuiPagination(category, totalItems, limit, 3);
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
@@ -60,7 +60,7 @@ function handleSelectCategory(evt) {
       categorsCards(category, page, limit)
         .then(data => {
           const totalItems = data.results.length * data.totalPages;
-          createMarkup(data.results);
+          renderGalleryCard(data.results);
           tuiPagination(category, totalItems, limit, 3);
           clickBtnModal();
           const ratings = document.querySelectorAll('.rating');
@@ -74,7 +74,7 @@ function handleSelectCategory(evt) {
   }
 }
 
-function clickBtnModal() {
+export function clickBtnModal() {
   const jsSeeRecipeBtnRef = document.querySelectorAll('.js-see-recipe');
   jsSeeRecipeBtnRef.forEach(btn => {
     btn.addEventListener('click', e => {
