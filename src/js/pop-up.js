@@ -59,6 +59,7 @@ export function openModal(id) {
     addToFavouriteBtn.addEventListener('click', e => {
       closeModal();
       likedRecipes.push(e.currentTarget.dataset.favorite);
+      localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
       e.currentTarget.disabled = true;
       Notiflix.Notify.info('You have added this dish to favorites');
     });
