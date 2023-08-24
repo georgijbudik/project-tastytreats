@@ -54,7 +54,7 @@ const handleInput = e => {
       clearGallery();
       callAllOftenedFunctions(results, totalPages, '', limit, 2);
      
-    }).catch(createError());
+    }).catch();
   } else if (windowWidth < 1280) {
     limit = 8;
     filterCards(value, page, limit).then(({ results, totalPages }) => {
@@ -70,7 +70,7 @@ const handleInput = e => {
       clearGallery();
       callAllOftenedFunctions(results, totalPages, '', limit, 3);
      
-    }).catch(createError());
+    }).catch();
   } else {
     limit = 9;
     filterCards(value, page, limit).then(({ results, totalPages }) => {
@@ -85,7 +85,7 @@ const handleInput = e => {
       clearGallery();
       callAllOftenedFunctions(results, totalPages, '', limit, 3);
      
-    }).catch(createError());
+    }).catch();
   }
 };
 
