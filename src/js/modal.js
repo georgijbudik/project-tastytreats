@@ -209,7 +209,12 @@ function initRatingsModal() {
   //   }
   // }
   refs.ratingForm.addEventListener('submit', onFormSubmit);
-  refs.closeRatingModalBtn.addEventListener('click', closeModal);
+  refs.closeRatingModalBtn.addEventListener('click', () => {
+    window.removeEventListener('mousedown', outerClickHandler);
+    window.removeEventListener('keydown', escapePressHandler);
+    refs.ratingModal.classList.remove('is-visible');
+    document.body.style.overflow = 'auto';
+  });
 
   refs.ratingForm.addEventListener('input', saveRatingInputData);
 
