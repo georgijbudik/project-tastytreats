@@ -12,6 +12,14 @@ body.dark-theme {
 .dark-theme .favorites-delete-recipes-btn:focus {
   color: #050505;
 }
+.dark-theme .favorites-btn {
+  color: #fff;
+}
+.dark-theme .favorites-btn:hover,
+.dark-theme .favorites-btn:focus,
+.dark-theme .favorites-btn:active {
+  color: #050505;
+}
 /* HEADER DARK*/
 .dark-theme .header-nav-links {
   color: #fff;
