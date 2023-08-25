@@ -28,6 +28,7 @@ export function addFavoriteCategory(category) {
 if (!likedRecipesArray || likedRecipesArray.length === 0) {
   return;
 } else {
+  allCategoriesEl.style.display = 'block';
   uniqueLikedRecipes = likedRecipesArray.filter(
     (value, index, array) => array.indexOf(value) === index
   );
