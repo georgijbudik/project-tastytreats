@@ -1,6 +1,12 @@
 import { renderFavoriterecipes } from './api/favorites-api';
 import { createCards } from './favoritesCards';
 
+const scrollToTheTop = document.querySelector('.scroll-to-the-top-btn');
+const trackEl = document.querySelector('.header');
+scrollToTheTop.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
+
 const listOfCards = document.querySelector('.list-of-cards');
 const favoriteCategoryEL = document.querySelector('.js-favorite-categories');
 const allCategoriesEl = document.querySelector('.js-btn-all-categories');
@@ -73,3 +79,22 @@ function createMarkupOfFavoriteCategories(category) {
   <button data-name="${category}" class="categories-item favorites-btn">${category}</button>
   </li>`;
 }
+
+function isElementInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+window.addEventListener('scroll', () => {
+  if (!isElementInViewport(trackEl)) {
+    scrollToTheTop.classList.add('is-visible');
+  } else {
+    scrollToTheTop.classList.remove('is-visible');
+  }
+});

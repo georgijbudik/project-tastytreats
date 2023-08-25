@@ -35,7 +35,7 @@ function onFormElSubmit(event) {
   clearInputData();
 }
 
-const trackElement = document.querySelector('.pagination');
+const trackElement = document.querySelector('.header');
 const scrollToTheTop = document.querySelector('.scroll-to-the-top-btn');
 scrollToTheTop.addEventListener('click', () => {
   window.scrollTo(0, 0);
@@ -53,7 +53,7 @@ function isElementInViewport(element) {
 }
 
 window.addEventListener('scroll', () => {
-  if (isElementInViewport(trackElement)) {
+  if (!isElementInViewport(trackElement)) {
     scrollToTheTop.classList.add('is-visible');
   } else {
     scrollToTheTop.classList.remove('is-visible');
