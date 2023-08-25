@@ -7,6 +7,14 @@ scrollToTheTop.addEventListener('click', () => {
   window.scrollTo(0, 0);
 });
 
+window.addEventListener('scroll', () => {
+  if (!isElementInViewport(trackEl)) {
+    scrollToTheTop.classList.add('is-visible');
+  } else {
+    scrollToTheTop.classList.remove('is-visible');
+  }
+});
+
 const listOfCards = document.querySelector('.list-of-cards');
 const favoriteCategoryEL = document.querySelector('.js-favorite-categories');
 const allCategoriesEl = document.querySelector('.js-btn-all-categories');
@@ -91,11 +99,3 @@ function isElementInViewport(element) {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
-
-window.addEventListener('scroll', () => {
-  if (!isElementInViewport(trackEl)) {
-    scrollToTheTop.classList.add('is-visible');
-  } else {
-    scrollToTheTop.classList.remove('is-visible');
-  }
-});
