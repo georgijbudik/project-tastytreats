@@ -249,12 +249,19 @@ body.dark-theme {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   transition: all $cubic-bezier;
+  &:hover,
   &:active,
   &:focus {
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid $accentColor;
+
+    &::placeholder {
+      color: #fff;
+    }
   }
+
   &::placeholder {
+    transition: all $cubic-bezier;
     color: rgba(255, 255, 255, 0.5);
   }
 }
@@ -267,10 +274,12 @@ body.dark-theme {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.5);
+  transition: color $cubic-bezier;
+
   &:focus,
   &:hover {
-    transition: color $cubic-bezier;
     color: #fff;
+    border: 1px solid $accentColor;
   }
 }
 
@@ -332,6 +341,11 @@ body.dark-theme {
 .dark-theme .sub-text,
 .dark-theme .sub-btn {
   color: #fff;
+}
+
+.dark-theme .nav-li-deep:hover,
+.dark-theme .nav-li-deep:focus {
+  color: $accentColor;
 }
 
 .dark-theme .modal-icon {
