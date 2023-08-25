@@ -74,7 +74,7 @@ export function openModal(id) {
     const addToFavouriteBtn = document.querySelector('[data-add-favorite]');
     addToFavouriteBtn.addEventListener('click', addClickHandler);
     Loading.remove();
-    addToFavouriteBtn.addEventListener('click', addClickHandler);
+    // addToFavouriteBtn.addEventListener('click', addClickHandler);
   });
 }
 
