@@ -81,7 +81,7 @@
   height: auto;
 }
 
-.favorites-delete-recipes-btn {
+.favorites-btn {
   display: inline-flex;
   padding: 14px 28px;
   justify-content: center;
@@ -96,12 +96,49 @@
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.favorites-delete-recipes-btn:hover,
-.favorites-delete-recipes-btn:focus {
+.favorites-btn:hover,
+.favorites-btn:focus,
+.favorites-btn:active {
   border-radius: 15px;
   background: #9bb537;
   color: #fff;
 }
+
+.js-favorite-categories {
+  display: flex;
+  gap: 15px;
+  overflow: auto;
+}
+
+#favorite-categories {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+}
+// .favorites-delete-recipes-btn {
+//   display: inline-flex;
+//   padding: 14px 28px;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 10px;
+//   margin-bottom: 20px;
+
+//   border-radius: 15px;
+//   border: 1px solid #9bb537;
+//   background-color: transparent;
+
+//   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+// .favorites-delete-recipes-btn:hover,
+// .favorites-delete-recipes-btn:focus {
+//   border-radius: 15px;
+//   background: #9bb537;
+//   color: #fff;
+// }
+
+// .all-categories-button {
+// }
 
 .is-hidden {
   display: none;
