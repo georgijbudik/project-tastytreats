@@ -57,9 +57,9 @@ export function openModal(id) {
   window.addEventListener('mousedown', outerClickHandler);
   window.addEventListener('keydown', escapePressHandler);
   document.body.style.overflow = 'hidden';
- 
+
   return fetchRecipeById(id).then(data => {
-       Loading.standard('Loading...');
+    Loading.standard('Loading...');
     const markup = renderModalByRecipe(data);
     modalRecipe.innerHTML = markup;
     const ratings = document.querySelectorAll('.modal-recipe-info-rating');
@@ -72,15 +72,9 @@ export function openModal(id) {
       ratingModal.classList.add('is-visible');
     });
     const addToFavouriteBtn = document.querySelector('[data-add-favorite]');
-    addToFavouriteBtn.addEventListener('click', e => {
-      closeModal();
-      likedRecipes.push(e.currentTarget.dataset.favorite);
-      localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
-      e.currentTarget.disabled = true;
-      Notiflix.Notify.info('You have added this dish to favorites');
-    });
-    Loading.remove();
     addToFavouriteBtn.addEventListener('click', addClickHandler);
+    Loading.remove();
+    // addToFavouriteBtn.addEventListener('click', addClickHandler);
   });
 }
 
@@ -89,7 +83,9 @@ export function addClickHandler(e) {
   likedRecipes.push(e.currentTarget.dataset.favorite);
   localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
   e.currentTarget.disabled = true;
-  Notiflix.Notify.info('You have added this dish to favorites');
+  Notiflix.Notify.info('You have added this dish to favorites', {
+    showOnlyTheLastOne: true,
+  });
 }
 
 function closeModal() {
