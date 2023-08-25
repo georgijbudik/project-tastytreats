@@ -65,7 +65,7 @@ export function handleSelectFavoriteCategory({ target }) {
 
 function handleResetFavoriteCategories() {
   listOfCards.innerHTML = '';
-  selectedCategoryId = null;
+  // selectedCategoryId = '';
 
   for (const recipe of uniqueLikedRecipes) {
     renderFavoriterecipes(recipe).then(({ data }) => {
