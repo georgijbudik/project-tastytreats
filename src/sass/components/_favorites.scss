@@ -122,6 +122,12 @@
   gap: 15px;
   align-items: center;
 }
+
+.is-visible {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
 // .favorites-delete-recipes-btn {
 //   display: inline-flex;
 //   padding: 14px 28px;
