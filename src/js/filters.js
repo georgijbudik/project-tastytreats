@@ -2,16 +2,20 @@ import Notiflix from 'notiflix';
 import { filterAreas } from './api/areas-api';
 import { filterIngredients } from './api/ingredients-api';
 import debounce from 'lodash.debounce';
-import { filterCards, filterFood , selectTime,selectArea,} from './api/filters-api';
+import {
+  filterCards,
+  filterFood,
+  selectTime,
+  selectArea,
+} from './api/filters-api';
 import { pageCards } from './api/gallery-api';
-import { render,createError} from './renderCards';
+import { render, createError } from './renderCards';
 import { callAllOftenedFunctions } from './callFunctions';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Notify } from 'notiflix';
 
-
 const refs = {
-  galleryError:document.querySelector(".gallery-container"),
+  galleryError: document.querySelector('.gallery-container'),
   filterInputEl: document.querySelector('.js-filter-input'),
   selectTimeEl: document.querySelector('.js-select-time'),
   selectAreaEl: document.querySelector('.js-select-area'),
@@ -41,51 +45,51 @@ const handleInput = e => {
   prevSearchQuery = value;
 
   if (windowWidth < 768) {
-    filterCards(value, page, limit).then(({ results, totalPages }) => {
-     
-      if (results.length === 0) {
-        Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
-        clearGallery();
-        return;
-      }
+    filterCards(value, page, limit)
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
+          Notiflix.Notify.failure(
+            'Sorry, there are no images matching your search query. Please try again.'
+          );
+          clearGallery();
+          return;
+        }
 
-      clearGallery();
-      callAllOftenedFunctions(results, totalPages, '', limit, 2);
-     
-    }).catch();
+        clearGallery();
+        callAllOftenedFunctions(results, totalPages, '', limit, 2);
+      })
+      .catch();
   } else if (windowWidth < 1280) {
     limit = 8;
-    filterCards(value, page, limit).then(({ results, totalPages }) => {
-     
-      if (results.length === 0) {
-        Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
-        clearGallery();
-        return;
-      }
+    filterCards(value, page, limit)
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
+          Notiflix.Notify.failure(
+            'Sorry, there are no images matching your search query. Please try again.'
+          );
+          clearGallery();
+          return;
+        }
 
-      clearGallery();
-      callAllOftenedFunctions(results, totalPages, '', limit, 3);
-     
-    }).catch();
+        clearGallery();
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
+      })
+      .catch();
   } else {
     limit = 9;
-    filterCards(value, page, limit).then(({ results, totalPages }) => {
-      
-      if (results.length === 0) {
-        Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
+    filterCards(value, page, limit)
+      .then(({ results, totalPages }) => {
+        if (results.length === 0) {
+          Notiflix.Notify.failure(
+            'Sorry, there are no images matching your search query. Please try again.'
+          );
+          clearGallery();
+          return;
+        }
         clearGallery();
-        return;
-      }
-      clearGallery();
-      callAllOftenedFunctions(results, totalPages, '', limit, 3);
-     
-    }).catch();
+        callAllOftenedFunctions(results, totalPages, '', limit, 3);
+      })
+      .catch();
   }
 };
 
@@ -111,7 +115,7 @@ const handleSelectTime = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   } else if (windowWidth < 1280) {
@@ -127,7 +131,7 @@ const handleSelectTime = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   } else {
@@ -135,7 +139,6 @@ const handleSelectTime = () => {
     selectTime(time, limit, page)
       .then(({ results, totalPages }) => {
         if (results.length === 0) {
-          
           clearGallery();
           return render();
         }
@@ -144,7 +147,6 @@ const handleSelectTime = () => {
         Loading.remove();
       })
       .catch(error => {
-
         createError();
         console.error('Error:', error);
       });
@@ -169,7 +171,7 @@ const handleSelectArea = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   } else if (windowWidth < 1280) {
@@ -185,7 +187,7 @@ const handleSelectArea = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   } else {
@@ -225,7 +227,7 @@ const handleSelectIngredients = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   } else if (windowWidth < 1280) {
@@ -241,7 +243,7 @@ const handleSelectIngredients = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   } else {
@@ -257,7 +259,7 @@ const handleSelectIngredients = () => {
         Loading.remove();
       })
       .catch(error => {
-        createError()
+        createError();
         console.error('Error:', error);
       });
   }
@@ -312,24 +314,27 @@ const handleResetFilters = () => {
       .then(({ results, totalPages }) => {
         Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 2);
+        Loading.remove();
       })
-      .catch(createError());
+      .catch();
   } else if (windowWidth < 768) {
     limit = 6;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
         Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
-      .catch(createError());
+      .catch();
   } else {
     limit = 9;
     pageCards(page, limit)
       .then(({ results, totalPages }) => {
         Loading.standard('Loading...');
         callAllOftenedFunctions(results, totalPages, '', limit, 3);
+        Loading.remove();
       })
-      .catch(createError());
+      .catch();
   }
 };
 refs.resetFilterBtnEl.addEventListener('click', handleResetFilters);

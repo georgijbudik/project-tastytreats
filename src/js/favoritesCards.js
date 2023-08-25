@@ -125,14 +125,13 @@ function removeCardFromFavorite(e) {
       }
       closeModalPopup();
       localStorage.setItem('liked-recipes', JSON.stringify(uniqueLikedRecipes));
-      Loading.standard('Loading...');
       likedRecipeList.innerHTML = '';
       for (const recipe of uniqueLikedRecipes) {
         renderFavoriterecipes(recipe).then(({ data }) => {
           createCards([data]);
         });
       }
-      Loading.remove();
+
       document.body.style.overflow = 'auto';
     },
     () => {
@@ -147,7 +146,9 @@ function renderMarkup(arr) {
 }
 
 export function createCards(arr) {
+  Loading.standard('Loading...');
   renderMarkup(arr);
+  Loading.remove();
   const seeRecipeBtn = document.querySelector('.js-see-recipe');
   const heartIcon = document.querySelector('.heart-svg-button');
   heartIcon.addEventListener('click', removeCardFromFavorite);

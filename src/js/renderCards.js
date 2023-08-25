@@ -3,12 +3,10 @@ import { callAllOftenedFunctions } from './callFunctions';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Notify } from 'notiflix';
 
-
-export function createError(){
-  
-  const gallery = document.querySelector(".gallery-container");
-  const errorImg = document.createElement("img");
-  errorImg.src = "https://beonspeak.com/wp-content/uploads/2016/07/error.jpg";
+export function createError() {
+  const gallery = document.querySelector('.gallery-container');
+  const errorImg = document.createElement('img');
+  errorImg.src = 'https://beonspeak.com/wp-content/uploads/2016/07/error.jpg';
   gallery.innerHTML = '';
   Notify.failure('No information');
   gallery.append(errorImg);

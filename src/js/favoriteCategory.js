@@ -1,3 +1,4 @@
+import { Loading } from 'notiflix';
 import { renderFavoriterecipes } from './api/favorites-api';
 import { createCards } from './favoritesCards';
 
@@ -57,7 +58,9 @@ export function handleSelectFavoriteCategory({ target }) {
     for (const recipe of uniqueLikedRecipes) {
       renderFavoriterecipes(recipe).then(({ data }) => {
         if (data.category === selectedElement.dataset.name) {
+          Loading.standard('Loading...');
           createCards([data]);
+          Loading.remove();
         }
       });
     }
@@ -70,7 +73,9 @@ function handleResetFavoriteCategories() {
 
   for (const recipe of uniqueLikedRecipes) {
     renderFavoriterecipes(recipe).then(({ data }) => {
+      Loading.standard('Loading...');
       createCards([data]);
+      Loading.remove();
     });
   }
 }
