@@ -1,8 +1,8 @@
 import { fetchCategories } from './api/categories-api';
-import { categorsCards} from './api/gallery-api';
+import { categorsCards } from './api/gallery-api';
 import { callAllOftenedFunctions } from './callFunctions';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { createError,render } from './renderCards';
+import { createError, render } from './renderCards';
 
 const listOfCategories = document.querySelector('.js-categories');
 const btnAllCategories = document.querySelector('.js-btn-all-categories');
@@ -96,7 +96,6 @@ const fetchAllCategories = () => {
       listOfCategories.insertAdjacentHTML(
         'beforeend',
         createMarkupOfCategories(data)
-        
       );
       Loading.remove();
     })
@@ -105,6 +104,5 @@ const fetchAllCategories = () => {
       console.log(error.message);
     });
 };
-
 
 fetchAllCategories();
