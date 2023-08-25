@@ -22,7 +22,9 @@ const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
 const closeModalBtn = document.querySelector('[data-action="close"]');
 
-const allCategoriesBtn = document.querySelector('.js-btn-all-categories');
+const allCategoriesBtn = document.querySelector(
+  '.js-favourites-btn-all-categories'
+);
 const categoriesbtnList = document.querySelector('.js-favorite-categories');
 
 closeModalBtn.addEventListener('click', () => {

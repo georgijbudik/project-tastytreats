@@ -18,7 +18,9 @@ window.addEventListener('scroll', () => {
 
 const listOfCards = document.querySelector('.list-of-cards');
 const favoriteCategoryEL = document.querySelector('.js-favorite-categories');
-const allCategoriesEl = document.querySelector('.js-btn-all-categories');
+const allCategoriesEl = document.querySelector(
+  '.js-favourites-btn-all-categories'
+);
 let page = 1;
 let limit = 6;
 let category = '';
@@ -73,9 +75,7 @@ export function handleSelectFavoriteCategory({ target }) {
     for (const recipe of uniqueLikedRecipes) {
       renderFavoriterecipes(recipe).then(({ data }) => {
         if (data.category === selectedElement.dataset.name) {
-          Loading.standard('Loading...');
           createCards([data]);
-          Loading.remove();
         }
       });
     }
@@ -88,9 +88,7 @@ function handleResetFavoriteCategories() {
 
   for (const recipe of uniqueLikedRecipes) {
     renderFavoriterecipes(recipe).then(({ data }) => {
-      Loading.standard('Loading...');
       createCards([data]);
-      Loading.remove();
     });
   }
 }
