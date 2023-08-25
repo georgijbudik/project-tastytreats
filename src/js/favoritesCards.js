@@ -5,6 +5,7 @@ import fetchRecipeById from './api/recipe-info-api';
 import SPRITE from '../images/sprite/sprite.svg';
 import Notiflix from 'notiflix';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { addFavoriteCategory } from './favoriteCategory';
 
 Notiflix.Confirm.init({
   zindex: 100000,
@@ -46,6 +47,8 @@ if (!likedRecipesArray || likedRecipesArray.length === 0) {
   for (const recipe of uniqueLikedRecipes) {
     renderFavoriterecipes(recipe).then(({ data }) => {
       createCards([data]);
+      addFavoriteCategory(data.category);
+
       // createRecipePopup(data);
     });
   }
@@ -136,7 +139,7 @@ function renderMarkup(arr) {
   likedRecipeList.insertAdjacentHTML('afterbegin', markup);
 }
 
-function createCards(arr) {
+export function createCards(arr) {
   renderMarkup(arr);
   const seeRecipeBtn = document.querySelector('.js-see-recipe');
   const heartIcon = document.querySelector('.heart-svg-button');
