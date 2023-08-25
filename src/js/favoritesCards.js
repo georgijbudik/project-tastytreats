@@ -22,6 +22,9 @@ const ratingModal = document.querySelector('[data-rating-form]');
 const backdrop = document.querySelector('.popup-backdrop');
 const closeModalBtn = document.querySelector('[data-action="close"]');
 
+const allCategoriesBtn = document.querySelector('.js-btn-all-categories');
+const categoriesbtnList = document.querySelector('.js-favorite-categories');
+
 closeModalBtn.addEventListener('click', () => {
   closeModalPopup();
 });
@@ -63,6 +66,8 @@ deleteBtnRef.addEventListener('click', e => {
     'Yes',
     'No',
     () => {
+      allCategoriesBtn.style.display = 'none';
+      categoriesbtnList.innerHTML = '';
       localStorage.setItem('liked-recipes', JSON.stringify([]));
       emptyPlaceholderRef.classList.add('empty-meal-is-visible');
       deleteBtnRef.classList.add('is-hidden');
@@ -113,6 +118,8 @@ function removeCardFromFavorite(e) {
         recipe => recipe !== cardToDelete
       );
       if (uniqueLikedRecipes.length === 0) {
+        allCategoriesBtn.style.display = 'none';
+        categoriesbtnList.innerHTML = '';
         deleteBtnRef.classList.add('is-hidden');
         emptyPlaceholderRef.classList.add('empty-meal-is-visible');
       }
