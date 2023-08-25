@@ -137,25 +137,29 @@
 }
 .modal-icon {
   border-radius: 7px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-li {
   a {
     display: flex;
     width: auto;
     height: auto;
+    &:hover .modal-icon,
+    &:focus .modal-icon {
+      fill: $accentColor;
+    }
   }
-  .modal-icon:hover,
-  .modal-icon:focus {
-    background-color: #9bb537;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 7px;
-  }
+  // :hover,
+  // .modal-icon:focus {
+  //   background-color: #9bb537;
+  //   border-radius: 7px;
+  // }
 }
-.nav-li-deep:hover,
-.nav-li-deep:focus {
-  color: #9bb537;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+// .nav-li-deep:hover,
+// .nav-li-deep:focus {
+//   color: #9bb537;
+//   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
 
 .sub-block {
   margin-top: 15px;
@@ -182,10 +186,11 @@
   }
 }
 .sub-btn {
-  color: #050505;
+  color: #fff;
   border-style: none;
-  border-radius: 8px;
-  background: #9bb537;
+  border-radius: 15px;
+  background-color: #9bb537;
+  border: 1px solid $accentColor;
   padding: 8px 24px 8px 24px;
   width: 165px;
   font-weight: 500;
@@ -193,17 +198,12 @@
   line-height: 1.5;
   letter-spacing: 0.04em;
 
-  //    display: flex;
-  //   align-items: center;
-  //   text-align: center;
-
-  transition-property: background, cursor;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all $cubic-bezier;
 }
-.sub-btn:is(:hover, :focus) {
-  background: rgba(155, 181, 55, 0.7);
-  // cursor: pointer;
+.sub-btn:hover,
+.sub-btn:focus {
+  color: #050505;
+  background-color: transparent;
 }
 
 .sub-form {
@@ -226,7 +226,14 @@
     margin-right: 24px;
     background-color: var(--primary-text-color);
     border-radius: 15px;
-    border: 1px solid rgba(5, 5, 5, 0.2);
+    border: none;
+    outline: 1px solid rgba(5, 5, 5, 0.2);
+    transition: all $cubic-bezier;
+
+    &:hover,
+    &:focus {
+      outline: 1px solid $accentColor;
+    }
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
     color: rgb(0, 0, 0);
     // border-radius: 4px;
