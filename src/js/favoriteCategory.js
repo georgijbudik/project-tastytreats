@@ -27,12 +27,19 @@ const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
 let uniqueLikedRecipes;
 
 export function addFavoriteCategory(category) {
-  favoriteCategoryEL.insertAdjacentHTML(
-    'beforeend',
-    createMarkupOfFavoriteCategories(category)
+  // Check if a category with the same data-name attribute already exists
+  const existingCategory = favoriteCategoryEL.querySelector(
+    `[data-name="${category}"]`
   );
-}
 
+  // If the category doesn't exist, insert the markup
+  if (!existingCategory) {
+    favoriteCategoryEL.insertAdjacentHTML(
+      'beforeend',
+      createMarkupOfFavoriteCategories(category)
+    );
+  }
+}
 if (!likedRecipesArray || likedRecipesArray.length === 0) {
   return;
 } else {
