@@ -2,7 +2,7 @@ import { renderFavoriterecipes } from './api/favorites-api';
 import { createCards } from './favoritesCards';
 
 const listOfCards = document.querySelector('.list-of-cards');
-const favoriteCategoryEL = document.querySelector('.js-categories');
+const favoriteCategoryEL = document.querySelector('.js-favorite-categories');
 const allCategoriesEl = document.querySelector('.js-btn-all-categories');
 let page = 1;
 let limit = 6;
@@ -31,18 +31,19 @@ favoriteCategoryEL.addEventListener('click', handleSelectFavoriteCategory);
 allCategoriesEl.addEventListener('click', handleResetFavoriteCategories);
 
 export function handleSelectFavoriteCategory({ target }) {
-  if (target.tagName !== 'LI') {
+  // target.blur();
+  if (target.tagName !== 'BUTTON') {
     return;
   }
 
   if (selectedElement) {
-    selectedElement.style.color = '#0505054D';
+    // selectedElement.style.backgroundColor = 'inherit';
   }
 
   listOfCards.innerHTML = '';
-  target.style.color = '#9BB537';
+  // target.style.backgroundColor = '#9BB537';
 
-  if (target.tagName === 'LI') {
+  if (target.tagName === 'BUTTON') {
     category = target.dataset.name;
     selectedElement = target;
 
@@ -68,5 +69,7 @@ function handleResetFavoriteCategories() {
 }
 
 function createMarkupOfFavoriteCategories(category) {
-  return `<li data-name="${category}" class="categories-item">${category}</></li>`;
+  return `<li>
+  <button data-name="${category}" class="categories-item favorites-btn">${category}</button>
+  </li>`;
 }
