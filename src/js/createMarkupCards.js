@@ -68,7 +68,9 @@ export function clickCardHeartIcon() {
       btn.disabled = true;
       likedRecipes.push(currentTarget.dataset.heart);
       localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
-      Notiflix.Notify.info('You have added this dish to favorites');
+      Notiflix.Notify.info('You have added this dish to favorites', {
+        showOnlyTheLastOne: true,
+      });
     });
   });
 }

@@ -17,8 +17,8 @@ function createGalleryRecipes(recipes) {
     .map(({ title, preview, description, _id }) => {
       return `
       <li class="popular-recipes-item">
-      <button class="popular-recipes-img-btn">
-       <img class="popular-recipes-img js-see-recipe" src="${preview}" alt="${title}" width="64"  data-id="${_id}"/>
+      <button class="popular-recipes-img-btn js-see-recipe data-id="${_id}"">
+       <img class="popular-recipes-img" src="${preview}" alt="${title}" width="64"  data-id="${_id}"/>
       </button>
    <div class="popular-recipes-text-wrapper">
     <h3 class="popular-recipes-title">
