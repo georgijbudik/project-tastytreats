@@ -8,6 +8,14 @@ scrollToTheTop.addEventListener('click', () => {
   window.scrollTo(0, 0);
 });
 
+window.addEventListener('scroll', () => {
+  if (!isElementInViewport(trackEl)) {
+    scrollToTheTop.classList.add('is-visible');
+  } else {
+    scrollToTheTop.classList.remove('is-visible');
+  }
+});
+
 const listOfCards = document.querySelector('.list-of-cards');
 const favoriteCategoryEL = document.querySelector('.js-favorite-categories');
 const allCategoriesEl = document.querySelector('.js-btn-all-categories');
@@ -20,12 +28,19 @@ const likedRecipesArray = JSON.parse(localStorage.getItem('liked-recipes'));
 let uniqueLikedRecipes;
 
 export function addFavoriteCategory(category) {
-  favoriteCategoryEL.insertAdjacentHTML(
-    'beforeend',
-    createMarkupOfFavoriteCategories(category)
+  // Check if a category with the same data-name attribute already exists
+  const existingCategory = favoriteCategoryEL.querySelector(
+    `[data-name="${category}"]`
   );
-}
 
+  // If the category doesn't exist, insert the markup
+  if (!existingCategory) {
+    favoriteCategoryEL.insertAdjacentHTML(
+      'beforeend',
+      createMarkupOfFavoriteCategories(category)
+    );
+  }
+}
 if (!likedRecipesArray || likedRecipesArray.length === 0) {
   return;
 } else {
@@ -96,11 +111,3 @@ function isElementInViewport(element) {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
-
-window.addEventListener('scroll', () => {
-  if (!isElementInViewport(trackEl)) {
-    scrollToTheTop.classList.add('is-visible');
-  } else {
-    scrollToTheTop.classList.remove('is-visible');
-  }
-});
