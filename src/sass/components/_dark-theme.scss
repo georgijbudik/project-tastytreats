@@ -286,6 +286,7 @@ body.dark-theme {
 // paginaation dark
 
 .dark-theme .pagination .tui-page-btn {
+  transition: all $cubic-bezier;
   background-color: #161616;
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
