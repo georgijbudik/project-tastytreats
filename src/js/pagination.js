@@ -1,10 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { pageCards,categorsCards } from './api/gallery-api';
-import { clickCardHeartIcon,renderGalleryCard } from './createMarkupCards';
-import { openModal } from './pop-up';
-import { createRating } from './rating';
-import { clickBtnModal } from './modal';
+import { pageCards, categorsCards } from './api/gallery-api';
 import { renderGalleryCard } from './createMarkupCards';
 import { callAllFunctionsInPagination } from './callFunctions';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';

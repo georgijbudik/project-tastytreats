@@ -1,8 +1,6 @@
 import { renderFavoriterecipes } from './api/favorites-api';
-import { renderModalByRecipe, openModal, addClickHandler } from './pop-up';
+import { openModal, addClickHandler } from './pop-up';
 import { createMarkup } from './createMarkupCards';
-import fetchRecipeById from './api/recipe-info-api';
-import SPRITE from '../images/sprite/sprite.svg';
 import Notiflix from 'notiflix';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { addFavoriteCategory } from './favoriteCategory';

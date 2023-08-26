@@ -75,6 +75,9 @@ function handleSelectCategory({ target }) {
 }
 
 function handleResetCategory() {
+  if (selectedElement) {
+    selectedElement.style.color = '#0505054D';
+  }
   listOfCards.innerHTML = '';
   selectedCategoryId = null;
   render();

@@ -1,8 +1,6 @@
 import Notiflix from 'notiflix';
 
 const refs = {
-  // openModalBtn: document.querySelector('data-orderNow-icon-open'),
-  // heroOpenBtn: document.querySelector('[data-ordernow-icon-open]'),
   openModalBtn: document.querySelectorAll('[data-orderNow-icon-open]'),
   closeModalBtn: document.querySelector('[data-orderNow-close]'),
   modal: document.querySelector('.backdrop'),
@@ -198,16 +196,7 @@ function initRatingsModal() {
     }
   };
   loadRatingInputData();
-  // function populateTextarea() {
-  //   for (const key in item) {
-  //     if (key === 'email') {
-  //       refs.ratingEmail.value = item.email;
-  //     } else if (key === 'rating') {
-  //       ratingModal.innerHTML = item.rating;
-  //       setRatingModalActiveWidth();
-  //     }
-  //   }
-  // }
+
   refs.ratingForm.addEventListener('submit', onFormSubmit);
   refs.closeRatingModalBtn.addEventListener('click', () => {
     window.removeEventListener('mousedown', outerClickHandler);

@@ -79,7 +79,6 @@ export function openModal(id) {
 }
 
 export function addClickHandler(e) {
-  closeModal();
   likedRecipes.push(e.currentTarget.dataset.favorite);
   localStorage.setItem('liked-recipes', JSON.stringify(likedRecipes));
   e.currentTarget.disabled = true;
